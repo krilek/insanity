@@ -8,7 +8,6 @@
       if ($wynik = $baza->query("SELECT ID, Login, TokenHash, Data, Dodano FROM uzytkownicyrejestracja WHERE ID=$id && Login='$login' && TokenHash='$token'")) {
           if ($wynik->num_rows == 1) {
               $wynik = $wynik->fetch_assoc();
-              print_r($wynik);
               if ($wynik['Dodano'] == 1) {
                   return 2;
               }
@@ -37,38 +36,45 @@
   function utworzUzytkownika($id, $login, $token)
   {
       global $baza;
-    //Dodaj do haseł
-    $hasla = "INSERT INTO `hasla` (Hash)
-    SELECT  HasloHash
-    FROM `uzytkownicyrejestracja` WHERE Login='$login' && ID=$id && TokenHash='$token'";
-      if ($baza->query($hasla)) {
+      $emaile = " INSERT INTO `emaile` (Email)
+      SELECT Email
+      FROM `uzytkownicyrejestracja` WHERE Login='$login' && ID=$id &&  TokenHash='$token'";
+      //Dodaj do emaili
+      if ($baza->query($emaile)) {
+          //Uzyj ostatniego auto_increment
           $noweID = $baza->insert_id;
-          $emaile = " INSERT INTO `emaile` (ID, Email)
-                      SELECT  $noweID, Email
-                      FROM `uzytkownicyrejestracja` WHERE Login='$login' && ID=$id &&  TokenHash='$token'";
-          if ($baza->query($emaile)) {
+          $hasla = "INSERT INTO `hasla` (ID, Hash)
+          SELECT  $noweID, HasloHash
+          FROM `uzytkownicyrejestracja` WHERE Login='$login' && ID=$id && TokenHash='$token'";
+          //Dodaj do haseł
+          if ($baza->query($hasla)) {
               $uzytkownicy = "INSERT INTO `uzytkownicy` (ID, Login, Imie, Nazwisko, Wojewodztwo, Miejscowosc, Plec, Typ)
                               SELECT $noweID, Login, Imie, Nazwisko, Wojewodztwo, Miejscowosc, Plec, Typ
                               FROM `uzytkownicyrejestracja` WHERE Login='$login' && ID=$id &&  TokenHash='$token'";
               if ($baza->query($uzytkownicy)) {
                   //UPDATE statusu aktywacji uzytkownicyrejestracja
-                $update = "UPDATE `uzytkownicy` SET Dodano=1 WHERE Login='$login' && ID=$id &&  TokenHash='$token'";
+                $update = "UPDATE `uzytkownicyrejestracja` SET Dodano=1 WHERE Login='$login' && ID=$id &&  TokenHash='$token'";
                   if ($baza->query($update)) {
-                      echo "UDAŁO SIĘ!";
+                      dodano();
                   } else {
                       przekieruj("blad.php?blad=30");
                   }
               } else {
-                  usunZmiany("emaile");
+                  usunZmiany("hasla");
                   przekieruj("blad.php?blad=29");
               }
           } else {
-              usunZmiany("hasla");
+              usunZmiany("emaile");
               przekieruj("blad.php?blad=28");
           }
       } else {
           przekieruj("blad.php?blad=27");
       }
+  }
+  function dodano()
+  {
+      echo "<h2>Adres email został potwierdzony.</h2>";
+      echo "<p>Możesz już się zalogować</p>";
   }
 ?>
 <!doctype html>
@@ -134,8 +140,7 @@
       </div>
     </div>
   </nav>
-  <div class="container">
-    <div class="col-sm-12">
+  <div class="jumbotron">
       <?php
       if (isset($_GET['id']) && isset($_GET['login'])&& isset($_GET['token'])) {
           $id = $baza->real_escape_string($_GET["id"]);
@@ -156,7 +161,6 @@
       }
 // weryfikujUzytkownika(17, "krilek", "62161512d8b1b5db826778917e974b21");
       ?>
-    </div>
   </div>
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>

@@ -64,15 +64,14 @@
       </div>
     </div>
   </nav>
-  <div class="container">
-    <div class="col-sm-12">
-      <div class="row">
+  <div class="jumbotron text-center">
       <?php
-          echo '<div class="alert alert-danger">';
+          echo '<div class="alert alert-danger">
+          <h3>';
           if (isset($_GET['blad'])) {
               switch ($_GET['blad']) {
                 case '1':
-                  echo "Nie poprawnie wypełniony formularz rejestracyjny.";
+                  echo "Niepoprawnie wypełniony formularz rejestracyjny.";
                   break;
                 case '2':
                   echo "Problem z POST. Skontaktuj się z administratorem.";
@@ -87,7 +86,7 @@
                   echo "Login jest za długi";
                   break;
                 case '6':
-                  echo "Hasła się nie zgadzają";
+                  echo "Podane hasła nie są takie same";
                   break;
                 case '7':
                   echo "Hasło za krótkie";
@@ -105,7 +104,7 @@
                   echo "Email jest za długi";
                   break;
                 case '12':
-                  echo "Nazwisko lub imie lub miasto zostały niepoprawnie wypełnione";
+                  echo "Nazwisko, imie lub miasto zostały niepoprawnie wypełnione";
                   break;
                 case '13':
                   echo "Wprowadzono za długą nazwę miejscowości";
@@ -141,7 +140,7 @@
                   echo "Błąd przy rejestracji. Kod błędu 23";
                   break;
                 case '24':
-                  echo "Użytkownik o takim adresie email został już zarejestrowany i prawdopodobnie nie potwierdzony.";
+                  echo "Użytkownik o takim adresie email został już zarejestrowany.";
                   break;
                 case '25':
                   echo "Niepoprawny link weryfikacyjny";
@@ -150,7 +149,7 @@
                   echo "Ten link aktywacyjny wygasł";
                   break;
                 case '27':
-                  echo "Błąd przy potwierdzaniu adresu email, KOD BŁĘDU 27";
+                  echo "Nie wiem jak to zrobiłaś/zrobiłeś ale ten email jest już w bazie, KOD BŁĘDU 27";
                   break;
                 case '28':
                   echo "Błąd przy potwierdzaniu adresu email, KOD BŁĘDU 28";
@@ -171,10 +170,9 @@
           } else {
               echo "Nie sprecyzowano kodu błędu.";
           }
-          echo '</div>';
+          echo '</h3>
+          </div>';
       ?>
-    </div>
-    </div>
   </div>
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>

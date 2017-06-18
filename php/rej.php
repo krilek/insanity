@@ -46,8 +46,8 @@
               filter_has_var(INPUT_POST, 'miasto')&& !empty($_POST['miasto'])) {
               $czysteRasowoDane = sprawdzDane();
               if (is_array($czysteRasowoDane)) {
-                  print_r($czysteRasowoDane);
                   dUzytkTymczas($czysteRasowoDane);
+                  przekieruj("../rejestracja.php?sukces=1");
               } else {
                   przekieruj("../blad.php?blad=".$czysteRasowoDane);
               }
@@ -283,7 +283,6 @@ function rejestracjaEmail($email, $imie, $id, $login, $token)
     http://localhost/weryfikacja.php?id=$id&login=$login&token=$token
     Jeśli to nie ty, zignoruj tę wiadomość.
 WIAD;
-    echo $wiadomosc;
     wyslijMail($email, $wiadomosc, "Rejestracja w serwisie ____");
 }
 //
