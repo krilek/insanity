@@ -125,7 +125,7 @@
                   echo "Wprowadzono za długie nazwisko";
                   break;
                 case '20':
-                  echo "Błąd z serwerem KOD 20. Skontakutj się z administratorem ";
+                  echo "Błąd z serwerem KOD 20. Skontaktuj się z administratorem ";
                   break;
                 case '19':
                   echo "Ten login jest już w użyciu";
@@ -162,6 +162,12 @@
                   break;
                 case '31':
                   echo "Użytkownik o danym adresie email został już potwierdzony";
+                  break;
+                case '32':
+                  echo "Problem z zapytaniem do bazy danych. Skontaktuj się z administratorem";
+                  break;
+                case '100':
+                  echo "Błąd połączenia z bazą danych. Strona jest aktualnie w konserwacji.";
                   break;
 
                 default:
