@@ -150,14 +150,21 @@
                   echo "Ten link aktywacyjny wygasł";
                   break;
                 case '27':
-                  echo "Błąd tworzenia użytkownika, KOD BŁĘDU 27";
+                  echo "Błąd przy potwierdzaniu adresu email, KOD BŁĘDU 27";
                   break;
                 case '28':
-                  echo "Błąd tworzenia użytkownika, KOD BŁĘDU 28";
+                  echo "Błąd przy potwierdzaniu adresu email, KOD BŁĘDU 28";
                   break;
                 case '29':
-                  echo "Błąd tworzenia użytkownika, KOD BŁĘDU 29";
+                  echo "Błąd przy potwierdzaniu adresu email, KOD BŁĘDU 29";
                   break;
+                case '30':
+                  echo "Błąd przy potwierdzaniu adresu email, KOD BŁĘDU 30";
+                  break;
+                case '31':
+                  echo "Użytkownik o danym adresie email został już potwierdzony";
+                  break;
+
                 default:
                   echo "Nieznany kod błędu.";
             }

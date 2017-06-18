@@ -46,7 +46,6 @@
               filter_has_var(INPUT_POST, 'miasto')&& !empty($_POST['miasto'])) {
               $czysteRasowoDane = sprawdzDane();
               if (is_array($czysteRasowoDane)) {
-                  echo "CORRECT\n";
                   print_r($czysteRasowoDane);
                   dUzytkTymczas($czysteRasowoDane);
               } else {
@@ -160,7 +159,7 @@ function sprawdzDane()
             return 9;
         } elseif (strlen($email) < 5) {
             return 10;
-        } elseif (strlen($email) > 256) {
+        } elseif (strlen($email) > 250) {
             return 11;
         } else {
             $zwroc['email'] = $email;
@@ -238,9 +237,9 @@ function dUzytkTymczas($uzytkTab)
         $id = $baza->insert_id;
         rejestracjaEmail($uzytkTab['email'], $uzytkTab['imie'], $id, $uzytkTab['login'], $tokenHash);
     } else {
-        echo "blad";
-        echo $baza->error;
-        // przekieruj("../blad.php?blad=23");
+        // echo "blad";
+      //   echo $baza->error;
+        przekieruj("../blad.php?blad=23");
     }
     // if ($baza->query("INSERT INTO hasla (Hash) VALUES ('$hash')")) {
     //     $id = $baza->insert_id;

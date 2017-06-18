@@ -1,18 +1,37 @@
 <?php
   include_once("config.php");
   include_once(BAZA);
+  include_once(FPOMOC);
   function weryfikujUzytkownika($id, $login, $token)
   {
-      //SPRAWDZ GODZINE!!!!!
       global $baza;
-      if ($wynik = $baza->query("SELECT ID, Login, TokenHash FROM uzytkownicyrejestracja WHERE ID=$id && Login='$login' && TokenHash='$token'")) {
+      if ($wynik = $baza->query("SELECT ID, Login, TokenHash, Data, Dodano FROM uzytkownicyrejestracja WHERE ID=$id && Login='$login' && TokenHash='$token'")) {
           if ($wynik->num_rows == 1) {
-              return 1;
-          } else {
-              return 0;
+              $wynik = $wynik->fetch_assoc();
+              print_r($wynik);
+              if ($wynik['Dodano'] == 1) {
+                  return 2;
+              }
+              if (sprDate($wynik['Data'])) {
+                  return 1;
+              }
           }
+          return 0;
       } else {
           return -1;
+      }
+  }
+
+  function sprDate($data)
+  {
+      $data = new DateTime($data);
+      $dataAktualna = new DateTime();
+      $roznica = $data->diff($dataAktualna);
+      //Ilosc dni wieksza od 0 oznacza nieważny link aktywacyjny
+      if ($roznica->d > 0) {
+          return false;
+      } else {
+          return true;
       }
   }
   function utworzUzytkownika($id, $login, $token)
@@ -32,8 +51,13 @@
                               SELECT $noweID, Login, Imie, Nazwisko, Wojewodztwo, Miejscowosc, Plec, Typ
                               FROM `uzytkownicyrejestracja` WHERE Login='$login' && ID=$id &&  TokenHash='$token'";
               if ($baza->query($uzytkownicy)) {
-                  //UPDATE W uzytkownicyrejestracja
-                echo "UDAŁO SIĘ!";
+                  //UPDATE statusu aktywacji uzytkownicyrejestracja
+                $update = "UPDATE `uzytkownicy` SET Dodano=1 WHERE Login='$login' && ID=$id &&  TokenHash='$token'";
+                  if ($baza->query($update)) {
+                      echo "UDAŁO SIĘ!";
+                  } else {
+                      przekieruj("blad.php?blad=30");
+                  }
               } else {
                   usunZmiany("emaile");
                   przekieruj("blad.php?blad=29");
@@ -112,28 +136,32 @@
   </nav>
   <div class="container">
     <div class="col-sm-12">
-      <?php if (isset($_GET['id']) && isset($_GET['login'])&& isset($_GET['token'])) {
-    $id = $baza->real_escape_string($_GET["id"]);
-    $login = $baza->real_escape_string($_GET["login"]);
-    $token = $baza->real_escape_string($_GET["token"]);
-    $poprawny = weryfikujUzytkownika($id, $login, $token);
-    if ($poprawny == 1) {
-        utworzUzytkownika($id, $login, $token);
-    } elseif ($poprawny < 0) {
-        przekieruj("blad.php?blad=25");
-    } elseif ($poprawny == 0) {
-        przekieruj("blad.php?blad=26");
-    }
-} else {
-    przekieruj("blad.php?blad=25");
-}
+      <?php
+      if (isset($_GET['id']) && isset($_GET['login'])&& isset($_GET['token'])) {
+          $id = $baza->real_escape_string($_GET["id"]);
+          $login = $baza->real_escape_string($_GET["login"]);
+          $token = $baza->real_escape_string($_GET["token"]);
+          $poprawny = weryfikujUzytkownika($id, $login, $token);
+          if ($poprawny == 1) {
+              utworzUzytkownika($id, $login, $token);
+          } elseif ($poprawny < 0) {
+              przekieruj("blad.php?blad=25");
+          } elseif ($poprawny == 0) {
+              przekieruj("blad.php?blad=26");
+          } elseif ($poprawny == 2) {
+              przekieruj("blad.php?blad=31");
+          }
+      } else {
+          przekieruj("blad.php?blad=25");
+      }
+// weryfikujUzytkownika(17, "krilek", "62161512d8b1b5db826778917e974b21");
       ?>
     </div>
   </div>
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/rejestracja.js<?php echo '?x='.rand(1, 10);?>"></script>
-  <script src="js/navbar.fix.js"></script>
+  <script src="js/navbar.fix.js<?php echo '?x='.rand(1, 10);?>"></script>
 </body>
 
 </html>
