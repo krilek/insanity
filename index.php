@@ -1,5 +1,10 @@
-<?php include_once("config.php");
-header('Content-Type: text/html; charset=utf-8');?>
+<?php
+include_once("config.php");
+header('Content-Type: text/html; charset=utf-8');
+  session_start();
+  $_SESSION['url'] = $_SERVER['REQUEST_URI'];
+?>
+
 <!doctype html>
 
 <html lang="pl">
@@ -23,7 +28,7 @@ header('Content-Type: text/html; charset=utf-8');?>
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -32,7 +37,7 @@ header('Content-Type: text/html; charset=utf-8');?>
         <a class="navbar-brand" href="index.php">Brand</a>
       </div>
 
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+      <div class="collapse navbar-collapse" id="bs">
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
           <li><a href="#">Link</a></li>
@@ -52,14 +57,28 @@ header('Content-Type: text/html; charset=utf-8');?>
         <ul class="nav navbar-nav navbar-left">
           <li><a href="#">Link</a></li>
         </ul>
-        <form class="navbar-form navbar-right" role="logowanie">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Login">
-            <input type="text" class="form-control" placeholder="Hasło">
-          </div>
-          <button type="submit" class="btn btn-default">Zaloguj</button>
-          <a class="btn btn-default" href="rejestracja.php">Rejestracja</a>
-        </form>
+        <?php
+        if(isset($_SESSION['zalogowany'])){
+            echo '
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#"><span class="glyphicon glyphicon-user"></span> '.$_SESSION['login'].'</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-plus"></span> Dodaj ogłoszenie</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-align-justify"></span></a></li>
+                    <li><a href="/php/wyloguj.php"><span class="glyphicon glyphicon-log-out"></span></a></li>
+                  </ul>';
+        }else{
+          echo '
+                <form class="navbar-form navbar-right" role="logowanie" action="/php/zaloguj.php" method="post">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Login" name="login">
+                    <input type="password" class="form-control" placeholder="Hasło" name="haslo">
+                  </div>
+                  <button type="submit" class="btn btn-default">Zaloguj</button>
+                  <a class="btn btn-default" href="rejestracja.php">Rejestracja</a>
+                </form>
+          ';
+        }
+         ?>
       </div>
     </div>
   </nav>
@@ -148,7 +167,7 @@ header('Content-Type: text/html; charset=utf-8');?>
   </div>
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/navbar.fix.js"></script>
+  <script src="js/navbar.fix.js<?php echo '?x='.rand(1, 10);?>"></script>
 </body>
 
 </html>

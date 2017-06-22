@@ -140,7 +140,7 @@
       </div>
     </div>
   </nav>
-  <div class="jumbotron">
+  <div class="jumbotron text-center">
       <?php
       if (isset($_GET['id']) && isset($_GET['login'])&& isset($_GET['token'])) {
           $id = $baza->real_escape_string($_GET["id"]);

@@ -166,10 +166,18 @@
                 case '32':
                   echo "Problem z zapytaniem do bazy danych. Skontaktuj się z administratorem";
                   break;
+                case '33':
+                  echo "Błąd logowania, problem z bazą danych. Skontaktuj się z administratorem";
+                  break;
+                case '34':
+                  echo "Błąd logowania, spróbuj ponownie";
+                  break;
+                case '35':
+                  echo "Błąd logowania, podane dane do logowania są niepoprawne";
+                  break;
                 case '100':
                   echo "Błąd połączenia z bazą danych. Strona jest aktualnie w konserwacji.";
                   break;
-
                 default:
                   echo "Nieznany kod błędu.";
             }

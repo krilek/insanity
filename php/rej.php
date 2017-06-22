@@ -130,15 +130,21 @@ function sprawdzDane()
         return 22;
     }
     //LOGIN
-    if (preg_match('[\W]', $_POST['login'])) {
-        return 3;
-    } elseif (strlen($_POST['login']) < 5) {
-        return 4;
-    } elseif (strlen($_POST['login']) > 25) {
-        return 5;
+    $wyn = sprawdzLogin($_POST['login']);
+    if (is_string($wyn)) {
+        $zwroc['login'] = $wyn;
     } else {
-        $zwroc['login'] = $_POST['login'];
+        return $wyn;
     }
+    // if (preg_match('[\W]', $_POST['login'])) {
+    //     return 3;
+    // } elseif (strlen($_POST['login']) < 5) {
+    //     return 4;
+    // } elseif (strlen($_POST['login']) > 25) {
+    //     return 5;
+    // } else {
+    //     $zwroc['login'] = $_POST['login'];
+    // }
     //HASLO
     if ($_POST['haslo'] != $_POST['haslo2']) {
         return 6;
@@ -216,8 +222,12 @@ function dUzytkTymczas($uzytkTab)
     // echo " Nazwisko: ".$nazwisko." Plec: ".$plec." Miasto: ".$miasto." Województwo: ".$woj;
     //
     global $baza;
+    //Złożoność hashowania
+    $opcje = [
+        'cost' => 10,
+    ];
     //Przygotowanie hasha
-    $hasloHash = password_hash($uzytkTab['haslo'], PASSWORD_BCRYPT);
+    $hasloHash = password_hash($uzytkTab['haslo'], PASSWORD_BCRYPT, $opcje);
     $tokenHash = md5(rand(0, 10000));
     $dodajDoBazy = "INSERT INTO uzytkownicyrejestracja
     (Login, Email, HasloHash, TokenHash, Imie, Nazwisko, Wojewodztwo, Miejscowosc, Plec, Typ, Data) VALUES ";
