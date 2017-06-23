@@ -1,4 +1,4 @@
-<?php include_once("config.php");
+<?php require_once("config.php");
 header('Content-Type: text/html; charset=utf-8');?>
 <!doctype html>
 
@@ -66,7 +66,7 @@ header('Content-Type: text/html; charset=utf-8');?>
     <div class="row">
       <div class="col-sm-3">
         <h3>Wybierz województwo</h3>
-        <?php include(WOJEWODZTWA); ?>
+        <?php require(WOJEWODZTWA); ?>
         <ul class="nav nav-pills nav-stacked">
           <li><a href="#">Profile</a></li>
 
