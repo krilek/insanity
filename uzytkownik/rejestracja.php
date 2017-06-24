@@ -1,6 +1,7 @@
 <?php
   require_once("../config.php");
   require_once(WOJEWODZTWA);
+  require_once(SESJA);
 ?>
 <!doctype html>
 

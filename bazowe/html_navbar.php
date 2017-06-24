@@ -35,9 +35,10 @@ echo '<nav class="navbar navbar-inverse navbar-fixed-top">
           echo '
                 <ul class="nav navbar-nav navbar-right">
                   <li class="active"><a href="#"><span class="glyphicon glyphicon-user"></span> '.$_SESSION['login'].'</a></li>
-                  <li><a href="#"><span class="glyphicon glyphicon-plus"></span> Dodaj ogłoszenie</a></li>
+                  <li><a href="'.OGLOSZENIA_KAT.'ogloszenia.php"><span class="glyphicon glyphicon-plus"></span> Dodaj ogłoszenie</a></li>
+                  <li><a href="'.WIADOMOSCI_KAT.'wiadomosci.php'.'"><span class="glyphicon glyphicon-envelope"></span></a></li>
                   <li><a href="#"><span class="glyphicon glyphicon-align-justify"></span></a></li>
-                  <li><a href="/php/wyloguj.php"><span class="glyphicon glyphicon-log-out"></span></a></li>
+                  <li><a href="'.UZYTKOWNIK_KAT.'wyloguj.php"><span class="glyphicon glyphicon-log-out"></span></a></li>
                 </ul>';
       } else {
           echo '

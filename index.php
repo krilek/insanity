@@ -1,8 +1,6 @@
 <?php
-require_once("config.php");
-header('Content-Type: text/html; charset=utf-8');
-  session_start();
-  $_SESSION['url'] = $_SERVER['REQUEST_URI'];
+  require_once("config.php");
+  require_once(SESJA);
 ?>
 
 <!doctype html>

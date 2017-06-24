@@ -3,16 +3,14 @@ require("../config.php");
 require_once(BAZA);
 require_once(FPOMOC);
 session_start();
-print_r($_SESSION);
   if (isset($_POST['login'])&&isset($_POST['haslo'])) {
       $wyn = sprawdzLogin($_POST['login']);
       if (is_string($wyn)) {
           if (zalogujUzytkownika($wyn, $_POST['haslo'])) {
               if (isset($_SESSION['url'])) {
-                  przekieruj("http://localhost".$_SESSION['url']);
-              } else {
-                  przekieruj("http://localhost");
+                  przekieruj(ROOT.$_SESSION['url']);
               }
+              przekieruj(ROOT);
           } else {
               przekieruj(BLAD."?blad=34");
           }
@@ -49,5 +47,4 @@ function stworzSesje($login)
     $_SESSION['login'] = $login;
     $_SESSION['dataLogowania'] = new DateTime();
     $_SESSION['ostatniaAktywnosc'] = new DateTime();
-    echo "$login";
 }

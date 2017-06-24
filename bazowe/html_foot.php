@@ -4,4 +4,5 @@
   if (isset($rejestracja)) {
       echo '<script src="'.JS_KAT.'rejestracja.js?x='.rand(1, 10).'"></script>';
   }
-  echo '<script src="'.JS_KAT.'navbar.fix.js?x='.rand(1, 10).'"></script>';
+  echo '<script src="'.JS_KAT.'navbar.fix.js?v='.time().'"></script>';
+  echo '<script src="'.JS_KAT.'tooltip.js?v='.time().'"></script>';

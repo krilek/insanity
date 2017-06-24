@@ -5,6 +5,17 @@ a{
 a.thumbnail:hover{
   border-color: #772953;
 }
+.list-group-item.active{
+  background-color: #772953;
+  border-color: #772953;
+}
+.list-group-item.active:hover{
+  background-color: #772953;
+  border-color: #772953;
+}
+.list-group-item.active>.badge{
+  color: #772953;
+}
 /*body{
   background-color: #FFFFEE;
 }*/

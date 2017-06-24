@@ -1,7 +1,11 @@
 <?php
   function przekieruj($url, $status = 303)
   {
-      header('Location: '.$url, true, $status);
+      if ($url == ROOT."/") {
+          header('Location: '.ROOT, true, $status);
+      } else {
+          header('Location: '.$url, true, $status);
+      }
       die();
   }
   function wyslijMail($do, $wiadomosc, $temat)

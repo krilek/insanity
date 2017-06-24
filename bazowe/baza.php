@@ -5,5 +5,6 @@
     if ($baza->connect_error) {
         przekieruj(BLAD."?blad=100");
         die("Brak połączenia z bazą");
+    } else {
+        $baza->set_charset("utf8");
     }
-    $baza->set_charset("utf8");

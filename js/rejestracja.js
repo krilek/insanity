@@ -4,7 +4,7 @@ $("#email").blur(ajaxInfo);
 
 function ajaxInfo(){
   if($("#login").val().length>4 && $("#email").val().length > 5){
-    $.post("php/rej.php", {
+    $.post("rej.php", {
         tryb: "info",
         email: $("#email").val(),
         login: $("#login").val()
