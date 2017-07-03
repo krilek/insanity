@@ -6,17 +6,19 @@
       $zapytanie = "SELECT * FROM wojewodztwa";
       $wynik = $baza->query($zapytanie);
       if ($wynik) {
-          echo '<ul class="nav nav-pills nav-stacked">';
+          echo '<div class="list-group">';
           if ($wynik->num_rows > 0) {
               foreach ($wynik as $wiersz) {
-                  echo '<li><a onclick="woj_wybor('.$wiersz['ID'].')" href="#">';
+                  echo '<a href="#'.$wiersz['ID'].'" class="list-group-item">';
                   echo $wiersz['Nazwa'];
-                  echo '</a></li>';
+                  echo '</a>';
+                  // echo '<li class="active"><a onclick="woj_wybor('..')" href="#">';
+                  // echo '</a></li>';
               }
           } else {
               przekieruj(BLAD."?blad=32");
           }
-          echo '</ul>';
+          echo '</div>';
       }
       $wynik->free();
       $baza->close();
@@ -41,3 +43,4 @@
       $wynik->free();
       $baza->close();
   }
+//TODO: PRZEBUDOWAĆ NA JEDNĄ FUNKCJE ZWRACAJĄCĄ ASSOC

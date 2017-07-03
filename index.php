@@ -7,9 +7,8 @@
 
 <html lang="pl">
 <?php require_once(HEAD);?>
-
 <body>
-  <?php require_once(NAVBAR);?>
+    <?php require_once(NAVBAR);?>
 
   <div class="container">
     <div class="row">
@@ -94,7 +93,7 @@
     </div>
 
   </div>
-  <?php require_once(FOOTER); ?>
+    <?php require_once(FOOTER); ?>
 </body>
 
 </html>

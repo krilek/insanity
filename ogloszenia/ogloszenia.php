@@ -5,7 +5,7 @@
 
   <!doctype html>
   <html lang="pl">
-  <?php require_once(HEAD);?>
+    <?php require_once(HEAD);?>
   <style>
     .page-header {
       margin-top: 15px;
@@ -17,27 +17,33 @@
     <?php require_once(NAVBAR);?>
     <div class="container">
       <div class="row hidden-xs">
-        <div class="col-sm-8 col-sm-offset-4">
+        <div class="col-sm-12">
           <div class="page-header">
-            <h1>Example Page Header</h1>
+            <h1>Ogłoszenia</h1>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-4">
-          <ul class="list-group">
-            <li class="list-group-item">
-              <span class="badge">14</span> Cras justo odio
-            </li>
-            <li class="list-group-item active">
-              <span class="badge">2</span> Dapibus ac facilisis in
-            </li>
-            <li class="list-group-item">
-              <span class="badge">1</span> Morbi leo risus
+        <div class="col-sm-12">
+        <!--TODO: DAĆ BORDER NA DOLE UL-->
+          <ul class="nav nav-tabs nav-justified">
+            <li role="presentation"><a href="dodaj_ogloszenie.php">Dodaj ogłoszenie</a></li>
+            <li role="presentation"><a href="#">Wszystkie ogłoszenia</a></li>
+            <li role="presentation"><a href="#">Aktywne ogłoszenia</a></li>
+            <li role="presentation"><a href="#">Zakończone ogłoszenia</a></li>
+            <li role="presentation" class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                Wyszukaj ofertę <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                ...
+              </ul>
             </li>
           </ul>
         </div>
-        <div class="col-sm-8">
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
           <div class="media">
               <div class="media-left">
                 <a href="#">
@@ -49,6 +55,12 @@
                 <p>
                   Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
                 </p>
+                <!--<div class="btn-group pull-right" role="group" aria-label="...">
+                  <a href="" class="btn btn-default">Left</a>
+                  <a href="" class="btn btn-default">Middle</a>
+                  <a href="" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a>
+                </div>-->
+                  <!--TODO: STAŁY HEIGHT? wysokość tekstu 100%? PROBLEM Z WYSOKOŚCIAMI BUTTONÓW-->
                 <div class="btn-group pull-right">
                   <a href="#" class="btn btn-default">Left</a>
                   <a href="#" class="btn btn-default">Middle</a>

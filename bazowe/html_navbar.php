@@ -31,8 +31,8 @@ echo '<nav class="navbar navbar-inverse navbar-fixed-top">
       <ul class="nav navbar-nav navbar-left">
         <li><a href="#">Link</a></li>
       </ul>';
-      if (isset($_SESSION['zalogowany'])) {
-          echo '
+if (isset($_SESSION['zalogowany'])) {
+    echo '
                 <ul class="nav navbar-nav navbar-right">
                   <li class="active"><a href="#"><span class="glyphicon glyphicon-user"></span> '.$_SESSION['login'].'</a></li>
                   <li><a href="'.OGLOSZENIA_KAT.'ogloszenia.php"><span class="glyphicon glyphicon-plus"></span> Dodaj ogłoszenie</a></li>
@@ -40,8 +40,8 @@ echo '<nav class="navbar navbar-inverse navbar-fixed-top">
                   <li><a href="#"><span class="glyphicon glyphicon-align-justify"></span></a></li>
                   <li><a href="'.UZYTKOWNIK_KAT.'wyloguj.php"><span class="glyphicon glyphicon-log-out"></span></a></li>
                 </ul>';
-      } else {
-          echo '
+} else {
+    echo '
               <form class="navbar-form navbar-right" role="logowanie" action="'.UZYTKOWNIK_KAT.'zaloguj.php" method="post">
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="Login" name="login">
@@ -51,8 +51,9 @@ echo '<nav class="navbar navbar-inverse navbar-fixed-top">
                 <a class="btn btn-default" href="'.UZYTKOWNIK_KAT.'rejestracja.php'.'">Rejestracja</a>
               </form>
         ';
-      }
+}
 echo '
     </div>
   </div>
 </nav>';
+// FIXME: event collapse wtedy onResize

@@ -1,13 +1,16 @@
 <?php
   session_start();
-  // echo $_SERVER['REQUEST_URI'];
-  // echo $_SESSION['url'];
-  // if (!isset($_SESSION['url'])) {
-      $_SESSION['url'] = $_SERVER['REQUEST_URI'];
-  // } else {
-  //     if ($_SERVER['REQUEST_URI'] != "/") {
-  //         $_SESSION['url'] = $_SERVER['REQUEST_URI'];
-  //     } else {
-  //         $_SESSION['url'] = "";
-  //     }
-  // }
+  //TODO: LISTA URL KTÓRYCH MA NIE ZAPISYWAĆ
+  $_SESSION['url'] = $_SERVER['REQUEST_URI'];
+  
+  //Usuwanie zbędnych slashy
+if (isset($_SESSION['url'])) {
+    if (strlen($_SESSION['url']) > 1) {
+        while ($_SESSION['url'][0] == "/") {
+            $_SESSION['url'] = substr($_SESSION['url'], 1);
+        }
+    }
+}
+if ($_SERVER['SERVER_NAME'] == "localhost") {
+    print_r($_SESSION);
+}

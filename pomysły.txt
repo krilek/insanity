@@ -1,0 +1,11 @@
+TODO: BAZA MIAST do bazydanych
+TODO: Zapisywanie informacji o wyszukiwaniach
+TODO: OCENIANIE
+TODO: KOMPRESJA
+TODO: Adnotacje do zdjęć
+TODO: Określenie w tabeli które zdjęcie jest główne
+TODO: Ogarnięcie tego error handlingu funkcja z tworzeniem logów, przekierowaniem na stronę błędu, z die, z mailowaniem gdy flaga jest ustawiona
+TODO: Podopowiedzi JS do rejestracji
+TODO: KARUZELKA NA STRONIE GŁÓWNEJ
+TODO: WYZWALACZE DO CZYSZCZENIA rejestracji
+TODO: KURWA PROCEDURY
