@@ -1,6 +1,9 @@
 <?php
   require_once("../config.php");
   require_once(SESJA);
+  require_once(FPOMOC);
+  sprawdzZalogowany();
+  require_once(BAZA);
 ?>
 
   <!doctype html>
@@ -44,40 +47,36 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object" src="http://placehold.it/128x128" alt="...">
-                </a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">Media heading <span class="label label-info">Info</span></h4>
-                <p>
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                </p>
-                <!--<div class="btn-group pull-right" role="group" aria-label="...">
-                  <a href="" class="btn btn-default">Left</a>
-                  <a href="" class="btn btn-default">Middle</a>
-                  <a href="" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a>
-                </div>-->
-                  <!--TODO: STAŁY HEIGHT? wysokość tekstu 100%? PROBLEM Z WYSOKOŚCIAMI BUTTONÓW-->
-                <div class="btn-group pull-right">
-                  <a href="#" class="btn btn-default">Left</a>
-                  <a href="#" class="btn btn-default">Middle</a>
-                  <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a>
-                </div>
-              </div>
-            </div>
-          <!-- <div class="list-group">
-            <a href="#" class="list-group-item">
-                <img class="pull-left img-responsive" src="http://placehold.it/64x64" />
-                <h4 class="list-group-item-heading">List group item heading</h4>
-            </a>
-            <a href="#" class="list-group-item">
-              <h4 class="list-group-item-heading">List group item heading</h4>
-              <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            </a>
-          </div> -->
+            
+            <?php
+              $uzytkownik = $_SESSION['idUzytkownika'];
+              $zapytanie = "SELECT * FROM ogloszenia WHERE Uzytkownik=$uzytkownik";
+              // TODO: TU SKOŃCZYŁEŚ DOREGULUJ WYBIERANIE KOLUMN
+              //SELECT * FROM ogloszenia JOIN kategorie ON `kategorie`.ID = `ogloszenia`.Kategoria JOIN typogloszenia ON `typogloszenia`.ID = `ogloszenia`.Typ WHERE `Uzytkownik` = 3
+              // $zapytanie = "SELECT * FROM ogloszenia JOIN kategoria ON ogloszenia. WHERE Uzytkownik=$uzytkownik";
+              $ogloszenia = $baza->query($zapytanie);
+              //JOIN hasla ON hasla.ID = uzytkownicy.ID
+            if ($ogloszenia->num_rows > 0) {
+                foreach ($ogloszenia as $ogloszenie) {
+                    $id = $ogloszenie["ID"];
+                    $zapytanieZdjecie = "SELECT NazwaPliku FROM zdjecia WHERE Ogloszenie=$id LIMIT 1";
+                    $zdjecie = $baza->query($zapytanieZdjecie);
+                    if ($zdjecie->num_rows == 1) {
+                        $zdjecie = $zdjecie->fetch_assoc()['NazwaPliku'];
+                    } else {
+                        $zdjecie = "";
+                    }
+                    // print_r($ogloszenie);
+                    if ($ogloszenie['Typ']) {
+                    // echo $zdjecie;
+                    // wyswietlOgloszenie($)
+                    }
+                }
+                //wyswietl
+            } else {
+                echo "<h2>Brak ogłoszeń</h2>";
+            }
+            ?>
         </div>
       </div>
     </div>
@@ -85,3 +84,38 @@
   </body>
 
   </html>
+
+<?php
+function sprawdzTyp($typOferty)
+{
+    global $baza;
+    $typy = $baza->query("SELECT * FROM typogloszenia");
+foreach ($typy as $typ) {
+    if ($typOferty == $typ['ID']) {
+        $array =
+    }
+}
+function wyswietlOgloszenie($tytul, $zdjecie, $tresc, $kategoria, $data, $typ, $typInfo, $cena = 0)
+{
+    echo "<div class='media'>";
+        echo "<div class='media-left'>";
+      echo     "<a href='#'>";
+                echo "<img class='media-object' src='http://placehold.it/128x128' alt='...'>";
+          echo "</a>";
+        echo "</div>";
+        echo "<div class='media-body'>";
+            echo "<h4 class='media-heading'>";
+              echo "Media heading ";
+              echo "<span class='label label-info'>Info</span>";
+            echo "</h4>";
+            echo "<p>";
+              echo "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.";
+            echo "</p>";
+            echo "<div class='btn-group pull-right' role='group' aria-label='...'>";
+              echo "<a href='#' class='btn btn-default'>Left</a>";
+              echo "<a href='#' class='btn btn-default'>Middle</a>";
+              echo "<a href='#' class='btn btn-default'><span class='glyphicon glyphicon-trash'></span></a>";
+            echo "</div>";
+        echo "</div>";
+      echo "</div>";
+}

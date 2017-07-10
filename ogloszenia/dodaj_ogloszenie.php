@@ -2,6 +2,8 @@
 require_once("../config.php");
   require_once(SESJA);
   require_once(BAZA);
+  require_once(FPOMOC);
+  sprawdzZalogowany();
 ?>
 
 <!doctype html>

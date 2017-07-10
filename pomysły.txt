@@ -9,3 +9,29 @@ TODO: Podopowiedzi JS do rejestracji
 TODO: KARUZELKA NA STRONIE GŁÓWNEJ
 TODO: WYZWALACZE DO CZYSZCZENIA rejestracji
 TODO: KURWA PROCEDURY
+FIXME: ISSET I SPRAWDZENIE W JEDNYM IFIE - ISSET MUSI BYĆ PIERWSZY
+TODO: RM - Rodzaj miejscowości 
+00 część miejscowości
+01 wieś
+02 kolonia
+03 przysiółek
+04 osada
+05 osada leśna
+06 osiedle
+07 schronisko turystyczne
+95 dzielnica m. st. Warszawy
+96 miasto
+98 delegatura
+99 część miasta
+TODO: RM - Rodzaj miejscowości
+TODO: MZ WYJEBAĆ
+TODO: 
+miejscowość samodzielna	SYM = SYMPOD
+miejscowość niesamodzielna	SYM ≠ SYMPOD.
+TODO: RM WYJEBAĆ? SYM ZAMIAST ID, SYMPOD DO OKREŚLENIA DZIELNICY
+miasta.txt ID;NrPowiatu;Wojewodztwo;Nazwa
+DYLEMATY CZY ZOSTAWIĆ SYMPOD
+TODO: DODAJ RM DO SORTOWANIA!!!
+
+TODO: TABELA Rozmowy - ID, ID_USER1 ID_USER2 SELECT ID, ID1, ID2 From rozmowy where Id1='$id' OR ID2='$id'
+TODO: TABELA WIADOMOSCI ID, IDROZMOWY, ID_USERA, TEKST, TIMESTAMP

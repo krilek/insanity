@@ -144,6 +144,9 @@ require_once("../config.php");
                 case '100':
                     echo "Błąd połączenia z bazą danych. Strona jest aktualnie w konserwacji.";
                     break;
+                case '101':
+                    echo "Musisz być zalogowany.";
+                    break;
                 default:
                     echo "Nieznany kod błędu.";
             }

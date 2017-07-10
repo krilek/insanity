@@ -34,3 +34,10 @@ function sprawdzLogin($login)
         return $login;
     }
 }
+
+function sprawdzZalogowany()
+{
+    if (!isset($_SESSION['zalogowany'])) {
+        przekieruj(BLAD."?blad=101");
+    }
+}
