@@ -14,7 +14,11 @@
       margin-top: 15px;
       margin-bottom: 10px;
     }
-  </style>
+    .media-left img{
+      width: 128px;
+      height: 128px;
+    }
+    </style>
 
   <body>
     <?php require_once(NAVBAR);?>
@@ -50,7 +54,15 @@
             
             <?php
               $uzytkownik = $_SESSION['idUzytkownika'];
-              $zapytanie = "SELECT * FROM ogloszenia WHERE Uzytkownik=$uzytkownik";
+                    
+              $zapytanie = "SELECT 
+                                ogloszenia.ID,ogloszenia.Tytul, 
+                                ogloszenia.Tresc, ogloszenia.Cena,
+                                kategorie.Nazwa as Kategoria, typogloszenia.Nazwa as Typ,
+                                typogloszenia.CenaPotrzebna, ogloszenia.DataUtworzenia FROM ogloszenia 
+                                  JOIN kategorie ON `kategorie`.ID = `ogloszenia`.Kategoria 
+                                  JOIN typogloszenia ON `typogloszenia`.ID = `ogloszenia`.Typ 
+                            WHERE `Uzytkownik` = $uzytkownik";
               // TODO: TU SKOŃCZYŁEŚ DOREGULUJ WYBIERANIE KOLUMN
               //SELECT * FROM ogloszenia JOIN kategorie ON `kategorie`.ID = `ogloszenia`.Kategoria JOIN typogloszenia ON `typogloszenia`.ID = `ogloszenia`.Typ WHERE `Uzytkownik` = 3
               // $zapytanie = "SELECT * FROM ogloszenia JOIN kategoria ON ogloszenia. WHERE Uzytkownik=$uzytkownik";
@@ -67,10 +79,14 @@
                         $zdjecie = "";
                     }
                     // print_r($ogloszenie);
-                    if ($ogloszenie['Typ']) {
-                    // echo $zdjecie;
-                    // wyswietlOgloszenie($)
-                    }
+                    // if ($ogloszenie['Typ']) {
+                    // // echo $zdjecie;
+                    // // wyswietlOgloszenie($)
+                    // }
+                    wyswietlOgloszenie($ogloszenie['Tytul'], $zdjecie,
+                                       $ogloszenie['Tresc'], $ogloszenie['Kategoria'],
+                                       $ogloszenie['DataUtworzenia'], $ogloszenie['Typ'],
+                                       $ogloszenie['CenaPotrzebna'], $ogloszenie['Cena']  );
                 }
                 //wyswietl
             } else {
@@ -90,27 +106,34 @@ function sprawdzTyp($typOferty)
 {
     global $baza;
     $typy = $baza->query("SELECT * FROM typogloszenia");
-foreach ($typy as $typ) {
-    if ($typOferty == $typ['ID']) {
-        $array =
+    foreach ($typy as $typ) {
+        if ($typOferty == $typ['ID']) {
+            // $array =
+        }
     }
 }
+
 function wyswietlOgloszenie($tytul, $zdjecie, $tresc, $kategoria, $data, $typ, $typInfo, $cena = 0)
 {
     echo "<div class='media'>";
         echo "<div class='media-left'>";
       echo     "<a href='#'>";
-                echo "<img class='media-object' src='http://placehold.it/128x128' alt='...'>";
+                echo "<img class='media-object' src='".IMG_OGLOSZENIA.$zdjecie."' alt='$tytul'>";
           echo "</a>";
         echo "</div>";
         echo "<div class='media-body'>";
             echo "<h4 class='media-heading'>";
-              echo "Media heading ";
-              echo "<span class='label label-info'>Info</span>";
+              echo "$tytul";
+              echo "<span class='label label-info'>$typ</span>";
+    if ($typInfo == 1) {
+        echo "<span class='label label-info'>$cena</span>";
+    }
             echo "</h4>";
             echo "<p>";
-              echo "Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.";
+            //FIXME: dodać skracanie;
+              echo "$tresc";
             echo "</p>";
+            //FIXME: dodać kategorie
             echo "<div class='btn-group pull-right' role='group' aria-label='...'>";
               echo "<a href='#' class='btn btn-default'>Left</a>";
               echo "<a href='#' class='btn btn-default'>Middle</a>";

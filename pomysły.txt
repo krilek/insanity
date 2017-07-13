@@ -35,3 +35,4 @@ TODO: DODAJ RM DO SORTOWANIA!!!
 
 TODO: TABELA Rozmowy - ID, ID_USER1 ID_USER2 SELECT ID, ID1, ID2 From rozmowy where Id1='$id' OR ID2='$id'
 TODO: TABELA WIADOMOSCI ID, IDROZMOWY, ID_USERA, TEKST, TIMESTAMP
+TODO: TABELA KATEGORIE - ID, Nazwa, rodzicID http://sqllessons.com/categories.html
