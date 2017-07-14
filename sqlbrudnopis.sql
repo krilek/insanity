@@ -18,43 +18,21 @@ SELECT Hash, Login FROM uzytkownicy JOIN hasla ON hasla.ID = uzytkownicy.ID WHER
 INSERT INTO `ogloszenia` (Uzytkownik,Tytul,Kategoria,Tresc,Typ,Cena,DataUtworzenia) VALUES
 (3,"OGLOSZENIE", 2, "TRESC",1,2321.12,NOW())
 
-SELECT * FROM ogloszenia JOIN kategorie ON `kategorie`.ID = `ogloszenia`.Kategoria JOIN typogloszenia ON `typogloszenia`.ID = `ogloszenia`.Typ WHERE `Uzytkownik` = 3
-SELECT * FROM ogloszenia 
-      JOIN kategorie ON `kategorie`.ID = `ogloszenia`.Kategoria 
-      JOIN typogloszenia ON `typogloszenia`.ID = `ogloszenia`.Typ 
-      LEFT INNER JOIN zdjecia ON `zdjecia`.`Ogloszenie` = `ogloszenia`.ID
-WHERE `Uzytkownik` = 3
-
 SELECT 
-	ogloszenia.ID,ogloszenia.Tytul, 
-    ogloszenia.Cena, ogloszenia.Tresc,
-    kategorie.Nazwa, typogloszenia.Nazwa,
-    typogloszenia.CenaPotrzebna, zdjecia.NazwaPliku FROM ogloszenia 
+    ogloszenia.ID,ogloszenia.Tytul, 
+    IF(LENGTH(ogloszenia.Tresc) > 450, CONCAT(LEFT(ogloszenia.Tresc, 450), '...'), ogloszenia.Tresc) AS Tresc,
+    ogloszenia.Cena,
+    kategorie.Nazwa as Kategoria, typogloszenia.Nazwa as Typ,
+    typogloszenia.CenaPotrzebna, Zdjecia.NazwaPliku, ogloszenia.DataUtworzenia
+    FROM ogloszenia 
       JOIN kategorie ON `kategorie`.ID = `ogloszenia`.Kategoria 
       JOIN typogloszenia ON `typogloszenia`.ID = `ogloszenia`.Typ 
-      JOIN zdjecia ON `zdjecia`.`Ogloszenie` = 
-      (
-        SELECT Ogloszenie FROM zdjecia GROUP BY Ogloszenie
-      )
-      -- `ogloszenia`.ID
+      LEFT JOIN (SELECT * FROM zdjecia GROUP BY zdjecia.Ogloszenie) AS zdjecia ON Ogloszenia.ID = Zdjecia.Ogloszenie
 WHERE `Uzytkownik` = 3
-
-
-
-SELECT   Orders.OrderNumber,
-         LineItems.Quantity,
-         LineItems.Description
-FROM     Orders
-JOIN     LineItems
-ON       LineItems.LineItemGUID =
-         (
-         SELECT  TOP 1 LineItemGUID 
-         FROM    LineItems
-         WHERE   OrderID = Orders.OrderID
-         )
-
 
 TINYTEXT: 256 bytes
 TEXT: 65,535 bytes utf-8 chars 16383
 MEDIUMTEXT: 16,777,215 bytes utf-8 chars 4194304
 LONGTEXT: 4,294,967,295 bytes utf-8 chars 1073741823
+
+https://gist.github.com/anonymous/a5084dc46d77b141a6a79153ecebeb36

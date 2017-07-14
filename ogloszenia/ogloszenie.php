@@ -1,11 +1,16 @@
 <?php
-require_once("../config.php");
+  require_once("../config.php");
   require_once(SESJA);
+  require_once(BAZA);
+  $baza->query
+if (isset($_SESSION['idUzytkownika'])) {
+    $admin = true;
+}
 ?>
 
   <!doctype html>
   <html lang="pl">
-  <?php require_once(HEAD);?>
+    <?php require_once(HEAD);?>
   <link rel="stylesheet" href="ogloszenie.css">
 
   <body>

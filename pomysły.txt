@@ -36,3 +36,21 @@ TODO: DODAJ RM DO SORTOWANIA!!!
 TODO: TABELA Rozmowy - ID, ID_USER1 ID_USER2 SELECT ID, ID1, ID2 From rozmowy where Id1='$id' OR ID2='$id'
 TODO: TABELA WIADOMOSCI ID, IDROZMOWY, ID_USERA, TEKST, TIMESTAMP
 TODO: TABELA KATEGORIE - ID, Nazwa, rodzicID http://sqllessons.com/categories.html
+TODO: progressbar z ajaxem
+      $(document).ready( function () {
+      $.ajax({
+    url: "ogloszenia.php",
+    xhr: function() {
+        var xhr = $.ajaxSettings.xhr();
+        xhr.upload.onprogress = function(e) {
+            console.log(Math.floor(e.loaded / e.total *100) + '%');
+        };
+        return xhr;
+    },
+    success: function(response) {
+        console.log("udalosie");
+    }
+});});
+      <div class="progress progress-striped active">
+        <div class="progress-bar progress-bar-info" style="width: 45%"></div>
+      </div>

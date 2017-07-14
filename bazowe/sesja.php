@@ -1,6 +1,6 @@
 <?php
   session_start();
-  //TODO: LISTA URL KTÓRYCH MA NIE ZAPISYWAĆ
+  //TODO: LISTA URL KTÓRYCH MA NIE ZAPISYWAĆ z NP REGEXAMI
   $_SESSION['url'] = $_SERVER['REQUEST_URI'];
   
   //Usuwanie zbędnych slashy
