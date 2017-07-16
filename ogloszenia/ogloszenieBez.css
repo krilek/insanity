@@ -53,15 +53,16 @@
   z-index: 1;
 }
 
-.thumbnail {
-  display: inline-block;
-  margin-bottom: 0px;
-}
-
 #zdjecia img {
   height: 118px;
   max-width: 300px;
 }
+
+
+/*
+.visible-xs {
+  display: inline-block !important;
+}*/
 
 #prawo {
   /*float: left;*/
@@ -106,78 +107,17 @@
   color: #888
 }
 
+#tytul {
+  color: black;
+}
+
+#tytul h1 {
+  word-wrap: break-word;
+  margin-top: 15px;
+}
+
 @media (max-width: 768px) {
   .visible-xs {
     display: inline-block !important;
   }
 }
-
-@media (min-width: 768px) {
-  #tlo {
-    background-image: url("http://localhost/img/1.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0% 50%;
-    height: 400px;
-    -webkit-filter: blur(4px);
-    -moz-filter: blur(4px);
-    -o-filter: blur(4px);
-    -ms-filter: blur(4px);
-    filter: blur(4px);
-    z-index: -1;
-  }
-  #xd {
-    /*FIXME:POPRAWIĆ TU WSZYSTKO KURWA offsety divów wewnątrz itp.*/
-    position: absolute;
-    bottom: 0px;
-    margin-left: 2px;
-    left: 271px;
-    width: calc(100% - 271px - 17px);
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-  .container {
-    margin-top: -400px;
-  }
-  #zdjecia-row {
-    height: 400px;
-  }
-  #glowne-zdjecie {
-    position: absolute;
-    bottom: 0px;
-    height: 256px;
-    width: 256px;
-  }
-  #glowne-zdjecie img {
-    height: 246px;
-    width: 256px;
-  }
-  #slider {
-    width: 100%;
-    height: 128px;
-  }
-  #zdjecia {
-    overflow: hidden;
-  }
-  #tytul {
-    /*TODO: Naprawić wielkość tego boxa czcionka np em itp*/
-    padding-left: 10px;
-    width: 100%;
-    color: white;
-    min-height: 128px;
-  }
-  #tytul h1 {
-    word-wrap: break-word;
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-}
-
-
-/* Large devices (desktops, 992px and up) */
-
-@media (min-width: 992px) {}
-
-
-/* Extra large devices (large desktops, 1200px and up) */
-
-@media (min-width: 1200px) {}

@@ -42,7 +42,7 @@ if (isset($_SESSION['zalogowany'])) {
                 </ul>';
 } else {
     echo '
-              <form class="navbar-form navbar-right" role="logowanie" action="'.UZYTKOWNIK_KAT.'zaloguj.php" method="post">
+              <form class="navbar-form navbar-right" id="logowanie" role="logowanie" action="'.UZYTKOWNIK_KAT.'zaloguj.php" method="post">
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="Login" name="login">
                   <input type="password" class="form-control" placeholder="Hasło" name="haslo">

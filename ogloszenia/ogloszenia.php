@@ -197,15 +197,15 @@ if (isset($_GET['ajax'])) {
         global $baza;
           $uzytkownik = $_SESSION['idUzytkownika'];
               $zapytanie = "SELECT 
-                                ogloszenia.ID,ogloszenia.Tytul, 
-                                IF(LENGTH(ogloszenia.Tresc) > 450, CONCAT(LEFT(ogloszenia.Tresc, 450), '...'), ogloszenia.Tresc) AS Tresc,
-                                ogloszenia.Cena,
-                                kategorie.Nazwa as Kategoria, typogloszenia.Nazwa as Typ,
-                                typogloszenia.CenaPotrzebna, Zdjecia.NazwaPliku, ogloszenia.DataUtworzenia
+                                `ogloszenia`.`ID`,`ogloszenia`.`Tytul`, 
+                                IF(LENGTH(`ogloszenia`.`Tresc`) > 450, CONCAT(LEFT(`ogloszenia`.`Tresc`, 450), '...'), `ogloszenia`.`Tresc`) AS Tresc,
+                                `ogloszenia`.`Cena`,
+                                `kategorie`.`Nazwa` as Kategoria, `typogloszenia`.`Nazwa` as Typ,
+                                `typogloszenia`.`CenaPotrzebna`, `zdjecia`.`NazwaPliku`, `ogloszenia`.`DataUtworzenia`
                                 FROM ogloszenia 
-                                  JOIN kategorie ON `kategorie`.ID = `ogloszenia`.Kategoria 
-                                  JOIN typogloszenia ON `typogloszenia`.ID = `ogloszenia`.Typ 
-                                  LEFT JOIN (SELECT * FROM zdjecia GROUP BY zdjecia.Ogloszenie) AS zdjecia ON Ogloszenia.ID = Zdjecia.Ogloszenie
+                                  JOIN kategorie ON `kategorie`.`ID` = `ogloszenia`.`Kategoria` 
+                                  JOIN typogloszenia ON `typogloszenia`.`ID` = `ogloszenia`.`Typ` 
+                                  LEFT JOIN (SELECT * FROM `zdjecia` GROUP BY `zdjecia`.`Ogloszenie`) AS `zdjecia` ON `ogloszenia`.`ID` = `zdjecia`.`Ogloszenie`
                             WHERE `Uzytkownik` = $uzytkownik ";
         switch ($ktora) {
             case 'aktywne':
@@ -215,20 +215,21 @@ if (isset($_GET['ajax'])) {
                 $zapytanie .= "&& `Zakonczona` = 1 ";
                 break;
         }
-        $zapytanie.= "ORDER BY DataUtworzenia DESC ";
+        $zapytanie.= "ORDER BY `DataUtworzenia` DESC ";
         // echo $zapytanie."<br>";
         $ogloszenia = $baza->query($zapytanie);
-        // echo $baza->error;
+        
         //JOIN hasla ON hasla.ID = uzytkownicy.ID
-        if ($ogloszenia->num_rows > 0) {
+        if ($baza->error) {
+            echo "<h2>Błąd bazy</h2>";
+        } elseif ($ogloszenia->num_rows > 0) {
             foreach ($ogloszenia as $ogloszenie) {
                 wyswietlOgloszenie($ogloszenie['Tytul'], $ogloszenie['NazwaPliku'],
-                                   $ogloszenie['Tresc'], $ogloszenie['Kategoria'],
-                                   $ogloszenie['DataUtworzenia'], $ogloszenie['Typ'],
-                                   $ogloszenie['CenaPotrzebna'], $ogloszenie['Cena']  );
+                               $ogloszenie['Tresc'], $ogloszenie['Kategoria'],
+                               $ogloszenie['DataUtworzenia'], $ogloszenie['Typ'],
+                               $ogloszenie['CenaPotrzebna'], $ogloszenie['Cena']  );
             }
-            //wyswietl
-        } else {
+        } elseif ($ogloszenia->num_rows == 0) {
             echo "<h2>Brak ogłoszeń</h2>";
         }
     }

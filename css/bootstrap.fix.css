@@ -35,10 +35,21 @@ a.thumbnail:hover {
   color: #772953;
 }
 
+@media (min-width: 768px) and (max-width: 850px) {
+  #logowanie input {
+    width: 90px;
+  }
+}
 
-/*body{
-  background-color: #FFFFEE;
-}*/
+@media (min-width: 850px) and (max-width: 1020px) {
+  #logowanie input {
+    width: 130px;
+  }
+}
+
+body {
+  padding-top: 50px;
+}
 
 
 /*#main{

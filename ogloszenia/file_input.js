@@ -17,6 +17,10 @@ var LIMIT_PLIKOW = 6;
 // file_input.js?v=1498679804:34 Uncaught TypeError: Failed to execute 'readAsDataURL' on 'FileReader': parameter 1 is not of type 'Blob'.
 //     at czaryMary (file_input.js?v=1498679804:34)
 //     at HTMLInputElement.onchange (dodaj_ogloszenie.php:171)
+
+// Uncaught TypeError: Failed to execute 'readAsDataURL' on 'FileReader': parameter 1 is not of type 'Blob'.
+//     at czaryMary (file_input.js?v=1500107044:39)
+//     at HTMLInputElement.onchange (dodaj_ogloszenie.php:178)\
 function czaryMary(input) {
   var jq = $(input);
   var cel = $("#" + jq.attr("cel"));

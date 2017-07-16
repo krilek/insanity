@@ -15,31 +15,16 @@
 
   <body>
     <?php require_once(NAVBAR);?>
-
+    <div class="jumbotron">
+      XD
+    </div>
     <div class="container">
       <div class="row">
         <div class="col-sm-3">
           <h3>Wybierz województwo</h3>
           <?php require(WOJEWODZTWA);
-        nawigacja();
+            nawigacja();
         ?>
-          <!-- <ul class="nav nav-pills nav-stacked">
-          <li><a href="#">Profile</a></li>
-
-          <li class="active"><a href="#">Home</a></li>
-          <!-- <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              Dropdown <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
-          </li>
-        </ul>-->
         </div>
         <div class="col-sm-9">
           <div class="row">

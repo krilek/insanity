@@ -61,7 +61,7 @@ function sprawdzTyp($typ)
 function sprawdzTytul($tytul)
 {
     global $baza;
-    if (strlen($tytul) >= 5 && strlen($tytul) <= 50) {
+    if (mb_strlen($tytul) >= 5 && mb_strlen($tytul) <= 50) {
         $tytul = $baza->escape_string(htmlspecialchars($tytul));
         return $tytul;
     } else {

@@ -26,9 +26,9 @@ function sprawdzLogin($login)
 {
     if (preg_match('[\W]', $login)) {
         return 3;
-    } elseif (strlen($login) < 5) {
+    } elseif (mb_strlen($login) < 5) {
         return 4;
-    } elseif (strlen($login) > 25) {
+    } elseif (mb_strlen($login) > 25) {
         return 5;
     } else {
         return $login;

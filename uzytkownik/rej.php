@@ -2,62 +2,62 @@
   require_once("../config.php");
   require_once(BAZA);
   require_once(FPOMOC);
-  if (isset($_POST['tryb'])) {
-      $tryb = $_POST['tryb'];
-      if ($tryb == 'info') {
-          //AJAX
-          switch (czyIstnieje($_POST['login'], $_POST['email'])) {
+if (isset($_POST['tryb'])) {
+    $tryb = $_POST['tryb'];
+    if ($tryb == 'info') {
+        //AJAX
+        switch (czyIstnieje($_POST['login'], $_POST['email'])) {
             case 0:
-              echo '<div class="alert alert-success"  data-dismiss="alert">
+                echo '<div class="alert alert-success"  data-dismiss="alert">
                    <button type="button" class="close" data-dissmiss="alert">×</button>
                    Ten email i login jest dostępny.
                  </div>';
-              break;
+                break;
             case 1:
-              echo '<div class="alert alert-danger">
+                echo '<div class="alert alert-danger">
                       Ten login jest już w użyciu
                     </div>';
-              break;
+                break;
             case 2:
-              echo '<div class="alert alert-danger">
+                echo '<div class="alert alert-danger">
                       Ten email jest już w użyciu lub jest niepoprawny
                     </div>';
-              break;
+                break;
             case 3:
-              echo '<div class="alert alert-danger">
+                echo '<div class="alert alert-danger">
                       Ten login i email są już w użyciu lub są błędne
                     </div>';
-              break;
+                break;
             default:
-              echo '<div class="alert alert-danger">
+                echo '<div class="alert alert-danger">
                       Błąd z serwerem KOD 19. Skontakutj się z administratorem ";
                     </div>';
-              break;
+                break;
         }
-      } elseif ($tryb == 'rejestracja') {
-          if (filter_has_var(INPUT_POST, 'email')&& !empty($_POST['email']) &&
-              filter_has_var(INPUT_POST, 'login') && !empty($_POST['login'])&&
-              filter_has_var(INPUT_POST, 'haslo')&& !empty($_POST['haslo'])&&
-              filter_has_var(INPUT_POST, 'haslo2')&& !empty($_POST['haslo2'])&&
-              filter_has_var(INPUT_POST, 'imie')&& !empty($_POST['imie'])&&
-              filter_has_var(INPUT_POST, 'nazwisko')&& !empty($_POST['nazwisko'])&&
-              filter_has_var(INPUT_POST, 'plec')&& !empty($_POST['plec'])&&
-              filter_has_var(INPUT_POST, 'wojewodztwo')&& !empty($_POST['wojewodztwo'])&&
-              filter_has_var(INPUT_POST, 'miasto')&& !empty($_POST['miasto'])) {
-              $czysteRasowoDane = sprawdzDane();
-              if (is_array($czysteRasowoDane)) {
-                  dUzytkTymczas($czysteRasowoDane);
-                  przekieruj("rejestracja.php?sukces=1");
-              } else {
-                  przekieruj(BLAD."?blad=".$czysteRasowoDane);
-              }
-          } else {
-              przekieruj(BLAD."?blad=1");
-          }
-      }
-  } else {
-      przekieruj(BLAD."?blad=2");
-  }
+    } elseif ($tryb == 'rejestracja') {
+        if (filter_has_var(INPUT_POST, 'email')&& !empty($_POST['email']) &&
+          filter_has_var(INPUT_POST, 'login') && !empty($_POST['login'])&&
+          filter_has_var(INPUT_POST, 'haslo')&& !empty($_POST['haslo'])&&
+          filter_has_var(INPUT_POST, 'haslo2')&& !empty($_POST['haslo2'])&&
+          filter_has_var(INPUT_POST, 'imie')&& !empty($_POST['imie'])&&
+          filter_has_var(INPUT_POST, 'nazwisko')&& !empty($_POST['nazwisko'])&&
+          filter_has_var(INPUT_POST, 'plec')&& !empty($_POST['plec'])&&
+          filter_has_var(INPUT_POST, 'wojewodztwo')&& !empty($_POST['wojewodztwo'])&&
+          filter_has_var(INPUT_POST, 'miasto')&& !empty($_POST['miasto'])) {
+            $czysteRasowoDane = sprawdzDane();
+            if (is_array($czysteRasowoDane)) {
+                dUzytkTymczas($czysteRasowoDane);
+                przekieruj("rejestracja.php?sukces=1");
+            } else {
+                przekieruj(BLAD."?blad=".$czysteRasowoDane);
+            }
+        } else {
+            przekieruj(BLAD."?blad=1");
+        }
+    }
+} else {
+    przekieruj(BLAD."?blad=2");
+}
 
 function czyIstnieje($login, $email)
 {
@@ -138,9 +138,9 @@ function sprawdzDane()
     }
     // if (preg_match('[\W]', $_POST['login'])) {
     //     return 3;
-    // } elseif (strlen($_POST['login']) < 5) {
+    // } elseif (mb_strlen($_POST['login']) < 5) {
     //     return 4;
-    // } elseif (strlen($_POST['login']) > 25) {
+    // } elseif (mb_strlen($_POST['login']) > 25) {
     //     return 5;
     // } else {
     //     $zwroc['login'] = $_POST['login'];
@@ -148,9 +148,9 @@ function sprawdzDane()
     //HASLO
     if ($_POST['haslo'] != $_POST['haslo2']) {
         return 6;
-    } elseif (strlen($_POST['haslo']) < 5) {
+    } elseif (mb_strlen($_POST['haslo']) < 5) {
         return 7;
-    } elseif (strlen($_POST['haslo']) > 50) {
+    } elseif (mb_strlen($_POST['haslo']) > 50) {
         return 8;
     } else {
         $zwroc['haslo'] = $_POST['haslo'];
@@ -163,9 +163,9 @@ function sprawdzDane()
         $email = filter_var($email, FILTER_VALIDATE_EMAIL);
         if (!$email || $email == null) {
             return 9;
-        } elseif (strlen($email) < 5) {
+        } elseif (mb_strlen($email) < 5) {
             return 10;
-        } elseif (strlen($email) > 250) {
+        } elseif (mb_strlen($email) > 250) {
             return 11;
         } else {
             $zwroc['email'] = $email;
@@ -178,25 +178,25 @@ function sprawdzDane()
     if (!$miasto || $miasto == null || !$imie || $imie == null || !$nazwisko || $nazwisko == null) {
         return 12;
     } else {
-        if (strlen($miasto) > 100) {
+        if (mb_strlen($miasto) > 100) {
             return 13;
-        } elseif (strlen($miasto) < 3) {
+        } elseif (mb_strlen($miasto) < 3) {
             return 14;
         } else {
             $zwroc['miasto'] = $miasto;
         }
 
-        if (strlen($imie) < 2) {
+        if (mb_strlen($imie) < 2) {
             return 15;
-        } elseif (strlen($imie) > 50) {
+        } elseif (mb_strlen($imie) > 50) {
             return 16;
         } else {
             $zwroc['imie'] = $imie;
         }
 
-        if (strlen($nazwisko) < 2) {
+        if (mb_strlen($nazwisko) < 2) {
             return 17;
-        } elseif (strlen($nazwisko) > 50) {
+        } elseif (mb_strlen($nazwisko) > 50) {
             return 18;
         } else {
             $zwroc['nazwisko'] = $nazwisko;

@@ -138,6 +138,9 @@ require_once("../config.php");
                 case '42':
                     echo "Niepoprawnie wypełniony formularz dodawania ogłoszenia";
                     break;
+                case '43':
+                    echo "To ogłoszenie nie istnieje";
+                    break;
                 case '32':
                     echo "Problem z zapytaniem do bazy danych. Skontaktuj się z administratorem";
                     break;
