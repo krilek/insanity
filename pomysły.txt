@@ -23,7 +23,6 @@ TODO: RM - Rodzaj miejscowości
 96 miasto
 98 delegatura
 99 część miasta
-TODO: RM - Rodzaj miejscowości
 TODO: MZ WYJEBAĆ
 TODO: 
 miejscowość samodzielna	SYM = SYMPOD

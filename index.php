@@ -1,6 +1,68 @@
 <?php
   require_once("config.php");
   require_once(SESJA);
+  require_once(FPOMOC);
+  require_once(BAZA);
+  $_SERVER['REMOTE_ADDR'] = "31.42.2.220";
+if (!isset($_COOKIE['miejscowosc'])) {
+    if (isset($_SESSION['miejscowosc'])) {
+        $_COOKIE['miejscowosc'] = $_SESSION['miejscowosc'];
+    } else {
+        echo namierzajKlienta($_SERVER['REMOTE_ADDR']);
+    }
+}
+
+function namierzajKlienta($ip)
+{
+    global $baza;
+    try {
+        if ($infoJson = file_get_contents('http://freegeoip.net/json/'.$ip)) {
+            $miejscowosc = json_decode($infoJson)->city;
+            if ($miejscowosc != "" || $miejscowosc != null) {
+                $miejscowosc = $baza->escape_string($miejscowosc);
+                //FIXME: ANDRZEJ TO PIERDOLNIE czyt. response daje nazwy bez polskich znaków
+                // SELECT * FROM miejscowosc WHERE Nazwa LIKE _utf8'%Czesto%'
+                $zapytanie = "SELECT * FROM miejscowosc WHERE Nazwa='$miejscowosc'";
+                echo $zapytanie;
+                $wynik = $baza->query($miejscowosc);
+                echo $baza->error;
+                if ($wynik->num_rows == 1) {
+                    $wynik = $wynik->fetch_assoc();
+                    return $wynik['ID'];
+                }
+            }
+        }
+    } catch (Exception $e) {
+      //TODO: log
+    }
+    // echo $infoJson;
+}
+function pokazThumbnail($dane, $kolumny = "col-xs-6 col-lg-2 col-sm-4 reset-padding")
+{
+    $dane['Waluta'] = "PLN";
+    echo "<div class='$kolumny'>";
+    echo      "<div class='thumbnail'>
+                <div class='caption'>";
+    echo           "<h4>".$dane['Tytul']."</h4>";
+    echo            "<p>".$dane['Tresc']."</p>";
+    // echo            "<p><a href='' class='label label-danger' rel='tooltip' title='Zoom'>Zoom</a>";
+    // echo            "<a href='' class='label label-default' rel='tooltip' title='Download now'>Download</a></p>";
+    echo        "</div>";
+    echo        "<img class='img-responsive' src='".$dane['Zdjecie']."' alt='".$dane['Tytul']."'>";
+    if ($dane['CenaPotrzebna'] == 1) {
+        $cena = $dane['Cena']." ".$dane['Waluta'];
+    } else {
+        $cena = $dane['Typ'];
+    }
+    echo        "<div class='cena-tlo'>
+                  $cena
+                </div>
+                <div class='cena'>
+                  $cena
+                </div>";
+    echo      "</div>
+            </div>";
+}
 ?>
 
   <!doctype html>
@@ -8,6 +70,7 @@
   <html lang="pl">
     <?php require_once(HEAD);?>
     <link rel="stylesheet" href="./css/typeahead.css">
+
   <style>
     .thumbnail {
       /*
@@ -68,7 +131,12 @@
       color: #fff !important;
       z-index: 2;
     }
-
+    .caption p{
+      word-wrap: break-word;
+    }
+    .caption h4{
+      word-wrap: break-word;
+    }
     @media only screen and (min-width: 768px) {
       .reset-padding {
         padding-left: 2px;
@@ -96,8 +164,10 @@
     <?php require_once(NAVBAR);?>
     <div class="container">
         <?php include_once(I_BAZOWY_KAT."szukajPodpowiedzi.php");
-        echo szukajDiv(); ?>
+        echo szukajDiv();
+        ?>
     </div>
+    
     <!--FIXME: DROPDOWN do poprawienia dodać możliwość wyszukiwania w kategorii i mieście-->
     
     <!--<div class="jumbotron ">
@@ -112,110 +182,36 @@
             </h2>
           </div>
           <div class="row ">
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
+            <?php
+            $najnowsze = "SELECT 
+                                `ogloszenia`.`ID`,
+                                IF(LENGTH(`ogloszenia`.`Tytul`) > 25, CONCAT(LEFT(`ogloszenia`.`Tytul`, 25), '...'), `ogloszenia`.`Tytul`) AS Tytul,
+                                IF(LENGTH(`ogloszenia`.`Tresc`) > 50, CONCAT(LEFT(`ogloszenia`.`Tresc`, 50), '...'), `ogloszenia`.`Tresc`) AS Tresc,
+                                REPLACE(CAST(`ogloszenia`.`Cena` AS CHAR), '.', ',') as Cena,
+                                `kategorie`.`Nazwa` as Kategoria, `typogloszenia`.`Nazwa` as Typ,
+                                `typogloszenia`.`CenaPotrzebna`, `zdjecia`.`NazwaPliku`, `ogloszenia`.`DataUtworzenia`
+                                FROM ogloszenia 
+                                  JOIN kategorie ON `kategorie`.`ID` = `ogloszenia`.`Kategoria` 
+                                  JOIN typogloszenia ON `typogloszenia`.`ID` = `ogloszenia`.`Typ` 
+                                  LEFT JOIN (SELECT * FROM `zdjecia` GROUP BY `zdjecia`.`Ogloszenie`) AS `zdjecia` ON `ogloszenia`.`ID` = `zdjecia`.`Ogloszenie`
+                          ORDER BY `ogloszenia`.`DataUtworzenia` DESC LIMIT 6";
+            if ($wynik = $baza->query($najnowsze)) {
+              //for
+                foreach ($wynik as $ogloszenie) {
+                    if (file_exists(I_IMG_OGLOSZENIA.$ogloszenie['NazwaPliku'])) {
+                        $ogloszenie['Zdjecie'] = IMG_OGLOSZENIA.$ogloszenie['NazwaPliku'];
+                    } else {
+                        $ogloszenie['Zdjecie'] = IMG_KAT."brakZdjecia.png";
+                    }
 
+                        pokazThumbnail($ogloszenie);
+                }
+            } else {
+                echo "Brak ogłoszeń";
+            }
+            
 
+            ?>
           </div>
         </div>
       </div>
@@ -227,110 +223,36 @@
             </h2>
           </div>
           <div class="row ">
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
+            <?php
+            $najpopularniejsze = "SELECT 
+                                `ogloszenia`.`ID`,
+                                IF(LENGTH(`ogloszenia`.`Tytul`) > 25, CONCAT(LEFT(`ogloszenia`.`Tytul`, 25), '...'), `ogloszenia`.`Tytul`) AS Tytul,
+                                IF(LENGTH(`ogloszenia`.`Tresc`) > 50, CONCAT(LEFT(`ogloszenia`.`Tresc`, 50), '...'), `ogloszenia`.`Tresc`) AS Tresc,
+                                REPLACE(CAST(`ogloszenia`.`Cena` AS CHAR), '.', ',') as Cena,
+                                `kategorie`.`Nazwa` as Kategoria, `typogloszenia`.`Nazwa` as Typ,
+                                `typogloszenia`.`CenaPotrzebna`, `zdjecia`.`NazwaPliku`, `ogloszenia`.`DataUtworzenia`
+                                FROM ogloszenia 
+                                  JOIN kategorie ON `kategorie`.`ID` = `ogloszenia`.`Kategoria` 
+                                  JOIN typogloszenia ON `typogloszenia`.`ID` = `ogloszenia`.`Typ` 
+                                  LEFT JOIN (SELECT * FROM `zdjecia` GROUP BY `zdjecia`.`Ogloszenie`) AS `zdjecia` ON `ogloszenia`.`ID` = `zdjecia`.`Ogloszenie`
+                          ORDER BY `ogloszenia`.`Wyswietlenia` DESC LIMIT 6";
+            if ($wynik = $baza->query($najpopularniejsze)) {
+              //for
+                foreach ($wynik as $ogloszenie) {
+                    if (file_exists(I_IMG_OGLOSZENIA.$ogloszenie['NazwaPliku'])) {
+                        $ogloszenie['Zdjecie'] = IMG_OGLOSZENIA.$ogloszenie['NazwaPliku'];
+                    } else {
+                        $ogloszenie['Zdjecie'] = IMG_KAT."brakZdjecia.png";
+                    }
 
+                        pokazThumbnail($ogloszenie);
+                }
+            } else {
+                echo "Brak ogłoszeń";
+            }
+            
 
+            ?>
           </div>
         </div>
       </div>
@@ -604,9 +526,17 @@
         datumTokenizer: Bloodhound.tokenizers.whitespace,
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
-          url: <?php echo "'".BAZOWY_KAT."szukajPodpowiedzi.php?tabela=miejscowosc&q=%QUERY',";?>
-          wildcard: '%QUERY',
-          cache: true
+          url: <?php echo "'".BAZOWY_KAT."szukajPodpowiedzi.php?tabela=miejscowosc&q=%MIEJSCOWOSC',";?>
+          wildcard: '%MIEJSCOWOSC',
+          cache: true,
+          filter: function(resp) {
+            var dataset = resp;
+            console.log(dataset); // debug the response here
+
+            // do some filtering if needed with the response          
+
+            return dataset;
+        }
         }
       });
       $('#wyszukiwarka-miejscowosc').typeahead({

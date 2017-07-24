@@ -25,9 +25,10 @@ class Ogloszenie
         global $baza;
         $ogloszenieQuery = 'SELECT 
                               `ogloszenia`.`Uzytkownik`, `ogloszenia`.`Tytul`, 
-                              `kategorie`.`Nazwa` as Kategoria,`typogloszenia`.`Nazwa` as Typ,
+                              `kategorie`.`Nazwa` AS Kategoria,`typogloszenia`.`Nazwa` AS Typ,
                               `ogloszenia`.`Zakonczona`,`ogloszenia`.`Tresc`,
-                              `ogloszenia`.`Cena`,`ogloszenia`.`DataUtworzenia`,
+                              REPLACE(CAST(`ogloszenia`.`Cena` AS CHAR), ".", ",") AS Cena,
+                              `ogloszenia`.`DataUtworzenia`,
                               `ogloszenia`.`DataModyfikacji`, `typogloszenia`.`CenaPotrzebna`
                               FROM ogloszenia
                               JOIN typogloszenia ON `typogloszenia`.`ID` = `ogloszenia`.`Typ`
@@ -118,16 +119,16 @@ class Ogloszenie
     {
         $info =  "<div class='jumbotron' id='uzytkownik-info'>
         <div class='row'>
-          <div class='col-sm-3 col-md-2'>
+          <div class='col-xs-6 col-sm-3 col-md-2'>
             <a class='thumbnail' style='margin-bottom: 0px;'>
                 <img style='height: 128px; width: 128px;' src='$uzytkownik->avatar'>
               </a>
           </div>
-          <div class='col-sm-4 col-md-5'>
+          <div class='col-xs-6 col-sm-4 col-md-5'>
             <h3>".$uzytkownik->imie." ".$uzytkownik->nazwisko."</h3>
             <p>".$uzytkownik->wojewodztwo.", ".$uzytkownik->miejscowosc."</p>
           </div>
-          <div class='col-sm-5'>
+          <div class='col-xs-12 col-sm-5'>
             <h3>Skontaktuj się</h3>
             <div class='btn-group'>
               <a href='".WIADOMOSCI_KAT."nowa_wiadomosc.php?adresat=".$uzytkownik->id."' class='btn btn-info".(!$zalogowany ? " disabled" : "")."'>Wiadomość <span class='glyphicon glyphicon-comment' aria-hidden='true'></span></a>

@@ -63,6 +63,7 @@ $autor = new Uzytkownik($ogloszenie->uzytkownik);
     }
       echo $ogloszenie->zwrocInformacjeUzytkownika($autor, isset($_SESSION['zalogowany']));
     ?>
+    <!--TODO: https://stackoverflow.com/questions/30765758/how-to-insert-a-column-between-two-rows-of-another-column-during-responsiveness-->
       <div class="row">
         <div class="col-sm-8">
           <div class="page-header">

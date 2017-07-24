@@ -1,5 +1,8 @@
 <?php
   session_start();
+if (!isset($_SESSION['Miejscowosc'])) {
+    //TODO: Tu ogarniesz miejscowosc
+}
   //TODO: LISTA URL KTÓRYCH MA NIE ZAPISYWAĆ z NP REGEXAMI
   $_SESSION['url'] = $_SERVER['REQUEST_URI'];
   

@@ -15,12 +15,14 @@ class Uzytkownik
         $uzytkownikQuery =
           "SELECT `uzytkownicy`.`ID`, `uzytkownicy`.`Login`,
 		              `uzytkownicy`.`Imie`,`uzytkownicy`.`Nazwisko`,
-                  `wojewodztwa`.`Nazwa` as Wojewodztwo, `uzytkownicy`.`Miejscowosc`,
+                  `wojewodztwo`.`Nazwa` as Wojewodztwo, `uzytkownicy`.`Miejscowosc`,
                   `uzytkownicy`.`Plec`
               FROM uzytkownicy 
-              JOIN wojewodztwa ON `wojewodztwa`.`ID` = `uzytkownicy`.`Wojewodztwo`
+              JOIN wojewodztwo ON `wojewodztwo`.`TERYT` = `uzytkownicy`.`Wojewodztwo`
            WHERE `uzytkownicy`.`ID`=$id";
         $wynik = $baza->query($uzytkownikQuery);
+        // echo $baza->error;
+        // print_r($wynik);
         $wynik = $wynik->fetch_assoc();
         $this->id = $id;
         $this->login = $wynik['Login'];

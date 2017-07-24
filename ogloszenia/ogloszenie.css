@@ -6,6 +6,10 @@
   height: 128px;
 }
 
+#tytul h1 {
+  word-wrap: break-word;
+}
+
 #lewo {
   /*float: left;*/
   position: absolute;

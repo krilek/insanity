@@ -13,19 +13,28 @@ if (isset($_GET['tabela']) && isset($_GET['q']) && mb_strlen($_GET['q']) > 1) {
             $podpowiedz = podpowiedzi($_GET['tabela'], "Tytul", $_GET['q']);
             break;
         case 'miejscowosc':
-            // $podpowiedz = podpowiedzi($_GET['tabela'], "miejscowosci", $_GET['q']);
-            $podpowiedz = podpowiedzi($_GET['tabela'], "miasta", $_GET['q']);
+            $podpowiedz = podpowiedzi($_GET['tabela'], "Nazwa", $_GET['q'], 5, "RodzajMiejscowosci");
+            break;
+        case 'kategoria':
+            $podpowiedz = podpowiedzi($_GET['tabela'], "Nazwa", $_GET['q'], 5);
             break;
     }
     header('Content-type: application/json');
     echo $podpowiedz;
 }
-function podpowiedzi($tabela, $kolumna, $zapytanie, $limit = 5)
+function podpowiedzi($tabela, $kolumna, $zapytanie, $limit = 5, $sortuj = null)
 {
     global $baza;
     $zapytanie = $baza->escape_string($zapytanie);
     $tabela = $baza->escape_string($tabela);
-    $zapytanie = "SELECT $kolumna FROM $tabela WHERE $kolumna LIKE '%$zapytanie%'LIMIT $limit";
+    $zapytanie = "SELECT $kolumna FROM $tabela WHERE $kolumna LIKE '$zapytanie%'";
+    if ($sortuj) {
+        $zapytanie .= " ORDER BY $sortuj DESC ";
+    }
+    $zapytanie .= "LIMIT $limit ";
+        echo $zapytanie;
+        // SELECT miejscowosc.Nazwa, wojewodztwo.Nazwa, powiat.Nazwa FROM miejscowosc JOIN wojewodztwo ON wojewodztwo.TERYT=miejscowosc.Wojewodztwo JOIN powiat ON powiat.NrPowiatu=miejscowosc.Powiat && powiat.Wojewodztwo=miejscowosc.Wojewodztwo WHERE miejscowosc.Nazwa LIKE 'Częstochowa%' ORDER BY RodzajMiejscowosci DESC
+        // SELECT * FROM miejscowosc JOIN powiat ON powiat.NrPowiatu=miejscowosc.Powiat && powiat.Wojewodztwo=miejscowosc.Wojewodztwo  JOIN wojewodztwo ON wojewodztwo.TERYT=powiat.Wojewodztwo  WHERE miejscowosc.Nazwa LIKE 'Gdańsk%' ORDER BY RodzajMiejscowosci DESC
     if ($wyniki = $baza->query($zapytanie)) {
         $output = array();
         foreach ($wyniki as $wynik) {
@@ -33,6 +42,7 @@ function podpowiedzi($tabela, $kolumna, $zapytanie, $limit = 5)
         }
         return json_encode($output);
     } else {
+        // echo $baza->error;
         return "";
     }
 }

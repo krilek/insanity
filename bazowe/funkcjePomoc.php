@@ -41,3 +41,7 @@ function sprawdzZalogowany()
         przekieruj(BLAD."?blad=101");
     }
 }
+
+function sprocTekst($string, $dlugosc){
+    return (mb_strlen($string) > $dlugosc ? mb_substr($string, 0, $dlugosc)."..." : $string); 
+}

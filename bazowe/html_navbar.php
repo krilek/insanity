@@ -1,9 +1,12 @@
 <?php
-// echo '<nav class="navbar navbar-inverse navbar-fixed-top">
-//   <div class="container-fluid">
-  echo '<div class="container">
-  <nav class="navbar navbar-inverse">
-    <div class="navbar-header">
+if (basename($_SERVER['SCRIPT_FILENAME']) != 'index.php') {
+    echo '<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">';
+} else {
+    echo '<div class="container">
+  <nav class="navbar navbar-inverse">';
+}
+  echo '<div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
@@ -55,10 +58,12 @@ if (isset($_SESSION['zalogowany'])) {
               </form>
         ';
 }
-echo '
-    </div>
-    </nav>
+echo '</div>';
+if (basename($_SERVER['SCRIPT_FILENAME']) != "index.php") {
+    echo'</div>
+ </nav>';
+} else {
+    echo    '</nav>
     </div>';
-//   </div>
-// </nav>';
+}
 // FIXME: event collapse wtedy onResize
