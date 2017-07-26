@@ -67,3 +67,4 @@ if (basename($_SERVER['SCRIPT_FILENAME']) != "index.php") {
     </div>';
 }
 // FIXME: event collapse wtedy onResize
+//FIXME: Uno ikony bez tekstu są za niskie Duo pomyśleć trochę bardziej nad tym navbarem

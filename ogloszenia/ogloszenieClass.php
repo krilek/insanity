@@ -25,14 +25,14 @@ class Ogloszenie
         global $baza;
         $ogloszenieQuery = 'SELECT 
                               `ogloszenia`.`Uzytkownik`, `ogloszenia`.`Tytul`, 
-                              `kategorie`.`Nazwa` AS Kategoria,`typogloszenia`.`Nazwa` AS Typ,
+                              `kategoria`.`Nazwa` AS Kategoria,`typogloszenia`.`Nazwa` AS Typ,
                               `ogloszenia`.`Zakonczona`,`ogloszenia`.`Tresc`,
                               REPLACE(CAST(`ogloszenia`.`Cena` AS CHAR), ".", ",") AS Cena,
                               `ogloszenia`.`DataUtworzenia`,
                               `ogloszenia`.`DataModyfikacji`, `typogloszenia`.`CenaPotrzebna`
                               FROM ogloszenia
                               JOIN typogloszenia ON `typogloszenia`.`ID` = `ogloszenia`.`Typ`
-                              JOIN kategorie ON `kategorie`.ID = `ogloszenia`.`Kategoria`
+                              JOIN kategoria ON `kategoria`.ID = `ogloszenia`.`Kategoria`
                             WHERE `ogloszenia`.`ID`= '.$this->id;
         $wynik = $baza->query($ogloszenieQuery);
         if ($wynik->num_rows > 0) {

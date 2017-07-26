@@ -45,11 +45,12 @@ function stworzSesje($login)
 {
     global $baza;
     $login = $baza->escape_string($login);
-    $wynik = $baza->query("SELECT ID FROM uzytkownicy WHERE Login='$login'");
+    $wynik = $baza->query("SELECT ID, Miejscowosc FROM uzytkownicy WHERE Login='$login'");
     $wynik = $wynik->fetch_assoc();
     $_SESSION['zalogowany'] = true;
     $_SESSION['login'] = $login;
     $_SESSION['idUzytkownika'] = $wynik['ID'];
+    $_SESSION['miejscowosc'] = $wynik['Miejscowosc'];
     $_SESSION['dataLogowania'] = new DateTime();
     $_SESSION['ostatniaAktywnosc'] = new DateTime();
 }

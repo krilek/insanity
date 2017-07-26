@@ -3,40 +3,9 @@
   require_once(SESJA);
   require_once(FPOMOC);
   require_once(BAZA);
-  $_SERVER['REMOTE_ADDR'] = "31.42.2.220";
-if (!isset($_COOKIE['miejscowosc'])) {
-    if (isset($_SESSION['miejscowosc'])) {
-        $_COOKIE['miejscowosc'] = $_SESSION['miejscowosc'];
-    } else {
-        echo namierzajKlienta($_SERVER['REMOTE_ADDR']);
-    }
-}
+  // $_SERVER['REMOTE_ADDR'] = "31.42.2.220";
+  sprawdzLokalizacje();
 
-function namierzajKlienta($ip)
-{
-    global $baza;
-    try {
-        if ($infoJson = file_get_contents('http://freegeoip.net/json/'.$ip)) {
-            $miejscowosc = json_decode($infoJson)->city;
-            if ($miejscowosc != "" || $miejscowosc != null) {
-                $miejscowosc = $baza->escape_string($miejscowosc);
-                //FIXME: ANDRZEJ TO PIERDOLNIE czyt. response daje nazwy bez polskich znaków
-                // SELECT * FROM miejscowosc WHERE Nazwa LIKE _utf8'%Czesto%'
-                $zapytanie = "SELECT * FROM miejscowosc WHERE Nazwa='$miejscowosc'";
-                echo $zapytanie;
-                $wynik = $baza->query($miejscowosc);
-                echo $baza->error;
-                if ($wynik->num_rows == 1) {
-                    $wynik = $wynik->fetch_assoc();
-                    return $wynik['ID'];
-                }
-            }
-        }
-    } catch (Exception $e) {
-      //TODO: log
-    }
-    // echo $infoJson;
-}
 function pokazThumbnail($dane, $kolumny = "col-xs-6 col-lg-2 col-sm-4 reset-padding")
 {
     $dane['Waluta'] = "PLN";
@@ -69,9 +38,12 @@ function pokazThumbnail($dane, $kolumny = "col-xs-6 col-lg-2 col-sm-4 reset-padd
 
   <html lang="pl">
     <?php require_once(HEAD);?>
-    <link rel="stylesheet" href="./css/typeahead.css">
+  <link rel="stylesheet" href="./css/typeahead.css">
 
   <style>
+    body{
+      padding-top: 0px;
+    }
     .thumbnail {
       /*
       "Thumbnail Caption Hover Effect"
@@ -88,6 +60,12 @@ function pokazThumbnail($dane, $kolumny = "col-xs-6 col-lg-2 col-sm-4 reset-padd
       width: 100%;
       object-fit: cover;
       object-position: 50% 50%;
+    }
+
+    .popover-content {
+      /*max-width: 100%;*/
+      margin-left: 10px;
+      margin-right: 10px;
     }
 
     .btn-block {
@@ -131,16 +109,27 @@ function pokazThumbnail($dane, $kolumny = "col-xs-6 col-lg-2 col-sm-4 reset-padd
       color: #fff !important;
       z-index: 2;
     }
-    .caption p{
+
+    #wyszukiwarka-miejscowosc .tt-menu {
+      max-height: 150px;
+      overflow-y: auto;
+    }
+
+    .caption p {
       word-wrap: break-word;
     }
-    .caption h4{
+
+    .caption h4 {
       word-wrap: break-word;
     }
+
     @media only screen and (min-width: 768px) {
       .reset-padding {
         padding-left: 2px;
         padding-right: 2px;
+      }
+      .popover {
+        width: 276px;
       }
       .thumbnail {
         /*
@@ -167,31 +156,25 @@ function pokazThumbnail($dane, $kolumny = "col-xs-6 col-lg-2 col-sm-4 reset-padd
         echo szukajDiv();
         ?>
     </div>
-    
-    <!--FIXME: DROPDOWN do poprawienia dodać możliwość wyszukiwania w kategorii i mieście-->
-    
-    <!--<div class="jumbotron ">
-      XD
-    </div>-->
-    <div class="container ">
-      <div class="row ">
-        <div class="col-sm-12 ">
-          <div class="page-header ">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="page-header">
             <h2>
               Najnowsze
             </h2>
           </div>
-          <div class="row ">
+          <div class="row">
             <?php
             $najnowsze = "SELECT 
                                 `ogloszenia`.`ID`,
                                 IF(LENGTH(`ogloszenia`.`Tytul`) > 25, CONCAT(LEFT(`ogloszenia`.`Tytul`, 25), '...'), `ogloszenia`.`Tytul`) AS Tytul,
                                 IF(LENGTH(`ogloszenia`.`Tresc`) > 50, CONCAT(LEFT(`ogloszenia`.`Tresc`, 50), '...'), `ogloszenia`.`Tresc`) AS Tresc,
                                 REPLACE(CAST(`ogloszenia`.`Cena` AS CHAR), '.', ',') as Cena,
-                                `kategorie`.`Nazwa` as Kategoria, `typogloszenia`.`Nazwa` as Typ,
+                                `kategoria`.`Nazwa` as Kategoria, `typogloszenia`.`Nazwa` as Typ,
                                 `typogloszenia`.`CenaPotrzebna`, `zdjecia`.`NazwaPliku`, `ogloszenia`.`DataUtworzenia`
                                 FROM ogloszenia 
-                                  JOIN kategorie ON `kategorie`.`ID` = `ogloszenia`.`Kategoria` 
+                                  JOIN kategoria ON `kategoria`.`ID` = `ogloszenia`.`Kategoria` 
                                   JOIN typogloszenia ON `typogloszenia`.`ID` = `ogloszenia`.`Typ` 
                                   LEFT JOIN (SELECT * FROM `zdjecia` GROUP BY `zdjecia`.`Ogloszenie`) AS `zdjecia` ON `ogloszenia`.`ID` = `zdjecia`.`Ogloszenie`
                           ORDER BY `ogloszenia`.`DataUtworzenia` DESC LIMIT 6";
@@ -215,24 +198,24 @@ function pokazThumbnail($dane, $kolumny = "col-xs-6 col-lg-2 col-sm-4 reset-padd
           </div>
         </div>
       </div>
-      <div class="row ">
-        <div class="col-sm-12 ">
-          <div class="page-header ">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="page-header">
             <h2>
               Najpopularniejsze
             </h2>
           </div>
-          <div class="row ">
+          <div class="row">
             <?php
             $najpopularniejsze = "SELECT 
                                 `ogloszenia`.`ID`,
                                 IF(LENGTH(`ogloszenia`.`Tytul`) > 25, CONCAT(LEFT(`ogloszenia`.`Tytul`, 25), '...'), `ogloszenia`.`Tytul`) AS Tytul,
                                 IF(LENGTH(`ogloszenia`.`Tresc`) > 50, CONCAT(LEFT(`ogloszenia`.`Tresc`, 50), '...'), `ogloszenia`.`Tresc`) AS Tresc,
                                 REPLACE(CAST(`ogloszenia`.`Cena` AS CHAR), '.', ',') as Cena,
-                                `kategorie`.`Nazwa` as Kategoria, `typogloszenia`.`Nazwa` as Typ,
+                                `kategoria`.`Nazwa` as Kategoria, `typogloszenia`.`Nazwa` as Typ,
                                 `typogloszenia`.`CenaPotrzebna`, `zdjecia`.`NazwaPliku`, `ogloszenia`.`DataUtworzenia`
                                 FROM ogloszenia 
-                                  JOIN kategorie ON `kategorie`.`ID` = `ogloszenia`.`Kategoria` 
+                                  JOIN kategoria ON `kategoria`.`ID` = `ogloszenia`.`Kategoria` 
                                   JOIN typogloszenia ON `typogloszenia`.`ID` = `ogloszenia`.`Typ` 
                                   LEFT JOIN (SELECT * FROM `zdjecia` GROUP BY `zdjecia`.`Ogloszenie`) AS `zdjecia` ON `ogloszenia`.`ID` = `zdjecia`.`Ogloszenie`
                           ORDER BY `ogloszenia`.`Wyswietlenia` DESC LIMIT 6";
@@ -490,20 +473,8 @@ function pokazThumbnail($dane, $kolumny = "col-xs-6 col-lg-2 col-sm-4 reset-padd
     <?php require_once(FOOTER); ?>
     <script src="./js/typeahead.bundle.min.js"></script>
     <script>
-      $(document).ready(function () {
-        $("[rel='tooltip' ] ").tooltip();
-
-        $('.thumbnail').hover(
-          function () {
-            $(this).find('.caption').fadeIn(250)
-          },
-          function () {
-            $(this).find('.caption').fadeOut(205)
-          }
-        );
-      });
-// constructs the suggestion engine
-      
+      var miejscowoscInput = "";
+      var kategoriaInput = "";
       var ogloszenia = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.whitespace,
         queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -513,39 +484,102 @@ function pokazThumbnail($dane, $kolumny = "col-xs-6 col-lg-2 col-sm-4 reset-padd
           cache: true
         }
       });
-      $('#wyszukiwarka').typeahead({
-        hint: true,
-        highlight: true,
-        minLength: 2
-      }, {
-        name: 'ogloszenia',
-        source: ogloszenia
-      });
-      
+
+
       var miejscowosc = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.whitespace,
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
           url: <?php echo "'".BAZOWY_KAT."szukajPodpowiedzi.php?tabela=miejscowosc&q=%MIEJSCOWOSC',";?>
           wildcard: '%MIEJSCOWOSC',
-          cache: true,
-          filter: function(resp) {
-            var dataset = resp;
-            console.log(dataset); // debug the response here
-
-            // do some filtering if needed with the response          
-
-            return dataset;
-        }
+          cache: true
         }
       });
-      $('#wyszukiwarka-miejscowosc').typeahead({
-        hint: true,
-        highlight: true,
-        minLength: 2
-      }, {
-        name: 'miejscowosc',
-        source: miejscowosc
+
+
+      var kategoria = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+          url: <?php echo "'".BAZOWY_KAT."szukajPodpowiedzi.php?tabela=kategoria&q=%KATEGORIA',";?>
+          wildcard: '%KATEGORIA',
+          cache: true,
+          filter: function (data) {
+            // filter the returned data
+            console.log(data);
+            return data;
+          }
+        }
+      });
+
+      function sugestieDodatkowe() {
+
+        $('.popover #wyszukiwarka-miejscowosc .typeahead').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 3
+        }, {
+          name: 'miejscowosc',
+          limit: Infinity,
+          source: miejscowosc
+        });
+        $('.popover #wyszukiwarka-kategoria .typeahead').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        }, {
+          name: 'kategoria',
+          limit: Infinity,
+          source: kategoria
+        });
+        //Przy zamknięciu i otwarciu usuwany jest element dlatego to:
+
+        $('#wyszukiwarka-miejscowosc input.typeahead').typeahead('val', miejscowoscInput);
+        $('#wyszukiwarka-kategoria input.typeahead').typeahead('val', kategoriaInput);
+      }
+      $(document).ready(function () {
+        $("[rel='tooltip' ] ").tooltip();
+        $('.thumbnail').hover(
+          function () {
+            $(this).find('.caption').fadeIn(250)
+          },
+          function () {
+            $(this).find('.caption').fadeOut(205)
+          }
+        );
+        $('#wyszukiwarka .typeahead').typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 2
+        }, {
+          name: 'ogloszenia',
+          source: ogloszenia
+        });
+        $('#dodatkowe-opcje').popover()
+          .on('inserted.bs.popover', sugestieDodatkowe)
+          .on('hide.bs.popover', function () {
+            // console.log("Zamknięte: "+$('.popover #wyszukiwarka-miejscowosc').typeahead('val'));
+            // console.log("Zamknięte: ",$('.popover #wyszukiwarka-miejscowosc .typeahead'));
+            // console.log($('#wyszukiwarka-miejscowosc input.typeahead.tt-input'));
+            if ($('#wyszukiwarka-miejscowosc input.typeahead.tt-input').typeahead('val') != "") {
+              miejscowoscInput = $('#wyszukiwarka-miejscowosc input.typeahead.tt-input').typeahead('val');
+            }
+            if ($('#wyszukiwarka-kategoria input.typeahead.tt-input').typeahead('val') != "") {
+              kategoriaInput = $('#wyszukiwarka-kategoria input.typeahead.tt-input').typeahead('val');
+            }
+          });
+      });
+      //FIXME: onchange event w typeahead żeby wyciągać wartość i lecimy może zadziała (zamknięcie  i klikanie powoduje usunięcie danych)
+      // http://getbootstrap.com/javascript/#popovers-events
+      // https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#jquerytypeaheadval
+      $(document).on('click', function (e) {
+        $('[data-toggle="popover"],[data-original-title]').each(function () {
+          if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length ===
+            0) {
+            $(this).popover('hide').data('bs.popover').inState.click = false
+          }
+
+        });
       });
 
 
@@ -553,6 +587,10 @@ function pokazThumbnail($dane, $kolumny = "col-xs-6 col-lg-2 col-sm-4 reset-padd
       //https://stackoverflow.com/questions/23510474/typeahead-js-with-clickable-links
       // https://stackoverflow.com/questions/30118217/how-to-get-output-from-php-to-typeahead
       // https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md#prefetch
+      // https://stackoverflow.com/questions/24560108/typeahead-v0-10-2-bloodhound-working-with-nested-json-objects
+      //TODO: Do szybszego wyszukiwania w szukaniu ofert 
+      // https://stackoverflow.com/questions/12389948/twitter-bootstrap-typeahead-id-label 
+      // http://tatiyants.com/how-to-use-json-objects-with-twitter-bootstrap-typeahead/
     </script>
   </body>
 

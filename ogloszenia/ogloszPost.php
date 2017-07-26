@@ -7,7 +7,7 @@ function sprawdzKategorie($kategoria)
 {
     global $baza;
     if (filter_var($kategoria, FILTER_VALIDATE_INT) !== false) {
-        if ($wynik = $baza->query("SELECT ID FROM kategorie WHERE ID='$kategoria'")) {
+        if ($wynik = $baza->query("SELECT ID FROM kategoria WHERE ID='$kategoria'")) {
             if ($wynik->num_rows == 1) {
                 // TODO: ZROBIĆ GARBAGE COLLECTING
                 //NR KATEGORII POPRAWNY

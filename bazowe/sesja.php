@@ -1,6 +1,6 @@
 <?php
   session_start();
-if (!isset($_SESSION['Miejscowosc'])) {
+if (!isset($_SESSION['miejscowosc'])) {
     //TODO: Tu ogarniesz miejscowosc
 }
   //TODO: LISTA URL KTÓRYCH MA NIE ZAPISYWAĆ z NP REGEXAMI
@@ -15,5 +15,5 @@ if (isset($_SESSION['url'])) {
     }
 }
 if ($_SERVER['SERVER_NAME'] == "localhost") {
-    print_r($_SESSION);
+    // print_r($_SESSION);
 }

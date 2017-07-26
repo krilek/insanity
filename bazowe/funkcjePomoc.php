@@ -42,6 +42,62 @@ function sprawdzZalogowany()
     }
 }
 
-function sprocTekst($string, $dlugosc){
-    return (mb_strlen($string) > $dlugosc ? mb_substr($string, 0, $dlugosc)."..." : $string); 
+function sprocTekst($string, $dlugosc)
+{
+    return (mb_strlen($string) > $dlugosc ? mb_substr($string, 0, $dlugosc)."..." : $string);
+}
+function namierzajKlienta($ip)
+{
+    global $baza;
+    
+    try {
+        $infoJson = @file_get_contents('http://freegeoip.net/json/'.$ip);
+        if ($infoJson !== false) {
+            $miejscowosc = json_decode($infoJson)->city;
+            if ($miejscowosc != "" || $miejscowosc != null) {
+                $miejscowosc = $baza->escape_string($miejscowosc);
+                $zapytanie = "SELECT * FROM miejscowosc WHERE Nazwa='$miejscowosc'";
+                if ($wynik = $baza->query($zapytanie)) {
+                    if ($wynik->num_rows == 1) {
+                        $wynik = $wynik->fetch_assoc();
+                        return $wynik['ID'];
+                    }
+                }
+            }
+        } else {
+            return null;
+        }
+    } catch (Exception $e) {
+        return null;
+      //TODO: log
+    }
+    // echo $infoJson;
+}
+function sprawdzLokalizacje()
+{
+    global $baza;
+    if (!isset($_COOKIE['miejscowosc'])) {
+  //Gdy nie ma cookie
+        if (!isset($_SESSION['miejscowosc'])) {
+              //Gdy nie ma w sesji miejscowowsci
+            if (($idMiejscowosci = namierzajKlienta($_SERVER['REMOTE_ADDR'])) != null) {
+              //Określ na podstawie ip
+                $_SESSION['miejscowowsc'] = $idMiejscowosci;
+                setcookie('miejscowosc', $_SESSION['miejscowosc'], time() + (86400 * 30), "/");
+            }
+        } else {
+              //Gdy jest w sesji
+            setcookie('miejscowosc', $_SESSION['miejscowosc'], time() + (86400 * 30), "/");
+        }
+    } else {
+          //Gdy jest cookie
+        if (isset($_SESSION['zalogowany']) && $_COOKIE['miejscowosc'] != $_SESSION['miejscowosc']) {
+          //Gdy są różne aktualizuj na podstawie ustawień użytkownika
+            setcookie('miejscowosc', $_SESSION['miejscowosc'], time() + (86400 * 30), "/");
+        } elseif (!isset($_SESSION['miejscowowsc'])) {
+          // Gdy nie jest zalogowany ustaw na podstawie cookie
+            $_SESSION['miejscowosc'] = $baza->escape_string($_COOKIE['miejscowosc']);
+        }
+    }
+    echo $_COOKIE['miejscowosc'];
 }

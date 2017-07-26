@@ -87,7 +87,7 @@ require_once("../config.php");
             <label for="kategoria">Kategoria:</label>
             <select class="form-control" id="kategoria" name="kategoria">
                 <?php
-                  $kategorie = $baza->query("SELECT ID, Nazwa FROM kategorie");
+                  $kategorie = $baza->query("SELECT ID, Nazwa FROM kategoria");
                 foreach ($kategorie as $kategoria) {
                     echo '<option value="'.$kategoria['ID'].'">'.$kategoria['Nazwa'].'</option>';
                 }

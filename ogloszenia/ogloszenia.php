@@ -197,13 +197,13 @@ if (isset($_GET['ajax'])) {
         global $baza;
           $uzytkownik = $_SESSION['idUzytkownika'];
               $zapytanie = "SELECT 
-                                `ogloszenia`.`ID`,`ogloszenia`.`Tytul`, 
+                                `ogloszenia`.`ID`,IF(LENGTH(`ogloszenia`.`Tytul`) > 40, CONCAT(LEFT(`ogloszenia`.`Tytul`, 40), '...'), `ogloszenia`.`Tytul`) AS Tytul, 
                                 IF(LENGTH(`ogloszenia`.`Tresc`) > 450, CONCAT(LEFT(`ogloszenia`.`Tresc`, 450), '...'), `ogloszenia`.`Tresc`) AS Tresc,
-                                `ogloszenia`.`Cena`,
-                                `kategorie`.`Nazwa` as Kategoria, `typogloszenia`.`Nazwa` as Typ,
+                                REPLACE(CAST(`ogloszenia`.`Cena` AS CHAR), '.', ',') as Cena,
+                                `kategoria`.`Nazwa` as Kategoria, `typogloszenia`.`Nazwa` as Typ,
                                 `typogloszenia`.`CenaPotrzebna`, `zdjecia`.`NazwaPliku`, `ogloszenia`.`DataUtworzenia`
                                 FROM ogloszenia 
-                                  JOIN kategorie ON `kategorie`.`ID` = `ogloszenia`.`Kategoria` 
+                                  JOIN kategoria ON `kategoria`.`ID` = `ogloszenia`.`Kategoria` 
                                   JOIN typogloszenia ON `typogloszenia`.`ID` = `ogloszenia`.`Typ` 
                                   LEFT JOIN (SELECT * FROM `zdjecia` GROUP BY `zdjecia`.`Ogloszenie`) AS `zdjecia` ON `ogloszenia`.`ID` = `zdjecia`.`Ogloszenie`
                             WHERE `Uzytkownik` = $uzytkownik ";
