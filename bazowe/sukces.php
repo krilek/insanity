@@ -9,8 +9,11 @@ require_once("../config.php");
 <body>
     <?php require_once(NAVBAR);?>
   <div class="container">
-    https://github.com/twitter/typeahead.js/blob/master/LICENSE
-    https://github.com/thebird/Swipe/blob/master/LICENSE.md
+    <div class="jumbotron text-center">
+        <h2>Rejestracja przebiegła pomyślnie.</h2>
+        <p>Na podany email wysłany został link aktywacyjny.
+        Kliknij w niego aby kontynuować.</p>
+      </div>
   </div>
     <?php require_once(FOOTER); ?>
 </body>

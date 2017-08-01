@@ -47,7 +47,7 @@ if (isset($_POST['tryb'])) {
             $czysteRasowoDane = sprawdzDane();
             if (is_array($czysteRasowoDane)) {
                 dUzytkTymczas($czysteRasowoDane);
-                przekieruj("rejestracja.php?sukces=1");
+                przekieruj(BAZOWY_KAT."sukces.php");
             } else {
                 przekieruj(BLAD."?blad=".$czysteRasowoDane);
             }

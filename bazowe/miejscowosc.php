@@ -1,5 +1,17 @@
 <?php
   require_once(BAZA);
+  class Wojewodztwo{
+    public $nazwa;
+  }
+
+
+// Klasa Woj
+//     Klasa Powiat
+//         Klasa Miejscowosc
+//         Klasa Dzielnica
+
+
+
   function nawigacja()
   {
       global $baza;

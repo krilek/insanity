@@ -56,3 +56,4 @@ TODO: progressbar z ajaxem
 
       TODO: https://github.com/biggora SPOKO BAJERKI DO BUTSTRAPIKA
       http://seiyria.com/bootstrap-slider/
+     TODO: Dodaj sympod2, dodaj 4 kartę jeśli miasto wybrane ma inne o podobnym sympod, zrób to samo w wyszukiwarce kolejne zapytanie gdy już zostało wybrane miasto? 
