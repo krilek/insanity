@@ -4,8 +4,18 @@ if (!isset($_SESSION['miejscowosc'])) {
     //TODO: Tu ogarniesz miejscowosc
 }
   //TODO: LISTA URL KTÓRYCH MA NIE ZAPISYWAĆ z NP REGEXAMI
-  $_SESSION['url'] = $_SERVER['REQUEST_URI'];
-  
+if (preg_match('/(blad.php)/', $_SERVER['REQUEST_URI']) != 1) {
+    $_SESSION['url'] = $_SERVER['REQUEST_URI'];
+}
+//FIXME: WYLOGOWANIE RESETUJE?!
+if (!isset($_SESSION['ostatnieOgloszenia'])) {
+    if (isset($_COOKIE['ostatnieOgloszenia'])) {
+        $_SESSION = json_decode($_COOKIE['ostatnieOgloszenia']);
+    } else {
+        $_SESSION['ostatnieOgloszenia'] = array();
+    }
+}
+    // $_SESSION['ostatnieOgloszenia'] = array();
   //Usuwanie zbędnych slashy
 if (isset($_SESSION['url'])) {
     if (mb_strlen($_SESSION['url']) > 1) {
@@ -15,5 +25,5 @@ if (isset($_SESSION['url'])) {
     }
 }
 if ($_SERVER['SERVER_NAME'] == "localhost") {
-    // print_r($_SESSION);
+    print_r($_SESSION);
 }

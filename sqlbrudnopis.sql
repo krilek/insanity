@@ -36,3 +36,14 @@ MEDIUMTEXT: 16,777,215 bytes utf-8 chars 4194304
 LONGTEXT: 4,294,967,295 bytes utf-8 chars 1073741823
 
 https://gist.github.com/anonymous/a5084dc46d77b141a6a79153ecebeb36
+drop table emaile;
+drop table emailtokeny;
+drop table hasla;
+drop TABLE kategorie;
+DROP TABLE miasta;
+drop TABLE ogloszenia;
+drop TABLE typogloszenia;
+drop table uzytkownicy;
+drop TABLE uzytkownicyrejestracja;
+DROP TABLE wojewodztwa;
+drop TABLE zdjecia;

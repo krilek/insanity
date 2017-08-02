@@ -5,8 +5,9 @@ class Uzytkownik
     public $login;
     public $imie;
     public $nazwisko;
-    public $wojewodztwo;
     public $miejscowosc;
+    public $wojewodztwo;
+    public $powiat;
     public $plec;
     public $avatar;
     function __construct($id)
@@ -15,22 +16,28 @@ class Uzytkownik
         $uzytkownikQuery =
           "SELECT `uzytkownicy`.`ID`, `uzytkownicy`.`Login`,
 		              `uzytkownicy`.`Imie`,`uzytkownicy`.`Nazwisko`,
-                  `wojewodztwo`.`Nazwa` as Wojewodztwo, `uzytkownicy`.`Miejscowosc`,
-                  `uzytkownicy`.`Plec`
+                  `uzytkownicy`.`Miejscowosc`, `uzytkownicy`.`Plec`,
+                  `miejscowosc`.`Nazwa` AS Miejscowosc, `wojewodztwo`.`Nazwa` AS Wojewodztwo,
+                  `powiat`.`Nazwa` AS Powiat
               FROM uzytkownicy 
-              JOIN wojewodztwo ON `wojewodztwo`.`TERYT` = `uzytkownicy`.`Wojewodztwo`
+              JOIN miejscowosc ON miejscowosc.`ID`=uzytkownicy.`Miejscowosc`
+              JOIN powiat ON `powiat`.`NrPowiatu`=`miejscowosc`.`Powiat` && `powiat`.`Wojewodztwo`=`miejscowosc`.`Wojewodztwo`
+              JOIN wojewodztwo ON wojewodztwo.`TERYT`=miejscowosc.`Wojewodztwo`
            WHERE `uzytkownicy`.`ID`=$id";
-        $wynik = $baza->query($uzytkownikQuery);
-        // echo $baza->error;
-        // print_r($wynik);
-        $wynik = $wynik->fetch_assoc();
-        $this->id = $id;
-        $this->login = $wynik['Login'];
-        $this->imie = $wynik['Imie'];
-        $this->nazwisko = $wynik['Nazwisko'];
-        $this->wojewodztwo = $wynik['Wojewodztwo'];
-        $this->miejscowosc = $wynik['Miejscowosc'];
-        $this->plec = $wynik['Plec'];
-        $this->avatar = null;
+        if ($wynik = $baza->query($uzytkownikQuery)) {
+            $wynik = $wynik->fetch_assoc();
+            $this->id = $id;
+            $this->login = $wynik['Login'];
+            $this->imie = $wynik['Imie'];
+            $this->nazwisko = $wynik['Nazwisko'];
+            $this->miejscowosc = $wynik['Miejscowosc'];
+            $this->wojewodztwo = $wynik['Wojewodztwo'];
+            $this->powiat = $wynik['Powiat'];
+            $this->plec = $wynik['Plec'];
+            $this->avatar = null;
+        } else {
+            echo $baza->error;
+            print_r($wynik);
+        }
     }
 }

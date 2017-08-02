@@ -3,21 +3,37 @@
   require_once(SESJA);
   require_once(FPOMOC);
   require_once(BAZA);
+  require_once(I_OGLOSZENIA_KAT."ogloszenieClass.php");
   // $_SERVER['REMOTE_ADDR'] = "31.42.2.220";
   sprawdzLokalizacje();
+  //FIXME: update miejscowosci musi byc wczesniej, jakiś problem po wylogowaniu i zalogowaniu?
 
-function pokazThumbnail($dane, $kolumny = "col-xs-6 col-lg-2 col-sm-4 reset-padding")
+function pokazThumbnail($dane, $obiekt = false, $kolumny = "col-lg-2 col-sm-4 reset-padding")
 {
+    if ($obiekt) {
+        $arr['Tytul'] = $dane->tytul;
+        $arr['Tresc'] = $dane->tresc;
+        $arr['ID'] = $dane->id;
+        if ($dane->saZdjecia) {
+            $arr['Zdjecie'] = IMG_OGLOSZENIA.$dane->zdjecia[0];
+        } else {
+            $arr['Zdjecie'] = IMG_KAT."brakZdjecia.png";
+        }
+        $arr['CenaPotrzebna'] = $dane->cenaPotrzebna;
+        $arr['Cena'] = $dane->cena;
+        $arr['Typ'] = $dane->typOgloszenia;
+        $dane = $arr;
+    }
     $dane['Waluta'] = "PLN";
     echo "<div class='$kolumny'>";
     echo      "<div class='thumbnail'>
                 <div class='caption'>";
     echo           "<h4>".$dane['Tytul']."</h4>";
     echo            "<p>".$dane['Tresc']."</p>";
-    // echo            "<p><a href='' class='label label-danger' rel='tooltip' title='Zoom'>Zoom</a>";
+    echo            "<p><a href='".OGLOSZENIA_KAT."ogloszenie.php?id=".$dane['ID']."' class='label label-danger' rel='tooltip' title='Zobacz'>Zobacz</a></p>";
     // echo            "<a href='' class='label label-default' rel='tooltip' title='Download now'>Download</a></p>";
     echo        "</div>";
-    echo        "<img class='img-responsive' src='".$dane['Zdjecie']."' alt='".$dane['Tytul']."'>";
+    echo        "<img class='img-responsive' src='".(isset($dane['Zdjecie']) ? IMG_OGLOSZENIA.$dane['Zdjecie'] : IMG_KAT."brakZdjecia.png"). "' alt='".$dane['Tytul']."'>";
     if ($dane['CenaPotrzebna'] == 1) {
         $cena = $dane['Cena']." ".$dane['Waluta'];
     } else {
@@ -157,14 +173,6 @@ function pokazThumbnail($dane, $kolumny = "col-xs-6 col-lg-2 col-sm-4 reset-padd
         ?>
     </div>
     <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="page-header">
-            <h2>
-              Najnowsze
-            </h2>
-          </div>
-          <div class="row">
             <?php
             $najnowsze = "SELECT 
                                 `ogloszenia`.`ID`,
@@ -179,33 +187,32 @@ function pokazThumbnail($dane, $kolumny = "col-xs-6 col-lg-2 col-sm-4 reset-padd
                                   LEFT JOIN (SELECT * FROM `zdjecia` GROUP BY `zdjecia`.`Ogloszenie`) AS `zdjecia` ON `ogloszenia`.`ID` = `zdjecia`.`Ogloszenie`
                           ORDER BY `ogloszenia`.`DataUtworzenia` DESC LIMIT 6";
             if ($wynik = $baza->query($najnowsze)) {
-              //for
-                foreach ($wynik as $ogloszenie) {
-                    if (file_exists(I_IMG_OGLOSZENIA.$ogloszenie['NazwaPliku'])) {
-                        $ogloszenie['Zdjecie'] = IMG_OGLOSZENIA.$ogloszenie['NazwaPliku'];
-                    } else {
-                        $ogloszenie['Zdjecie'] = IMG_KAT."brakZdjecia.png";
-                    }
+                if ($wynik->num_rows > 0) {
+                    echo '<div class="row">
+                          <div class="col-sm-12">
+                            <div class="page-header">
+                              <h2>
+                                Najnowsze
+                              </h2>
+                            </div>
+                            <div class="row">';
+                    foreach ($wynik as $ogloszenie) {
+                        if (file_exists(I_IMG_OGLOSZENIA.$ogloszenie['NazwaPliku'])) {
+                            $ogloszenie['Zdjecie'] = $ogloszenie['NazwaPliku'];
+                        }
 
                         pokazThumbnail($ogloszenie);
+                    }
+                    echo '
+                      </div>
+                    </div>
+                  </div>';
                 }
-            } else {
-                echo "Brak ogłoszeń";
             }
             
 
             ?>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="page-header">
-            <h2>
-              Najpopularniejsze
-            </h2>
-          </div>
-          <div class="row">
+      
             <?php
             $najpopularniejsze = "SELECT 
                                 `ogloszenia`.`ID`,
@@ -220,255 +227,95 @@ function pokazThumbnail($dane, $kolumny = "col-xs-6 col-lg-2 col-sm-4 reset-padd
                                   LEFT JOIN (SELECT * FROM `zdjecia` GROUP BY `zdjecia`.`Ogloszenie`) AS `zdjecia` ON `ogloszenia`.`ID` = `zdjecia`.`Ogloszenie`
                           ORDER BY `ogloszenia`.`Wyswietlenia` DESC LIMIT 6";
             if ($wynik = $baza->query($najpopularniejsze)) {
-              //for
-                foreach ($wynik as $ogloszenie) {
-                    if (file_exists(I_IMG_OGLOSZENIA.$ogloszenie['NazwaPliku'])) {
-                        $ogloszenie['Zdjecie'] = IMG_OGLOSZENIA.$ogloszenie['NazwaPliku'];
-                    } else {
-                        $ogloszenie['Zdjecie'] = IMG_KAT."brakZdjecia.png";
-                    }
-
+                if ($wynik->num_rows > 0) {
+                    echo '
+                      <div class="row">
+                      <div class="col-sm-12">
+                        <div class="page-header">
+                          <h2>
+                            Najpopularniejsze
+                          </h2>
+                        </div>
+                        <div class="row">';
+                    foreach ($wynik as $ogloszenie) {
+                        if (file_exists(I_IMG_OGLOSZENIA.$ogloszenie['NazwaPliku'])) {
+                            $ogloszenie['Zdjecie'] = $ogloszenie['NazwaPliku'];
+                        }
                         pokazThumbnail($ogloszenie);
+                    }
+                    echo '
+                        </div>
+                      </div>
+                    </div>';
                 }
-            } else {
-                echo "Brak ogłoszeń";
             }
             
 
             ?>
-          </div>
-        </div>
-      </div>
-      <div class="row ">
-        <div class="col-sm-12 ">
-          <div class="page-header ">
-            <h2>
-              W twoim regionie
-            </h2>
-          </div>
-          <div class="row ">
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-
+            <?php
+            if (isset($_COOKIE['miejscowosc']) && $_COOKIE['miejscowosc'] > 0) {
+                $miejscowosc = $baza->escape_string($_COOKIE['miejscowosc']);
+                $wRegionie = "SELECT
+                                `ogloszenia`.`ID`,
+                                IF(LENGTH(`ogloszenia`.`Tytul`) > 25, CONCAT(LEFT(`ogloszenia`.`Tytul`, 25), '...'), `ogloszenia`.`Tytul`) AS Tytul,
+                                IF(LENGTH(`ogloszenia`.`Tresc`) > 50, CONCAT(LEFT(`ogloszenia`.`Tresc`, 50), '...'), `ogloszenia`.`Tresc`) AS Tresc,
+                                REPLACE(CAST(`ogloszenia`.`Cena` AS CHAR), '.', ',') as Cena,
+                                `kategoria`.`Nazwa` as Kategoria, `typogloszenia`.`Nazwa` as Typ,
+                                `typogloszenia`.`CenaPotrzebna`, `zdjecia`.`NazwaPliku`, `ogloszenia`.`DataUtworzenia`,
+                                `uzytkownicy`.`Miejscowosc` as Miejscowosc
+                                FROM ogloszenia
+                                  JOIN kategoria ON `kategoria`.`ID` = `ogloszenia`.`Kategoria`
+                                  JOIN typogloszenia ON `typogloszenia`.`ID` = `ogloszenia`.`Typ`
+                                  JOIN uzytkownicy ON `uzytkownicy`.`ID` = `ogloszenia`.`Uzytkownik`
+                                  LEFT JOIN (SELECT * FROM `zdjecia` GROUP BY `zdjecia`.`Ogloszenie`) AS `zdjecia` ON `ogloszenia`.`ID` = `zdjecia`.`Ogloszenie`
+                          WHERE `uzytkownicy`.`Miejscowosc` = $miejscowosc
+                          ORDER BY `ogloszenia`.`Wyswietlenia` DESC LIMIT 6";
+                if ($wynik = $baza->query($wRegionie)) {
+                    if ($wynik->num_rows > 0) {
+                        echo '
+                    <div class="row ">
+                      <div class="col-sm-12 ">
+                        <div class="page-header ">
+                          <h2>
+                            W twoim regionie
+                          </h2>
+                        </div>
+                        <div class="row ">';
+                        foreach ($wynik as $ogloszenie) {
+                            if (file_exists(I_IMG_OGLOSZENIA.$ogloszenie['NazwaPliku'])) {
+                                $ogloszenie['Zdjecie'] = $ogloszenie['NazwaPliku'];
+                            }
+                            pokazThumbnail($ogloszenie);
+                        }
+                    }
+                }
+            }
+      
+        ?>
 
           </div>
         </div>
       </div>
-      <div class="row ">
-        <div class="col-sm-12 ">
-          <div class="page-header ">
-            <h2>
-              Ostatnio przeglądane
-            </h2>
+        <?php
+        if (isset($_SESSION['ostatnieOgloszenia']) && count($_SESSION['ostatnieOgloszenia'] ) > 0) {
+            echo '
+        <div class="row ">
+          <div class="col-sm-12 ">
+            <div class="page-header ">
+              <h2>
+                Ostatnio przeglądane
+              </h2>
+            </div>
+            <div class="row ">';
+            for ($i=count($_SESSION['ostatnieOgloszenia'])-1; $i>=0; $i--) {
+                pokazThumbnail($_SESSION['ostatnieOgloszenia'][$i]);
+            }
+            echo '
+            </div>
           </div>
-          <div class="row ">
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-2 col-sm-4 reset-padding ">
-              <div class="thumbnail ">
-                <div class="caption ">
-                  <h4>Thumbnail Headline</h4>
-                  <p>short thumbnail description</p>
-                  <p><a href=" " class="label label-danger " rel="tooltip " title="Zoom ">Zoom</a>
-                    <a href=" " class="label label-default " rel="tooltip " title="Download now ">Download</a></p>
-                </div>
-                <img class="img-responsive " src="http://placehold.it/500x500 " alt="... ">
-                <div class="cena-tlo ">
-                  173213123333,32 PLN
-                </div>
-                <div class="cena ">
-                  173213123333,32 PLN
-                </div>
-              </div>
-            </div>
-
-
-          </div>
-        </div>
-      </div>
+        </div>';
+        }
+        ?>
     </div>
     <?php require_once(FOOTER); ?>
     <script src="./js/typeahead.bundle.min.js"></script>
@@ -572,15 +419,15 @@ function pokazThumbnail($dane, $kolumny = "col-xs-6 col-lg-2 col-sm-4 reset-padd
       //FIXME: onchange event w typeahead żeby wyciągać wartość i lecimy może zadziała (zamknięcie  i klikanie powoduje usunięcie danych)
       // http://getbootstrap.com/javascript/#popovers-events
       // https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#jquerytypeaheadval
-      $(document).on('click', function (e) {
-        $('[data-toggle="popover"],[data-original-title]').each(function () {
-          if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length ===
-            0) {
-            $(this).popover('hide').data('bs.popover').inState.click = false
-          }
+      // $(document).on('click', function (e) {
+      //   $('[data-toggle="popover"],[data-original-title]').each(function () {
+      //     if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length ===
+      //       0) {
+      //       $(this).popover('hide').data('bs.popover').inState.click = false
+      //     }
 
-        });
-      });
+      //   });
+      // });
 
 
       // https://twitter.github.io/typeahead.js/examples/#multiple-datasets

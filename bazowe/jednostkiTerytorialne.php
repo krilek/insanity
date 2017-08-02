@@ -1,8 +1,8 @@
 <?php
-if (isset($_GET['tabela'])) {
     require_once("../config.php");
     require_once(FPOMOC);
     require_once(BAZA);
+if (isset($_GET['tabela'])) {
     header('Content-type: application/json');
     $zapytanie = "a";
     switch ($_GET['tabela']) {

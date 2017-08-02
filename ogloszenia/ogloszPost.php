@@ -169,14 +169,6 @@ function dodajOgloszenie($dane, $nrUzytkownika)
         przekieruj(BLAD."?blad=32");
     }
 }
-
-function zdjecieDoBazy($lista)
-{
-
-    print_r($lista);
-    return 1;
-}
-
     //FORMULARZ
 if (isset($_POST)) {
     echo "<pre>";
@@ -215,12 +207,14 @@ if (isset($_POST)) {
             //GDY NIE ZOSTAŁ WYSŁANY ŻADEN PLIK (INPUT PUSTY)
             if ($_FILES['zdjecia']['error'][0] != 4) {
                 $lista = przeslijZdjecia($nrOgloszenia);
-                zdjeciaDoBazy($lista);
+                $err = zdjeciaDoBazy($lista);
+                print_r($err);
                 // if (isset($lista['bledy'])) {
                 //     przekieruj(BLAD."?blad=41");
                 // }
             }
         }
+        przekieruj(OGLOSZENIA_KAT."ogloszenia.php");
     } else {
         //DANE NIEPELNE
         przekieruj(BLAD."?blad=42");

@@ -42,16 +42,20 @@ if (isset($_POST['tryb'])) {
           filter_has_var(INPUT_POST, 'imie')&& !empty($_POST['imie'])&&
           filter_has_var(INPUT_POST, 'nazwisko')&& !empty($_POST['nazwisko'])&&
           filter_has_var(INPUT_POST, 'plec')&& !empty($_POST['plec'])&&
-          filter_has_var(INPUT_POST, 'wojewodztwo')&& !empty($_POST['wojewodztwo'])&&
-          filter_has_var(INPUT_POST, 'miasto')&& !empty($_POST['miasto'])) {
+        //   filter_has_var(INPUT_POST, 'wojewodztwo')&& !empty($_POST['wojewodztwo'])&&
+          filter_has_var(INPUT_POST, 'miejscowosc')&& !empty($_POST['miejscowosc'])) {
             $czysteRasowoDane = sprawdzDane();
             if (is_array($czysteRasowoDane)) {
-                dUzytkTymczas($czysteRasowoDane);
-                przekieruj(BAZOWY_KAT."sukces.php");
+                if (dUzytkTymczas($czysteRasowoDane)) {
+                    przekieruj(BAZOWY_KAT."sukces.php");
+                } else {
+                    przekieruj(BLAD."?blad=23");
+                }
             } else {
                 przekieruj(BLAD."?blad=".$czysteRasowoDane);
             }
         } else {
+            // print_r($_POST);
             przekieruj(BLAD."?blad=1");
         }
     }
@@ -110,7 +114,7 @@ function sprawdzDane()
     global $baza;
     $zwroc = array('email' => '', 'login' => '', 'haslo' => '',
                     'imie' => '','nazwisko'=>'','plec' => '',
-                    'wojewodztwo' =>'','miasto'=>'');
+                    'wojewodztwo' =>'','miejscowosc'=>'');
     //DUPLIKAT W UŻYTKOWNIKACH TYMCZASOWYCH
     $duplikat = czyIstniejeTymczasowy($_POST['email']);
     if ($duplikat < 0) {
@@ -171,19 +175,20 @@ function sprawdzDane()
             $zwroc['email'] = $email;
         }
     }
-    //IMIE, NAZWISKO, MIASTO
-    $miasto = filter_input(INPUT_POST, 'miasto', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    //IMIE, NAZWISKO, miejscowosc
+        //FIXME: do wyjebania miejscowosc
+    $miejscowosc = filter_input(INPUT_POST, 'miejscowosc', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $imie = filter_input(INPUT_POST, 'imie', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $nazwisko = filter_input(INPUT_POST, 'nazwisko', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    if (!$miasto || $miasto == null || !$imie || $imie == null || !$nazwisko || $nazwisko == null) {
+    if (!$miejscowosc || $miejscowosc == null || !$imie || $imie == null || !$nazwisko || $nazwisko == null) {
         return 12;
     } else {
-        if (mb_strlen($miasto) > 100) {
+        if (mb_strlen($miejscowosc) > 100) {
             return 13;
-        } elseif (mb_strlen($miasto) < 3) {
+        } elseif (mb_strlen($miejscowosc) < 3) {
             return 14;
         } else {
-            $zwroc['miasto'] = $miasto;
+            $zwroc['miejscowosc'] = $miejscowosc;
         }
 
         if (mb_strlen($imie) < 2) {
@@ -204,8 +209,6 @@ function sprawdzDane()
     }
     //PLEC, WOJEWODZTWO
     $zwroc['plec'] = $baza->real_escape_string($_POST['plec']);
-    $zwroc['wojewodztwo'] = $baza->real_escape_string($_POST['wojewodztwo']);
-
     return $zwroc;
 }
 
@@ -214,12 +217,12 @@ function sprawdzDane()
 
 
 
-// function dodajUzytkownika($login, $haslo, $email, $imie, $nazwisko, $plec, $miasto, $woj)
+// function dodajUzytkownika($login, $haslo, $email, $imie, $nazwisko, $plec, $miejscowosc, $woj)
 function dUzytkTymczas($uzytkTab)
 {
 
     // echo "Login: ".$login." Hasło: ".$haslo." Email: ".$email." Imie: ".$imie;
-    // echo " Nazwisko: ".$nazwisko." Plec: ".$plec." Miasto: ".$miasto." Województwo: ".$woj;
+    // echo " Nazwisko: ".$nazwisko." Plec: ".$plec." miejscowosc: ".$miejscowosc." Województwo: ".$woj;
     //
     global $baza;
     //Złożoność hashowania
@@ -230,33 +233,34 @@ function dUzytkTymczas($uzytkTab)
     $hasloHash = password_hash($uzytkTab['haslo'], PASSWORD_BCRYPT, $opcje);
     $tokenHash = md5(rand(0, 10000));
     $dodajDoBazy = "INSERT INTO uzytkownicyrejestracja
-    (Login, Email, HasloHash, TokenHash, Imie, Nazwisko, Wojewodztwo, Miejscowosc, Plec, Typ, Data) VALUES ";
+    (Login, Email, HasloHash, TokenHash, Imie, Nazwisko, Miejscowosc, Plec, Typ, Data) VALUES ";
     $dodajDoBazy .= "( '".$uzytkTab['login'];
     $dodajDoBazy .= "' ,'".$uzytkTab['email'];
     $dodajDoBazy .= "' ,'".$hasloHash;
     $dodajDoBazy .= "' ,'".$tokenHash;
     $dodajDoBazy .= "' ,'".$uzytkTab['imie'];
     $dodajDoBazy .= "' ,'".$uzytkTab['nazwisko'];
-    $dodajDoBazy .= "' ,".$uzytkTab['wojewodztwo'];
-    $dodajDoBazy .= " ,'".$uzytkTab['miasto'];
-    $dodajDoBazy .= "' ,'".$uzytkTab['plec'];
+    $dodajDoBazy .= "' ,".$uzytkTab['miejscowosc'];
+    $dodajDoBazy .= " ,'".$uzytkTab['plec'];
     $dodajDoBazy .= "' , 1";
     $dodajDoBazy .= " ,"."FROM_UNIXTIME(".time()."));";
-    echo "$dodajDoBazy";
+    // echo "$dodajDoBazy";
     if ($baza->query($dodajDoBazy)) {
         $id = $baza->insert_id;
         rejestracjaEmail($uzytkTab['email'], $uzytkTab['imie'], $id, $uzytkTab['login'], $tokenHash);
+        return true;
     } else {
         // echo "blad";
-      //   echo $baza->error;
+        // echo $baza->error;
         przekieruj(BLAD."?blad=23");
+        return false;
     }
     // if ($baza->query("INSERT INTO hasla (Hash) VALUES ('$hash')")) {
     //     $id = $baza->insert_id;
     //     if ($baza->query("INSERT INTO emaile (ID, Email) VALUES ('$id', '$email')")) {
     //         $dodaj = $baza->stmt_init();
     //         if ($dodaj->prepare("INSERT INTO uzytkownicy (ID, Login, Imie, Nazwisko, Wojewodztwo, Miejscowosc, Plec) VALUES (? , ?, ?, ?, ?, ?, ?)")) {
-    //             if ($dodaj->bind_param("isssiss", $id, $login, $imie, $nazwisko, $woj, $miasto, $plec)) {
+    //             if ($dodaj->bind_param("isssiss", $id, $login, $imie, $nazwisko, $woj, $miejscowosc, $plec)) {
     //                 if ($dodaj->execute()) {
     //                     echo "Dodano użytkownika";
     //                 } else {

@@ -155,7 +155,7 @@ if (isset($_GET['ajax'])) {
 
 
 
-    function wyswietlOgloszenie($tytul, $zdjecie, $tresc, $kategoria, $data, $typ, $typInfo, $cena = 0)
+    function wyswietlOgloszenie($id, $tytul, $zdjecie, $tresc, $kategoria, $data, $typ, $typInfo, $cena = 0)
     {
         echo "<div class='media'>";
         echo "<div class='media-left'>";
@@ -170,7 +170,9 @@ if (isset($_GET['ajax'])) {
         echo "</div>";
         echo "<div class='media-body'>";
             echo "<h4 class='media-heading'>";
+              echo "<a href='".OGLOSZENIA_KAT."ogloszenie.php?id=".$id."'>";
               echo "$tytul";
+              echo "</a>";
               //FIXME: POPRAWIĆ POZYCJE TYCH LABELI  np przy zmniejszaniu szerokości
               echo "<div class='labele'>";
               echo "<span class='label label-info'>$typ</span>";
@@ -224,7 +226,7 @@ if (isset($_GET['ajax'])) {
             echo "<h2>Błąd bazy</h2>";
         } elseif ($ogloszenia->num_rows > 0) {
             foreach ($ogloszenia as $ogloszenie) {
-                wyswietlOgloszenie($ogloszenie['Tytul'], $ogloszenie['NazwaPliku'],
+                wyswietlOgloszenie($ogloszenie['ID'], $ogloszenie['Tytul'], $ogloszenie['NazwaPliku'],
                                $ogloszenie['Tresc'], $ogloszenie['Kategoria'],
                                $ogloszenie['DataUtworzenia'], $ogloszenie['Typ'],
                                $ogloszenie['CenaPotrzebna'], $ogloszenie['Cena']  );

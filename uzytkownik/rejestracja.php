@@ -87,6 +87,7 @@
                 <div class="form-group">
                   <span class="col-lg-3"></span>
                   <!--TODO: przerobić to na tooltip? modal? popover?-->
+                  <!--TODO: Zrobić event onchange-->
                   <div class="col-lg-9" id="ajax-info">
                   </div>
                 </div>
@@ -182,7 +183,7 @@
             <div class="col-xs-12">
               <div class="form-group pull-right" id="finish">
                 <input type="hidden" name="tryb" value="rejestracja">
-                <input type="hidden" id="miejscowosc" name="miejscowosc" value="rejestracja">
+                <input type="hidden" id="miejscowoscInput" name="miejscowosc">
                 <button type="reset" class="btn btn-default">Resetuj</button>
                 <button type="submit" class="btn btn-primary">Wyślij</button>
               </div>
@@ -194,19 +195,20 @@
     </div>
     <?php
     require_once(FOOTER);
-    echo "<script src='".JS_KAT.'swipe.js'."'></script>";
-    echo '<script src="'.JS_KAT.'rejestracja.js?x='.rand(1, 10).'"></script>';
+    echo "<script src='".JS_KAT.'swipe.js'."?x=".time()."'></script>";
+    echo '<script src="'.JS_KAT.'rejestracja.js?x='.time().'"></script>';
     ?>
       <script>
         window.lokalizacja = new Swipe(document.getElementById('lokalizacja'), {
-          continuous: false,
-          calculateHeight: true
+          disableTouch: true,
+          continuous: false
         });
         nrListy = lokalizacja.getPos();
         var wojewodztwo = null;
         var powiat = null;
         var miejscowosc = null;
         var dzielnica = null;
+        var ostatniElement
         var kolejnosc = ['powiat', 'miejscowosc', 'dzielnica'];
 
         function wybor(dane, element) {
@@ -220,13 +222,18 @@
             dane.NrPowiatu = Number(dane.NrPowiatu);
           }
           if (dane.ID && dane.ID2) {
-            $("#miejscowosc").val(dane.ID);
-            console.log(dane.Nazwa);
+            $("#miejscowoscInput").val(dane.ID);
+            if (ostatniElement) {
+              $(ostatniElement).removeClass("active");
+            }
+            $(element).addClass("active");
+            ostatniElement = element;
+            // console.log(dane.Nazwa);
           }
           // console.log(dane);
           var cel = $(element).attr('target');
           var url = <?php echo '"'.BAZOWY_KAT.'jednostkiTerytorialne.php?tabela='.'"'?> + cel;
-          console.log(url);
+          // console.log(url);
           $.get(url, dane,
             function (data, textStatus, jqXHR) {
               console.log(data);

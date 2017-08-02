@@ -18,8 +18,11 @@ if ($ogloszenie->znajdzOgloszenie()) {
 if (isset($_SESSION['idUzytkownika'])) {
     $ogloszenie->sprawdzCzyAdmin($_SESSION['idUzytkownika']);
 }
+$ogloszenie->zwiekszWyswietlenia();
   // TODO: If $_SERVER filename == ogloszenie.php dodaj w navbarze kontrole trybu admina?
 $autor = new Uzytkownik($ogloszenie->uzytkownik);
+//TODO: Zmienić wyswietlanie tytulu gdy nie ma zdjec lewy dolny rog, mniejszy box
+$ogloszenie->dodajDoOstatnich();
 ?>
 
   <!doctype html>

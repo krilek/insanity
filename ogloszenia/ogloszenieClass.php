@@ -3,6 +3,7 @@ class Ogloszenie
 {
     public $id;
     public $zdjecia = array();
+    public $zdjecie;
     public $tytul;
     public $tresc;
     public $uzytkownik;
@@ -12,9 +13,12 @@ class Ogloszenie
     public $dataUtworzenia;
     public $dataModyfikacji;
     public $cenaPotrzebna;
+    public $cena;
     public $ilZdjec;
+    public $wyswietlenia;
     public $saZdjecia = false;
     public $admin = false;
+    public $daneTablica = array();
     public function __construct($getID)
     {
         global $baza;
@@ -29,7 +33,8 @@ class Ogloszenie
                               `ogloszenia`.`Zakonczona`,`ogloszenia`.`Tresc`,
                               REPLACE(CAST(`ogloszenia`.`Cena` AS CHAR), ".", ",") AS Cena,
                               `ogloszenia`.`DataUtworzenia`,
-                              `ogloszenia`.`DataModyfikacji`, `typogloszenia`.`CenaPotrzebna`
+                              `ogloszenia`.`DataModyfikacji`, `typogloszenia`.`CenaPotrzebna`,
+                              `ogloszenia`.`Wyswietlenia`
                               FROM ogloszenia
                               JOIN typogloszenia ON `typogloszenia`.`ID` = `ogloszenia`.`Typ`
                               JOIN kategoria ON `kategoria`.ID = `ogloszenia`.`Kategoria`
@@ -46,6 +51,12 @@ class Ogloszenie
             $this->dataUtworzenia = $wynik['DataUtworzenia'];
             $this->dataModyfikacji = $wynik['DataModyfikacji'];
             $this->cenaPotrzebna = boolval($wynik['CenaPotrzebna']);
+            if ($this->cenaPotrzebna) {
+                $this->cena = $wynik['Cena'];
+            }
+            $this->wyswietlenia = intval($wynik['Wyswietlenia']);
+            $wynik['ID'] = $this->id;
+            $this->daneTablica = $wynik;
             return true;
         } else {
           //Nie istnieje
@@ -69,6 +80,13 @@ class Ogloszenie
         }
         return false;
     }
+    function zwiekszWyswietlenia()
+    {
+        global $baza;
+        $this->wyswietlenia++;
+        $zapytanie = "UPDATE `ogloszenia` SET `Wyswietlenia` = ".$this->wyswietlenia." WHERE `ogloszenia`.`ID` = ".$this->id;
+        $baza->query($zapytanie);
+    }
     function sprawdzCzyAdmin($idZalogowanego)
     {
         if ($idZalogowanego == $this->uzytkownik) {
@@ -77,6 +95,7 @@ class Ogloszenie
     }
     function zwrocGlowneZdjecie()
     {
+        $this->zdjecie = $this->zdjecia[0];
         return "<div id='glowne-zdjecie' class='hidden-xs'>
               <a class='thumbnail'>
                     <img src='".IMG_OGLOSZENIA.$this->zdjecia[0]."'>
@@ -126,7 +145,7 @@ class Ogloszenie
           </div>
           <div class='col-xs-6 col-sm-4 col-md-5'>
             <h3>".$uzytkownik->imie." ".$uzytkownik->nazwisko."</h3>
-            <p>".$uzytkownik->wojewodztwo.", ".$uzytkownik->miejscowosc."</p>
+            <p>".$uzytkownik->wojewodztwo.", ".($uzytkownik->powiat == $uzytkownik->miejscowosc ? $uzytkownik->miejscowosc : $uzytkownik->powiat.", ".$uzytkownik->miejscowosc)."</p>
           </div>
           <div class='col-xs-12 col-sm-5'>
             <h3>Skontaktuj się</h3>
@@ -172,8 +191,26 @@ class Ogloszenie
               <h3 class='panel-title'>".$this->kategoria."</h3>
             </div>
             <div class='panel-body'>
-              Podkategoria
+              Wyświetlenia: ".$this->wyswietlenia."
             </div>
           </div>";
+    }
+    function dodajDoOstatnich()
+    {
+        //Dodaj do stosu ostatnich ogloszeń
+        //FIXME: NAPRAW KURWA SKRACANIE!
+        //FIXME: json encode żeby zapisywać do cookie
+        //FIXME: zmniejszyc ilosc danych w tej sesji/cookie
+        //FIXME: ten if nie działa xD
+        if (array_search($this->id, $_SESSION['ostatnieOgloszenia']) === false) {
+            if ($this->saZdjecia) {
+                $this->zdjecie = $this->zdjecia[0];
+                $this->daneTablica['Zdjecie'] = $this->zdjecie;
+            }
+            array_push($_SESSION['ostatnieOgloszenia'], $this->daneTablica);
+        }
+        if (count($_SESSION['ostatnieOgloszenia']) > MAX_OSTATNICH_OGLOSZEN) {
+            $_SESSION['ostatnieOgloszenia'] = array_slice($_SESSION['ostatnieOgloszenia'], 1, MAX_OSTATNICH_OGLOSZEN);
+        }
     }
 }

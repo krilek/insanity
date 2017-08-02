@@ -39,7 +39,7 @@ function podpowiedzi($tabela, $kolumna, $input, $limit = 5, $sortuj = null)
         $zapytanie .= " WHERE miejscowosc.$kolumna";
     }
         $zapytanie .=" LIKE ";
-        $zapytanie .= " '$input%' ";
+        $zapytanie .= " '%$input%' ";
     if ($sortuj) {
         $zapytanie .= "ORDER BY $sortuj ";
     }

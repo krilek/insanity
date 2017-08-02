@@ -61,7 +61,12 @@ function namierzajKlienta($ip)
                     if ($wynik->num_rows == 1) {
                         $wynik = $wynik->fetch_assoc();
                         return $wynik['ID'];
+                        //TODO: Zrób zwracanie -1, na dole popraw tego ifa
+                    } else {
+                        return null;
                     }
+                } else {
+                    return null;
                 }
             }
         } else {
@@ -83,6 +88,9 @@ function sprawdzLokalizacje()
             if (($idMiejscowosci = namierzajKlienta($_SERVER['REMOTE_ADDR'])) != null) {
               //Określ na podstawie ip
                 $_SESSION['miejscowowsc'] = $idMiejscowosci;
+                setcookie('miejscowosc', $_SESSION['miejscowosc'], time() + (86400 * 30), "/");
+            } else {
+                $_SESSION['miejscowosc'] = -1;
                 setcookie('miejscowosc', $_SESSION['miejscowosc'], time() + (86400 * 30), "/");
             }
         } else {
