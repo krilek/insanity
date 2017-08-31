@@ -7,6 +7,8 @@ if (!isset($_SESSION['miejscowosc'])) {
 if (preg_match('/(blad.php)/', $_SERVER['REQUEST_URI']) != 1) {
     $_SESSION['url'] = $_SERVER['REQUEST_URI'];
 }
+
+//TODO: Tu zrobić blacklistę stron które wymagają sesji i bez niej nie wystartują
 //FIXME: WYLOGOWANIE RESETUJE?!
 if (!isset($_SESSION['ostatnieOgloszenia'])) {
     if (isset($_COOKIE['ostatnieOgloszenia'])) {
@@ -24,6 +26,6 @@ if (isset($_SESSION['url'])) {
         }
     }
 }
-if ($_SERVER['SERVER_NAME'] == "localhost") {
+if ($_SERVER['SERVER_NAME'] == "localhost" && isset($sesjaDebug)) {
     print_r($_SESSION);
 }

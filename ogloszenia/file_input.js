@@ -3,6 +3,7 @@
 // TODO: ALERT PRZED WYJSCIEM
 var iloscPlikow = 0;
 var LIMIT_PLIKOW = 6;
+var MAX_ROZMIAR = 500000
 // TODO: MOŻE W PRZYSZŁOŚCI!!!
 // var licznikInputow = 1;
 // $("#zdjecia").on("click", function () {
@@ -22,25 +23,31 @@ var LIMIT_PLIKOW = 6;
 //     at czaryMary (file_input.js?v=1500107044:39)
 //     at HTMLInputElement.onchange (dodaj_ogloszenie.php:178)\
 function czaryMary(input) {
-  var jq = $(input);
-  var cel = $("#" + jq.attr("cel"));
   if (input.files) {
-    var reader = new FileReader();
-    reader.onload = function (e) {
-      iloscPlikow++;
-      aktualizujLabel(iloscPlikow);
-      cel.html("");
-      cel.append('<img class="img-thumbnail img-responsive" src="' + e.target.result + '" />');
-      cel.append('<span class="glyphicon glyphicon-remove" onclick="usunZdjecie(this)"></span>');
-      cel.show();
-      jq.hide();
-      if (iloscPlikow < LIMIT_PLIKOW) {
-        stworzGrupe(iloscPlikow + 1);
-      } else if (iloscPlikow >= LIMIT_PLIKOW) {
-        $("span.btn-file").addClass("disabled");
+    // console.log(input.files);
+    if (input.files[0].size > MAX_ROZMIAR) {
+      $(input).val('');
+      pokazAlert();
+    } else {
+      var jq = $(input);
+      var cel = $("#" + jq.attr("cel"));
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        iloscPlikow++;
+        aktualizujLabel(iloscPlikow);
+        cel.html("");
+        cel.append('<img class="img-thumbnail img-responsive" src="' + e.target.result + '" />');
+        cel.append('<span class="glyphicon glyphicon-remove" onclick="usunZdjecie(this)"></span>');
+        cel.show();
+        jq.hide();
+        if (iloscPlikow < LIMIT_PLIKOW) {
+          stworzGrupe(iloscPlikow + 1);
+        } else if (iloscPlikow >= LIMIT_PLIKOW) {
+          $("span.btn-file").addClass("disabled");
+        }
       }
+      reader.readAsDataURL(input.files[0]);
     }
-    reader.readAsDataURL(input.files[0]);
   }
 }
 
@@ -77,7 +84,7 @@ function usunZdjecie(element) {
 //   // if (radio.val() == "sprzedaz") {
 // }
 var typOferty = function (wartosc) {
-  console.log(wartosc);
+  // console.log(wartosc);
   if (wartosc == 1)
     $("#cena").removeAttr('disabled');
   else
@@ -86,9 +93,9 @@ var typOferty = function (wartosc) {
 }
 $(document).ready(function () {
   var radia = document.getElementById("dodajOgloszenie").elements.typ;
-  console.log(radia);
+  // console.log(radia);
   for (var i = 0; i < radia.length; i++) {
-    console.log(radia[i]);
+    // console.log(radia[i]);
     if (radia[i].checked) {
       typOferty(radia[i].getAttribute("data-cena"));
     }
@@ -117,3 +124,13 @@ $(document).ready(function () {
     }
   })
 });
+
+function pokazAlert() {
+  var tresc = "Rozmiar danego zdjęcia jest zbyt duży. Limit: " + MAX_ROZMIAR / 1000 + " KB";
+  var div = '<div id="max-zdjec" class="alert alert-dismissible alert-danger fade in"><button type="button" class="close" data-dismiss="alert">&times;</button>';
+  if ($('#max-zdjec').length != 0) {
+    return;
+  } else {
+    $('#podglad').prepend(div + tresc + '</div>');
+  }
+}

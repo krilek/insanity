@@ -27,7 +27,7 @@ $ogloszenie->dodajDoOstatnich();
 
   <!doctype html>
   <html lang="pl">
-    <?php require_once(HEAD);
+  <?php require_once(HEAD);
     if ($ogloszenie->saZdjecia) {
         echo "<link rel='stylesheet' href='ogloszenie.css'>
           <style>
@@ -39,6 +39,11 @@ $ogloszenie->dodajDoOstatnich();
         echo "<link rel='stylesheet' href='ogloszenieBez.css'>";
     }
     ?>
+  <style>
+    #tresc {
+      word-wrap: break-word;
+    }
+  </style>
 
   <body>
     <?php require_once(NAVBAR);?>
@@ -66,7 +71,7 @@ $ogloszenie->dodajDoOstatnich();
     }
       echo $ogloszenie->zwrocInformacjeUzytkownika($autor, isset($_SESSION['zalogowany']));
     ?>
-    <!--TODO: https://stackoverflow.com/questions/30765758/how-to-insert-a-column-between-two-rows-of-another-column-during-responsiveness-->
+      <!--TODO: https://stackoverflow.com/questions/30765758/how-to-insert-a-column-between-two-rows-of-another-column-during-responsiveness-->
       <div class="row">
         <div class="col-sm-8">
           <div class="page-header">
@@ -85,26 +90,26 @@ $ogloszenie->dodajDoOstatnich();
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-8">
-                <?php
+        <div class="col-sm-8" id='tresc'>
+          <?php
                 echo $ogloszenie->zwrocTresc();
                 ?>
         </div>
         <div class="col-sm-4">
 
-            <?php
+          <?php
             echo $ogloszenie->zwrocInfoOgloszenia();
             ?>
-          <div class="panel panel-default reklamy">
-            <div class="panel-body">
-              <img class="responsive-img" src="http://placehold.it/200x250" />
-              <img src="http://placehold.it/200x250" />
-              <img src="http://placehold.it/200x250" />
-              <img src="http://placehold.it/200x250" />
-              <img src="http://placehold.it/200x250" />
-              <img src="http://placehold.it/200x250" />
+            <div class="panel panel-default reklamy">
+              <div class="panel-body">
+                <img class="responsive-img" src="http://placehold.it/200x250" />
+                <img src="http://placehold.it/200x250" />
+                <img src="http://placehold.it/200x250" />
+                <img src="http://placehold.it/200x250" />
+                <img src="http://placehold.it/200x250" />
+                <img src="http://placehold.it/200x250" />
+              </div>
             </div>
-          </div>
         </div>
       </div>
       <div class="row">
@@ -127,12 +132,12 @@ $ogloszenie->dodajDoOstatnich();
         </div>
       </div>
 
-    </div>
-    </div>
-    <?php require_once(FOOTER); ?>
-    <script src="slider.js">
-    </script>
-    <script src="https://use.fontawesome.com/75c0fa3af9.js"></script>
+      </div>
+      </div>
+      <?php require_once(FOOTER); ?>
+      <script src="slider.js">
+      </script>
+      <script src="https://use.fontawesome.com/75c0fa3af9.js"></script>
   </body>
 
   </html>

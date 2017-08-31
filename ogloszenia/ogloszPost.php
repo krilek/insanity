@@ -160,21 +160,21 @@ function dodajOgloszenie($dane, $nrUzytkownika)
     "INSERT INTO `ogloszenia` 
     (Uzytkownik,Tytul,Kategoria,Tresc,Typ,Cena,DataUtworzenia) VALUES
     ($nrUzytkownika,'".$dane['tytul']."', ".$dane['kategoria'].", '".$dane['tresc']."',".$dane['typ'].",".$dane['cena'].",NOW())";
-    echo $dodajOgloszenie;
+    // echo $dodajOgloszenie;
     //TODO: ZASTANÓW SIĘ KURWA CZY NIE ZROBIĆ PROCEDUR
     if ($baza->query($dodajOgloszenie)) {
         return $baza->insert_id;
     } else {
-        echo $baza->error;
         przekieruj(BLAD."?blad=32");
+        echo $baza->error;
     }
 }
     //FORMULARZ
 if (isset($_POST)) {
-    echo "<pre>";
-    // print_r($_POST);
-    print_r($_FILES);
-    echo "</pre>";
+    // echo "<pre>";
+    // // print_r($_POST);
+    // print_r($_FILES);
+    // echo "</pre>";
     //FIXME: BRAK SPRAWDZANIA CENY
     if (filter_has_var(INPUT_POST, 'tytul')     && !empty($_POST['tytul']) &&
         filter_has_var(INPUT_POST, 'tresc')     && !empty($_POST['tresc']) &&

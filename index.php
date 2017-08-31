@@ -10,20 +10,20 @@
 
 function pokazThumbnail($dane, $obiekt = false, $kolumny = "col-lg-2 col-sm-4 reset-padding")
 {
-    if ($obiekt) {
-        $arr['Tytul'] = $dane->tytul;
-        $arr['Tresc'] = $dane->tresc;
-        $arr['ID'] = $dane->id;
-        if ($dane->saZdjecia) {
-            $arr['Zdjecie'] = IMG_OGLOSZENIA.$dane->zdjecia[0];
-        } else {
-            $arr['Zdjecie'] = IMG_KAT."brakZdjecia.png";
-        }
-        $arr['CenaPotrzebna'] = $dane->cenaPotrzebna;
-        $arr['Cena'] = $dane->cena;
-        $arr['Typ'] = $dane->typOgloszenia;
-        $dane = $arr;
-    }
+    // if ($obiekt) {
+    //     $arr['Tytul'] = $dane->tytul;
+    //     $arr['Tresc'] = $dane->tresc;
+    //     $arr['ID'] = $dane->id;
+    //     if ($dane->saZdjecia) {
+    //         $arr['Zdjecie'] = IMG_OGLOSZENIA.$dane->zdjecia[0];
+    //     } else {
+    //         $arr['Zdjecie'] = IMG_KAT."brakZdjecia.png";
+    //     }
+    //     $arr['CenaPotrzebna'] = $dane->cenaPotrzebna;
+    //     $arr['Cena'] = $dane->cena;
+    //     $arr['Typ'] = $dane->typOgloszenia;
+    //     $dane = $arr;
+    // }
     $dane['Waluta'] = "PLN";
     echo "<div class='$kolumny'>";
     echo      "<div class='thumbnail'>
@@ -33,8 +33,13 @@ function pokazThumbnail($dane, $obiekt = false, $kolumny = "col-lg-2 col-sm-4 re
     echo            "<p><a href='".OGLOSZENIA_KAT."ogloszenie.php?id=".$dane['ID']."' class='label label-danger' rel='tooltip' title='Zobacz'>Zobacz</a></p>";
     // echo            "<a href='' class='label label-default' rel='tooltip' title='Download now'>Download</a></p>";
     echo        "</div>";
-    echo        "<img class='img-responsive' src='".(isset($dane['Zdjecie']) ? IMG_OGLOSZENIA.$dane['Zdjecie'] : IMG_KAT."brakZdjecia.png"). "' alt='".$dane['Tytul']."'>";
-    if ($dane['CenaPotrzebna'] == 1) {
+    if (isset($dane['Zdjecie']) && file_exists(I_IMG_OGLOSZENIA.$dane['Zdjecie'])) {
+        $dane['Zdjecie'] =  IMG_OGLOSZENIA.$dane['Zdjecie'];
+    } else {
+        $dane['Zdjecie'] = IMG_KAT."brakZdjecia.png";
+    }
+    echo        "<img class='img-responsive' src='".$dane['Zdjecie']."'>";
+    if ($dane['CenaPotrzebna'] == 1 || $dane['CenaPotrzebna'] == true) {
         $cena = $dane['Cena']." ".$dane['Waluta'];
     } else {
         $cena = $dane['Typ'];
@@ -49,6 +54,7 @@ function pokazThumbnail($dane, $obiekt = false, $kolumny = "col-lg-2 col-sm-4 re
             </div>";
 }
 ?>
+
 
   <!doctype html>
 

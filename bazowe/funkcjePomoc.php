@@ -42,7 +42,7 @@ function sprawdzZalogowany()
     }
 }
 
-function sprocTekst($string, $dlugosc)
+function skrocTekst($string, $dlugosc)
 {
     return (mb_strlen($string) > $dlugosc ? mb_substr($string, 0, $dlugosc)."..." : $string);
 }
@@ -106,6 +106,6 @@ function sprawdzLokalizacje()
           // Gdy nie jest zalogowany ustaw na podstawie cookie
             $_SESSION['miejscowosc'] = $baza->escape_string($_COOKIE['miejscowosc']);
         }
+        echo $_COOKIE['miejscowosc'];
     }
-    echo $_COOKIE['miejscowosc'];
 }

@@ -1,9 +1,9 @@
 <?php
+require_once(FPOMOC);
 class Ogloszenie
 {
     public $id;
     public $zdjecia = array();
-    public $zdjecie;
     public $tytul;
     public $tresc;
     public $uzytkownik;
@@ -55,8 +55,6 @@ class Ogloszenie
                 $this->cena = $wynik['Cena'];
             }
             $this->wyswietlenia = intval($wynik['Wyswietlenia']);
-            $wynik['ID'] = $this->id;
-            $this->daneTablica = $wynik;
             return true;
         } else {
           //Nie istnieje
@@ -137,17 +135,20 @@ class Ogloszenie
     function zwrocInformacjeUzytkownika($uzytkownik, $zalogowany)
     {
         $info =  "<div class='jumbotron' id='uzytkownik-info'>
-        <div class='row'>
-          <div class='col-xs-6 col-sm-3 col-md-2'>
-            <a class='thumbnail' style='margin-bottom: 0px;'>
-                <img style='height: 128px; width: 128px;' src='$uzytkownik->avatar'>
-              </a>
-          </div>
-          <div class='col-xs-6 col-sm-4 col-md-5'>
+        <div class='row'>";
+        if (isset($uzytkownik->avatar)) {
+            $info  .="<div class='col-xs-4 col-sm-3 col-md-2'>
+                        <a class='thumbnail' style='margin-bottom: 0px;'>
+                            <img style='height: 128px; width: 128px;' src='$uzytkownik->avatar'>
+                        </a>
+                    </div>";
+        }
+        $info .=  "<div class='".(isset($uzytkownik->avatar) ? " col-xs-8 col-sm-4 col-md-5" : " col-xs-12 col-sm-5 ")."'>
             <h3>".$uzytkownik->imie." ".$uzytkownik->nazwisko."</h3>
             <p>".$uzytkownik->wojewodztwo.", ".($uzytkownik->powiat == $uzytkownik->miejscowosc ? $uzytkownik->miejscowosc : $uzytkownik->powiat.", ".$uzytkownik->miejscowosc)."</p>
-          </div>
-          <div class='col-xs-12 col-sm-5'>
+            </div>";
+
+        $info .=  "<div class='".(isset($uzytkownik->avatar)? "col-xs-12 col-sm-5" : "col-xs-12 col-sm-7")."'>
             <h3>Skontaktuj się</h3>
             <div class='btn-group'>
               <a href='".WIADOMOSCI_KAT."nowa_wiadomosc.php?adresat=".$uzytkownik->id."' class='btn btn-info".(!$zalogowany ? " disabled" : "")."'>Wiadomość <span class='glyphicon glyphicon-comment' aria-hidden='true'></span></a>
@@ -202,15 +203,27 @@ class Ogloszenie
         //FIXME: json encode żeby zapisywać do cookie
         //FIXME: zmniejszyc ilosc danych w tej sesji/cookie
         //FIXME: ten if nie działa xD
-        if (array_search($this->id, $_SESSION['ostatnieOgloszenia']) === false) {
-            if ($this->saZdjecia) {
-                $this->zdjecie = $this->zdjecia[0];
-                $this->daneTablica['Zdjecie'] = $this->zdjecie;
+        foreach ($_SESSION['ostatnieOgloszenia'] as $ostatnie) {
+            if (isset($ostatnie['ID']) && $ostatnie['ID'] == $this->id) {
+                return;
             }
-            array_push($_SESSION['ostatnieOgloszenia'], $this->daneTablica);
         }
+        $zwroc = array();
+        $zwroc['Tytul'] = skrocTekst($this->tytul, 25);
+        $zwroc['Tresc'] = skrocTekst($this->tresc, 50);
+        $zwroc['ID'] = $this->id;
+        $zwroc['CenaPotrzebna'] = $this->cenaPotrzebna;
+        $zwroc['Typ'] = $this->typOgloszenia;
+        if ($this->cenaPotrzebna) {
+            $zwroc['Cena'] = $this->cena;
+        }
+        if ($this->saZdjecia) {
+            $zwroc['Zdjecie'] = $this->zdjecia[0];
+        }
+        array_push($_SESSION['ostatnieOgloszenia'], $zwroc);
         if (count($_SESSION['ostatnieOgloszenia']) > MAX_OSTATNICH_OGLOSZEN) {
             $_SESSION['ostatnieOgloszenia'] = array_slice($_SESSION['ostatnieOgloszenia'], 1, MAX_OSTATNICH_OGLOSZEN);
         }
+        return true;
     }
 }

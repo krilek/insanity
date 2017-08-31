@@ -1,4 +1,3 @@
-TODO: BAZA MIAST do bazydanych
 TODO: Zapisywanie informacji o wyszukiwaniach
 TODO: OCENIANIE
 TODO: KOMPRESJA
@@ -10,31 +9,10 @@ TODO: KARUZELKA NA STRONIE GŁÓWNEJ
 TODO: WYZWALACZE DO CZYSZCZENIA rejestracji
 TODO: KURWA PROCEDURY
 FIXME: ISSET I SPRAWDZENIE W JEDNYM IFIE - ISSET MUSI BYĆ PIERWSZY
-TODO: RM - Rodzaj miejscowości 
-00 część miejscowości
-01 wieś
-02 kolonia
-03 przysiółek
-04 osada
-05 osada leśna
-06 osiedle
-07 schronisko turystyczne
-95 dzielnica m. st. Warszawy
-96 miasto
-98 delegatura
-99 część miasta
-TODO: MZ WYJEBAĆ
-TODO: 
-miejscowość samodzielna	SYM = SYMPOD
-miejscowość niesamodzielna	SYM ≠ SYMPOD.
-TODO: RM WYJEBAĆ? SYM ZAMIAST ID, SYMPOD DO OKREŚLENIA DZIELNICY
-miasta.txt ID;NrPowiatu;Wojewodztwo;Nazwa
-DYLEMATY CZY ZOSTAWIĆ SYMPOD
-TODO: DODAJ RM DO SORTOWANIA!!!
-
 TODO: TABELA Rozmowy - ID, ID_USER1 ID_USER2 SELECT ID, ID1, ID2 From rozmowy where Id1='$id' OR ID2='$id'
 TODO: TABELA WIADOMOSCI ID, IDROZMOWY, ID_USERA, TEKST, TIMESTAMP
 TODO: TABELA KATEGORIE - ID, Nazwa, rodzicID http://sqllessons.com/categories.html
+FIXME: Załadowanie strony nie sprawdza pozycji na starcie dopiero po odświeżeniu (możliwe że tak nie jest po prostu wyswietlanie sesji jest przed sprawdzeniem lokalizacji?)
 TODO: progressbar z ajaxem
       $(document).ready( function () {
       $.ajax({
@@ -57,3 +35,7 @@ TODO: progressbar z ajaxem
       TODO: https://github.com/biggora SPOKO BAJERKI DO BUTSTRAPIKA
       http://seiyria.com/bootstrap-slider/
      TODO: Dodaj sympod2, dodaj 4 kartę jeśli miasto wybrane ma inne o podobnym sympod, zrób to samo w wyszukiwarce kolejne zapytanie gdy już zostało wybrane miasto? 
+
+     TODO: 
+     http://c3js.org/ - do analizy danych
+     https://appleple.github.io/SmartPhoto/ - do wyswietlania zdjęć na full
