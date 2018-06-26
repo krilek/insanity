@@ -1,4 +1,4 @@
-TODO: Zapisywanie informacji o wyszukiwaniach
+﻿TODO: Zapisywanie informacji o wyszukiwaniach
 TODO: OCENIANIE
 TODO: KOMPRESJA
 TODO: Adnotacje do zdjęć
@@ -12,6 +12,7 @@ FIXME: ISSET I SPRAWDZENIE W JEDNYM IFIE - ISSET MUSI BYĆ PIERWSZY
 TODO: TABELA Rozmowy - ID, ID_USER1 ID_USER2 SELECT ID, ID1, ID2 From rozmowy where Id1='$id' OR ID2='$id'
 TODO: TABELA WIADOMOSCI ID, IDROZMOWY, ID_USERA, TEKST, TIMESTAMP
 TODO: TABELA KATEGORIE - ID, Nazwa, rodzicID http://sqllessons.com/categories.html
+FIXME: Skopany jest head niektóre strony mają link poza headem xd
 FIXME: Załadowanie strony nie sprawdza pozycji na starcie dopiero po odświeżeniu (możliwe że tak nie jest po prostu wyswietlanie sesji jest przed sprawdzeniem lokalizacji?)
 TODO: progressbar z ajaxem
       $(document).ready( function () {
@@ -39,3 +40,6 @@ TODO: progressbar z ajaxem
      TODO: 
      http://c3js.org/ - do analizy danych
      https://appleple.github.io/SmartPhoto/ - do wyswietlania zdjęć na full
+FIXME: Sprawdz kurwa coś ty odjebał z tymi wojewoództwami w rejestracji. Sprawdz swietokrzyskie
+
+FIXME: Popraw sprawdzanie cen

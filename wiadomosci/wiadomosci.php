@@ -7,7 +7,8 @@ require_once("../config.php");
 
   <!doctype html>
   <html lang="pl">
-    <?php require_once(HEAD);?>
+  <?php require_once(HEAD);?>
+  <link rel="stylesheet" href="../css/typeahead.css">
   <style>
     #ludzie div {
       min-height: 200px;
@@ -46,6 +47,7 @@ require_once("../config.php");
       position: absolute;
       bottom: 39px;
       top: 42px;
+      width: 100%;
       /*max-height: calc(60vh - 80px);*/
       overflow-y: scroll;
       overflow-x: hidden;
@@ -68,16 +70,10 @@ require_once("../config.php");
     .prawo {
       text-align: right;
     }
-    /*#chat .panel{
-    height: 100%;
-  }*/
-    /*.przewijalne{
-    height: 100%;
-    overflow-y: scroll;
-  }
-  .przewijalne li{
-    margin-right: 2px;
-  }*/
+
+    span.twitter-typeahead {
+      float: none !important;
+    }
   </style>
 
   <body>
@@ -87,9 +83,33 @@ require_once("../config.php");
         <h1>Wiadomości</h1>
       </div>
       <div class="row">
+        <!-- Modal -->
+        <div id="nowaWiadomosc" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Nowa wiadomość</h4>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="wysz-input">Login:</label>
+                  <input class="form-control typeahead" id="wysz-input" placeholder="Wyszukaj użytkownika" type="text">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
         <div class="col-sm-4" id="ludzie">
           <div class="list-group">
+            <a class='list-group-item active' data-toggle="modal" data-target="#nowaWiadomosc">Nowa wiadomość</a>
             <?php
+              $brakRozmow = false;
               $zapytanie = "SELECT czat_rozmowa.ID, uzytkownik1.Login as Login1, czat_rozmowa.IDUzytkownik1 as ID1, uzytkownik2.Login as Login2, czat_rozmowa.IDUzytkownik2 as ID2
                               FROM czat_rozmowa 
                               JOIN uzytkownicy AS uzytkownik1 ON `uzytkownik1`.`ID` = `czat_rozmowa`.`IDUzytkownik1` 
@@ -100,30 +120,16 @@ require_once("../config.php");
                     //Wypisz listę użytkowników
                     foreach ($rozmowy as $rozmowa) {
                         // print_r($rozmowa);
-                        echo "<a class='list-group-item' onclick='wybierzRozmowe(".$rozmowa['ID'].")'>".($rozmowa['ID1'] == $_SESSION['idUzytkownika'] ? $rozmowa['Login2'] : $rozmowa['Login1'])."</a>";
+                        echo "<a class='list-group-item' onclick='wybierzRozmowe(".$rozmowa['ID'].", this)'>".($rozmowa['ID1'] == $_SESSION['idUzytkownika'] ? $rozmowa['Login2'] : $rozmowa['Login1'])."<span class='badge'>321</span></a>";
                     }
                 } else {
                     echo "Brak rozmówców";
+                    $brakRozmow = true;
                 }
             } else {
                 echo $baza->error;
             }
             ?>
-              <!--<li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus<span class="badge">321</span></li>
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus<span class="badge">321</span></li>
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus<span class="badge">321</span></li>
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus<span class="badge">321</span></li>
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus<span class="badge">321</span></li>-->
           </div>
         </div>
         <div class="col-sm-8" id="chat-col">
@@ -237,23 +243,93 @@ require_once("../config.php");
       </div>
     </div>
     <?php require_once(FOOTER); ?>
+    <script src="../js/typeahead.bundle.min.js"></script>
     <script>
-        <?php
+      <?php
         echo "var idUzytkownika = ".$_SESSION['idUzytkownika'].";";
         ?>
       var idRozmowy = -1;
       var ostatniaWiadomosc = 1;
       var licznikOdswiezania = undefined;
+      var ostatniPrzycisk = null;
+      var nowyOdbiorca = undefined;
+      //EVENTY
       $(document).ready(function () {
         $("#inputChatu").on("submit", function (e) {
           e.preventDefault();
           wyslijWiadomosc($("#input-wiadomosc"), idUzytkownika, idRozmowy);
         });
-      })
+        $('#wysz-input').on('typeahead:autocomplete', function (ev, suggestion) {
+          if (suggestion) {
+            nowaRozmowa(suggestion);
+            $('#nowaWiadomosc').modal("hide");
+          }
+        });
+        $('#wysz-input').on('typeahead:selected', function (ev, suggestion) {
+          if (suggestion) {
+            nowaRozmowa(suggestion);
+            $('#nowaWiadomosc').modal("hide");
+          }
+        });
+        $('#nowaWiadomosc').on('shown.bs.modal', function (ev) {
+          $('#wysz-input').focus();
+        });
+        // $('#nowaWiadomosc').on("hidden.bs.modal", function (ev) {
+        //FIXME: Może w przyszłosci nieuruchamianie tego eventu przy zamykaniu po wybraniu z listy
+        // if (!nowyOdbiorca) {
+        //   wartosc = $('#wysz-input').typeahead('val');
+        //   if (wartosc.length > 1) {
+        //     temp = {
+        //       dane: null,
+        //       async: function (datanums) {
+        //         if (datanums.length > 0) {
+        //           temp.dane = datanums[0];
+        //         }
+        //       }
+        //     }
+        //     uzytkownik.search(wartosc, temp.async, temp.async);
+        //     if (temp.dane) {
+        //       nowaRozmowa(temp.dane);
+        //     }
+        //   }
+        // }
+        // });
+      });
+
+      function nowaRozmowa(uzytkownik) {
+        if (Number(uzytkownik.id) > 0) {
+          var dane = {
+            tryb: "nowaRozmowaSprawdzenie",
+            odbiorca: uzytkownik.id
+          };
+          $.post("czat.php", dane, function (data, textStatus, jqXHR) {
+            //TODO: tu sprawdzaj najpierw czy taki uzytkownik istnieje
+            //Jesli tak to stworz okno wiadomosci, gdy uzytkownik napisze wiadomosc stworz rozmowe i wiadomosc 
+            //unikniecie flooda listy wiadomosci
+            if (data.kod == 200) {
+              // console.log(data);
+              //Nowa rozmowa
+              nowaRozmowaOkno(uzytkownik);
+            } else if (data.kod == 306) {
+              //FIXME: naprawić podświetlanie przycisku na liście osób, drugi parametr funkcji wybierzRozmowe
+              wybierzRozmowe(data.idRozmowy);
+            }
+          });
+        }
+      }
+
+      function nowaRozmowaOkno(odbiorca) {
+        console.log(odbiorca);
+        //belka górna
+        if (odbiorca) {
+          $('.panel-heading').html(odbiorca.value);
+          wypiszWiadomosci([], 0, false, "skok", false);
+        }
+      }
 
       function wyslijWiadomosc(input, nadawcaWiadomosci, rozm) {
         trescWiadomosci = input.val();
-        if (trescWiadomosci.length > 0) {
+        if (trescWiadomosci.length) {
           var dane = {
             tryb: "wiadomosc",
             wiadomosc: trescWiadomosci,
@@ -276,7 +352,19 @@ require_once("../config.php");
         }
       }
 
-      function wybierzRozmowe(id) {
+      function wybierzRozmowe(id, przycisk) {
+        if (przycisk != null) {
+          if (ostatniPrzycisk != null) {
+            ostatniPrzycisk.removeClass("active");
+            ostatniPrzycisk = $(przycisk);
+          } else {
+            ostatniPrzycisk = $(przycisk);
+          }
+          $(przycisk).addClass("active");
+          // console.log($(przycisk)[0].firstChild);
+          $(".panel-heading").html($(przycisk)[0].firstChild.data);
+
+        }
         idRozmowy = id;
         var dane = {
           tryb: "pobierzWiadomosci",
@@ -293,7 +381,7 @@ require_once("../config.php");
         );
       }
 
-      function wypiszWiadomosci(wiadomosci, ilosc, dopisywanie, scroll) {
+      function wypiszWiadomosci(wiadomosci, ilosc, dopisywanie, scroll, odswiezaj) {
 
         var divWiadomosci = $("#wiadomosciLista");
         if (dopisywanie != true) {
@@ -318,7 +406,7 @@ require_once("../config.php");
         } else {
           divWiadomosci[0].scrollTop = divWiadomosci[0].scrollHeight;
         }
-        if (licznikOdswiezania == undefined) {
+        if (licznikOdswiezania == undefined && odswiezaj != false) {
           licznikOdswiezania = setInterval(function () {
             odswiezWiadomosci(idRozmowy, ostatniaWiadomosc);
           }, 2000);
@@ -365,7 +453,39 @@ require_once("../config.php");
         // console.log(media);
         ojciec.append(media);
       }
+      //SUGESTIE
 
+      var uzytkownik = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+          url: <?php echo "'".BAZOWY_KAT."szukajPodpowiedzi.php?tabela=uzytkownik&q=%QUERY',";?>
+          wildcard: '%QUERY',
+          cache: true,
+          filter: function (data) {
+            if (data) {
+              return $.map(data, function (object) {
+                return {
+                  id: object.ID,
+                  value: object.Login
+                };
+              });
+            } else {
+              return {};
+            }
+          }
+        }
+      });
+
+      $('#wysz-input').typeahead({
+        hint: true,
+        highlight: true,
+        minLength: 2
+      }, {
+        name: 'uzytkownik',
+        source: uzytkownik,
+        display: "value"
+      });
       // <div class="media">
       //   <div class="media-body">
       //     <p>

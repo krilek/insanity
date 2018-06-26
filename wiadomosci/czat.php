@@ -75,10 +75,51 @@ if (isset($_SESSION['zalogowany'])) {
                             echo json_encode($wynik);
                         } else {
                             $wynik['kod'] = 404;
-                            $wynik['trescKomunikatu'] = "Błąd ".$rozmowa->blad." ".$this->ostatnieZapytanie;
+                            $wynik['trescKomunikatu'] = "Błąd";
                             echo json_encode($wynik);
                         }
                     }
+                    break;
+                case 'nowaRozmowaSprawdzenie':
+                    if (isset($_POST['odbiorca'])) {
+                        $istniejeOdbiorca = false;
+                        $nadawca = $_SESSION['idUzytkownika'];
+                        $odbiorca = $baza->escape_string($_POST['odbiorca']);
+                        if ($nadawca == $odbiorca) {
+                            exit();
+                        }
+                        //Sprawdz czy odbiorca jest w bazie uzytkowników
+                        if ($uzytkownik = $baza->query('SELECT ID FROM uzytkownicy WHERE ID='.$odbiorca)) {
+                            if ($uzytkownik->num_rows == 1) {
+                                $istniejeOdbiorca = true;
+                            } else {
+                                $wynik['kod'] = 305;
+                                $wynik['trescKomunikatu'] = "Użytkownik nie istnieje";
+                            }
+                        }
+                        if ($istniejeOdbiorca) {
+                            //Sprawdz czy może istnieje już taka rozmowa
+                            $zapytanie = "SELECT ID FROM czat_rozmowa WHERE (IDUzytkownik1=$nadawca && IDUzytkownik2=$odbiorca) || (IDUzytkownik1=$odbiorca && IDUzytkownik2=$nadawca) LIMIT 1";
+                            if ($rozmowy = $baza->query($zapytanie)) {
+                                if ($rozmowy->num_rows > 0) {
+                                    $wynik['kod'] = 306;
+                                    $wynik['trescKomunikatu'] = "Rozmowa już istnieje";
+                                    $wynik['idRozmowy'] = $rozmowy->fetch_assoc()['ID'];
+                                } else {
+                                    $wynik['kod'] = 200;
+                                    $wynik['trescKomunikatu'] = "Rozmowa nie istnieje";
+                                }
+                            }
+                        }
+                        echo json_encode($wynik);
+                        //Sprawdz czy jest uzytkownik
+                        //Sprawdz czy aktualnie nie istnieje taka rozmowa
+                        //Jesli tak to zwróc id tej rozmowy i przełącz na nią
+                        //Jeśli nie czekaj na wiadomosc i dopiero
+                        //stworz nowa rozmowe i przełącz na nią
+                    }
+                    break;
+                case 'nowaRozmowa':
                     break;
             }
         }
@@ -94,7 +135,6 @@ class Rozmowa
     private $idOstatniejWiadomosci;
     private $odbiorca;
     public $ostatnieZapytanie;
-    public $blad;
     function __construct($id)
     {
         global $baza;
@@ -102,9 +142,15 @@ class Rozmowa
     }
     function sprawdzDane()
     {
-        return true;
-        
+        global $baza;
         //Sprawdz czy w rozmowie bierze udział uzytkownik sesji
+        $this->ostatnieZapytanie = "SELECT * FROM czat_rozmowa WHERE ID=".$this->idRozmowy." && ( IDUzytkownik1=".$_SESSION['idUzytkownika']." || IDUzytkownik2=".$_SESSION['idUzytkownika'].")";
+        if ($wynik = $baza->query($this->ostatnieZapytanie)) {
+            if ($wynik->num_rows == 1) {
+                return true;
+            }
+        }
+        return false;
     }
     function pobierzWiadomosci($ilosc, $przesuniecie = 0)
     {
@@ -130,7 +176,6 @@ class Rozmowa
             }
             return $tablicaZwrotna;
         } else {
-            $this->blad = $baza->error;
             return -1;
         }
     }

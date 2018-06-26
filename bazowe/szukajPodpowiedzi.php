@@ -18,6 +18,9 @@ if (isset($_GET['tabela']) && isset($_GET['q']) && mb_strlen($_GET['q']) > 1) {
         case 'kategoria':
             $podpowiedz = podpowiedzi($_GET['tabela'], "Nazwa", $_GET['q'], 10);
             break;
+        case 'uzytkownik':
+            $podpowiedz = podpowiedzi("uzytkownicy", "Login, ID", $_GET['q'], 20, "Login");
+            break;
     }
     header('Content-type: application/json');
     echo $podpowiedz;
@@ -27,10 +30,14 @@ function podpowiedzi($tabela, $kolumna, $input, $limit = 5, $sortuj = null)
     global $baza;
     $input = $baza->escape_string($input);
     $zapytanie = "SELECT ";
-    if ($tabela != 'miejscowosc') {
+    if ($tabela != 'miejscowosc' && $tabela != 'uzytkownicy') {
         $zapytanie .= "$kolumna FROM $tabela";
         $zapytanie .= " WHERE ";
         $zapytanie .= $kolumna;
+    } elseif ($tabela == 'uzytkownicy') {
+        $zapytanie .= "$kolumna FROM $tabela";
+        $zapytanie .= " WHERE ";
+        $zapytanie .= "Login";
     } else {
         $zapytanie .= "miejscowosc.$kolumna as Miejscowosc, powiat.Nazwa as Powiat, wojewodztwo.Nazwa as Wojewodztwo FROM $tabela 
                         JOIN powiat ON powiat.NrPowiatu = miejscowosc.Powiat && 
@@ -38,8 +45,8 @@ function podpowiedzi($tabela, $kolumna, $input, $limit = 5, $sortuj = null)
                         JOIN wojewodztwo ON wojewodztwo.TERYT = miejscowosc.Wojewodztwo";
         $zapytanie .= " WHERE miejscowosc.$kolumna";
     }
-        $zapytanie .=" LIKE ";
-        $zapytanie .= " '%$input%' ";
+    $zapytanie .=" LIKE ";
+    $zapytanie .= " '%$input%' ";
     if ($sortuj) {
         $zapytanie .= "ORDER BY $sortuj ";
     }
@@ -54,8 +61,9 @@ function podpowiedzi($tabela, $kolumna, $input, $limit = 5, $sortuj = null)
         foreach ($wyniki as $wynik) {
             if ($tabela == 'miejscowosc') {
                 $output[] = $wynik['Miejscowosc'].($wynik['Powiat'] != $wynik['Miejscowosc']? ", ".$wynik['Powiat']:"");
+            } elseif ($tabela == 'uzytkownicy') {
+                $output[] = array('ID' => $wynik['ID'], 'Login' => $wynik['Login']);
             } else {
-                $output[] = $wynik[$kolumna];
                 $output[] = $wynik[$kolumna];
             }
         }
