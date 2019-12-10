@@ -1,0 +1,2479 @@
+ID;NrGminy;NrPowiatu;Wojewodztwo;Nazwa
+1;1;01;02;Bolesławiec
+2;2;01;02;Bolesławiec
+3;2;01;02;Gromadka
+4;3;01;02;Nowogrodziec
+5;2;01;02;Osiecznica
+6;2;01;02;Warta Bolesławiecka
+7;1;02;02;Bielawa
+8;1;02;02;Dzierżoniów
+9;3;02;02;Pieszyce
+10;1;02;02;Piława Górna
+11;2;02;02;Dzierżoniów
+12;2;02;02;Łagiewniki
+13;3;02;02;Niemcza
+14;1;03;02;Głogów
+15;2;03;02;Głogów
+16;2;03;02;Jerzmanowa
+17;2;03;02;Kotla
+18;2;03;02;Pęcław
+19;2;03;02;Żukowice
+20;3;04;02;Góra
+21;2;04;02;Jemielno
+22;2;04;02;Niechlów
+23;3;04;02;Wąsosz
+24;1;05;02;Jawor
+25;3;05;02;Bolków
+26;2;05;02;Męcinka
+27;2;05;02;Mściwojów
+28;2;05;02;Paszowice
+29;2;05;02;Wądroże Wielkie
+30;1;06;02;Karpacz
+31;1;06;02;Kowary
+32;1;06;02;Piechowice
+33;1;06;02;Szklarska Poręba
+34;2;06;02;Janowice Wielkie
+35;2;06;02;Jeżów Sudecki
+36;2;06;02;Mysłakowice
+37;2;06;02;Podgórzyn
+38;2;06;02;Stara Kamienica
+39;1;07;02;Kamienna Góra
+40;2;07;02;Kamienna Góra
+41;3;07;02;Lubawka
+42;2;07;02;Marciszów
+43;1;08;02;Duszniki-Zdrój
+44;1;08;02;Kłodzko
+45;1;08;02;Kudowa-Zdrój
+46;1;08;02;Nowa Ruda
+47;1;08;02;Polanica-Zdrój
+48;3;08;02;Bystrzyca Kłodzka
+49;2;08;02;Kłodzko
+50;3;08;02;Lądek-Zdrój
+51;2;08;02;Lewin Kłodzki
+52;3;08;02;Międzylesie
+53;2;08;02;Nowa Ruda
+54;3;08;02;Radków
+55;3;08;02;Stronie Śląskie
+56;3;08;02;Szczytna
+57;1;09;02;Chojnów
+58;2;09;02;Chojnów
+59;2;09;02;Krotoszyce
+60;2;09;02;Kunice
+61;2;09;02;Legnickie Pole
+62;2;09;02;Miłkowice
+63;3;09;02;Prochowice
+64;2;09;02;Ruja
+65;1;10;02;Lubań
+66;1;10;02;Świeradów-Zdrój
+67;3;10;02;Leśna
+68;2;10;02;Lubań
+69;3;10;02;Olszyna
+70;2;10;02;Platerówka
+71;2;10;02;Siekierczyn
+72;1;11;02;Lubin
+73;2;11;02;Lubin
+74;2;11;02;Rudna
+75;3;11;02;Ścinawa
+76;3;12;02;Gryfów Śląski
+77;3;12;02;Lubomierz
+78;3;12;02;Lwówek Śląski
+79;3;12;02;Mirsk
+80;3;12;02;Wleń
+81;2;13;02;Cieszków
+82;2;13;02;Krośnice
+83;3;13;02;Milicz
+84;1;14;02;Oleśnica
+85;3;14;02;Bierutów
+86;2;14;02;Dobroszyce
+87;2;14;02;Dziadowa Kłoda
+88;3;14;02;Międzybórz
+89;2;14;02;Oleśnica
+90;3;14;02;Syców
+91;3;14;02;Twardogóra
+92;1;15;02;Oława
+93;2;15;02;Domaniów
+94;3;15;02;Jelcz-Laskowice
+95;2;15;02;Oława
+96;3;16;02;Chocianów
+97;2;16;02;Gaworzyce
+98;2;16;02;Grębocice
+99;3;16;02;Polkowice
+100;3;16;02;Przemków
+101;2;16;02;Radwanice
+102;2;17;02;Borów
+103;2;17;02;Kondratowice
+104;2;17;02;Przeworno
+105;3;17;02;Strzelin
+106;3;17;02;Wiązów
+107;2;18;02;Kostomłoty
+108;2;18;02;Malczyce
+109;2;18;02;Miękinia
+110;3;18;02;Środa Śląska
+111;2;18;02;Udanin
+112;1;19;02;Świdnica
+113;1;19;02;Świebodzice
+114;2;19;02;Dobromierz
+115;3;19;02;Jaworzyna Śląska
+116;2;19;02;Marcinowice
+117;3;19;02;Strzegom
+118;2;19;02;Świdnica
+119;3;19;02;Żarów
+120;3;20;02;Oborniki Śląskie
+121;3;20;02;Prusice
+122;3;20;02;Trzebnica
+123;2;20;02;Wisznia Mała
+124;2;20;02;Zawonia
+125;3;20;02;Żmigród
+126;1;21;02;Boguszów-Gorce
+127;1;21;02;Jedlina-Zdrój
+128;1;21;02;Szczawno-Zdrój
+129;2;21;02;Czarny Bór
+130;3;21;02;Głuszyca
+131;3;21;02;Mieroszów
+132;2;21;02;Stare Bogaczowice
+133;2;21;02;Walim
+134;3;22;02;Brzeg Dolny
+135;2;22;02;Wińsko
+136;3;22;02;Wołów
+137;2;23;02;Czernica
+138;2;23;02;Długołęka
+139;2;23;02;Jordanów Śląski
+140;3;23;02;Kąty Wrocławskie
+141;2;23;02;Kobierzyce
+142;2;23;02;Mietków
+143;3;23;02;Sobótka
+144;3;23;02;Siechnice
+145;2;23;02;Żórawina
+146;3;24;02;Bardo
+147;2;24;02;Ciepłowody
+148;2;24;02;Kamieniec Ząbkowicki
+149;2;24;02;Stoszowice
+150;3;24;02;Ząbkowice Śląskie
+151;3;24;02;Ziębice
+152;3;24;02;Złoty Stok
+153;1;25;02;Zawidów
+154;1;25;02;Zgorzelec
+155;3;25;02;Bogatynia
+156;3;25;02;Pieńsk
+157;2;25;02;Sulików
+158;3;25;02;Węgliniec
+159;2;25;02;Zgorzelec
+160;1;26;02;Wojcieszów
+161;1;26;02;Złotoryja
+162;2;26;02;Pielgrzymka
+163;3;26;02;Świerzawa
+164;2;26;02;Zagrodno
+165;2;26;02;Złotoryja
+166;1;61;02;Jelenia Góra
+167;1;62;02;Legnica
+168;1;64;02;Wrocław
+169;1;65;02;Wałbrzych
+170;1;01;04;Aleksandrów Kujawski
+171;1;01;04;Ciechocinek
+172;1;01;04;Nieszawa
+173;2;01;04;Aleksandrów Kujawski
+174;2;01;04;Bądkowo
+175;2;01;04;Koneck
+176;2;01;04;Raciążek
+177;2;01;04;Waganiec
+178;2;01;04;Zakrzewo
+179;1;02;04;Brodnica
+180;2;02;04;Bobrowo
+181;2;02;04;Brodnica
+182;2;02;04;Brzozie
+183;3;02;04;Górzno
+184;2;02;04;Bartniczka
+185;3;02;04;Jabłonowo Pomorskie
+186;2;02;04;Osiek
+187;2;02;04;Świedziebnia
+188;2;02;04;Zbiczno
+189;2;03;04;Białe Błota
+190;2;03;04;Dąbrowa Chełmińska
+191;2;03;04;Dobrcz
+192;3;03;04;Koronowo
+193;2;03;04;Nowa Wieś Wielka
+194;2;03;04;Osielsko
+195;2;03;04;Sicienko
+196;3;03;04;Solec Kujawski
+197;1;04;04;Chełmno
+198;2;04;04;Chełmno
+199;2;04;04;Kijewo Królewskie
+200;2;04;04;Lisewo
+201;2;04;04;Papowo Biskupie
+202;2;04;04;Stolno
+203;2;04;04;Unisław
+204;1;05;04;Golub-Dobrzyń
+205;2;05;04;Ciechocin
+206;2;05;04;Golub-Dobrzyń
+207;3;05;04;Kowalewo Pomorskie
+208;2;05;04;Radomin
+209;2;05;04;Zbójno
+210;2;06;04;Grudziądz
+211;2;06;04;Gruta
+212;3;06;04;Łasin
+213;3;06;04;Radzyń Chełmiński
+214;2;06;04;Rogóźno
+215;2;06;04;Świecie nad Osą
+216;1;07;04;Inowrocław
+217;2;07;04;Dąbrowa Biskupia
+218;3;07;04;Gniewkowo
+219;2;07;04;Inowrocław
+220;3;07;04;Janikowo
+221;3;07;04;Kruszwica
+222;3;07;04;Pakość
+223;2;07;04;Rojewo
+224;2;07;04;Złotniki Kujawskie
+225;1;08;04;Lipno
+226;2;08;04;Bobrowniki
+227;2;08;04;Chrostkowo
+228;3;08;04;Dobrzyń nad Wisłą
+229;2;08;04;Kikół
+230;2;08;04;Lipno
+231;3;08;04;Skępe
+232;2;08;04;Tłuchowo
+233;2;08;04;Wielgie
+234;2;09;04;Dąbrowa
+235;2;09;04;Jeziora Wielkie
+236;3;09;04;Mogilno
+237;3;09;04;Strzelno
+238;3;10;04;Kcynia
+239;3;10;04;Mrocza
+240;3;10;04;Nakło nad Notecią
+241;2;10;04;Sadki
+242;3;10;04;Szubin
+243;1;11;04;Radziejów
+244;2;11;04;Bytoń
+245;2;11;04;Dobre
+246;2;11;04;Osięciny
+247;3;11;04;Piotrków Kujawski
+248;2;11;04;Radziejów
+249;2;11;04;Topólka
+250;1;12;04;Rypin
+251;2;12;04;Brzuze
+252;2;12;04;Rogowo
+253;2;12;04;Rypin
+254;2;12;04;Skrwilno
+255;2;12;04;Wąpielsk
+256;3;13;04;Kamień Krajeński
+257;3;13;04;Sępólno Krajeńskie
+258;2;13;04;Sośno
+259;3;13;04;Więcbork
+260;2;14;04;Bukowiec
+261;2;14;04;Dragacz
+262;2;14;04;Drzycim
+263;2;14;04;Jeżewo
+264;2;14;04;Lniano
+265;3;14;04;Nowe
+266;2;14;04;Osie
+267;2;14;04;Pruszcz
+268;3;14;04;Świecie
+269;2;14;04;Świekatowo
+270;2;14;04;Warlubie
+271;1;15;04;Chełmża
+272;2;15;04;Chełmża
+273;2;15;04;Czernikowo
+274;2;15;04;Lubicz
+275;2;15;04;Łubianka
+276;2;15;04;Łysomice
+277;2;15;04;Obrowo
+278;2;15;04;Wielka Nieszawka
+279;2;15;04;Zławieś Wielka
+280;2;16;04;Cekcyn
+281;2;16;04;Gostycyn
+282;2;16;04;Kęsowo
+283;2;16;04;Lubiewo
+284;2;16;04;Śliwice
+285;3;16;04;Tuchola
+286;1;17;04;Wąbrzeźno
+287;2;17;04;Dębowa Łąka
+288;2;17;04;Książki
+289;2;17;04;Płużnica
+290;2;17;04;Ryńsk
+291;1;18;04;Kowal
+292;2;18;04;Baruchowo
+293;2;18;04;Boniewo
+294;3;18;04;Brześć Kujawski
+295;2;18;04;Choceń
+296;3;18;04;Chodecz
+297;2;18;04;Fabianki
+298;3;18;04;Izbica Kujawska
+299;2;18;04;Kowal
+300;2;18;04;Lubanie
+301;3;18;04;Lubień Kujawski
+302;3;18;04;Lubraniec
+303;2;18;04;Włocławek
+304;3;19;04;Barcin
+305;2;19;04;Gąsawa
+306;3;19;04;Janowiec Wielkopolski
+307;3;19;04;Łabiszyn
+308;2;19;04;Rogowo
+309;3;19;04;Żnin
+310;1;61;04;Bydgoszcz
+311;1;62;04;Grudziądz
+312;1;63;04;Toruń
+313;1;64;04;Włocławek
+314;1;01;06;Międzyrzec Podlaski
+315;1;01;06;Terespol
+316;2;01;06;Biała Podlaska
+317;2;01;06;Drelów
+318;2;01;06;Janów Podlaski
+319;2;01;06;Kodeń
+320;2;01;06;Konstantynów
+321;2;01;06;Leśna Podlaska
+322;2;01;06;Łomazy
+323;2;01;06;Międzyrzec Podlaski
+324;2;01;06;Piszczac
+325;2;01;06;Rokitno
+326;2;01;06;Rossosz
+327;2;01;06;Sławatycze
+328;2;01;06;Sosnówka
+329;2;01;06;Terespol
+330;2;01;06;Tuczna
+331;2;01;06;Wisznice
+332;2;01;06;Zalesie
+333;1;02;06;Biłgoraj
+334;2;02;06;Aleksandrów
+335;2;02;06;Biłgoraj
+336;2;02;06;Biszcza
+337;3;02;06;Frampol
+338;2;02;06;Goraj
+339;3;02;06;Józefów
+340;2;02;06;Księżpol
+341;2;02;06;Łukowa
+342;2;02;06;Obsza
+343;2;02;06;Potok Górny
+344;3;02;06;Tarnogród
+345;2;02;06;Tereszpol
+346;2;02;06;Turobin
+347;1;03;06;Rejowiec Fabryczny
+348;2;03;06;Białopole
+349;2;03;06;Chełm
+350;2;03;06;Dorohusk
+351;2;03;06;Dubienka
+352;2;03;06;Kamień
+353;2;03;06;Leśniowice
+354;2;03;06;Rejowiec Fabryczny
+355;2;03;06;Ruda-Huta
+356;2;03;06;Sawin
+357;3;03;06;Siedliszcze
+358;2;03;06;Wierzbica
+359;2;03;06;Wojsławice
+360;2;03;06;Żmudź
+361;3;03;06;Rejowiec
+362;1;04;06;Hrubieszów
+363;2;04;06;Dołhobyczów
+364;2;04;06;Horodło
+365;2;04;06;Hrubieszów
+366;2;04;06;Mircze
+367;2;04;06;Trzeszczany
+368;2;04;06;Uchanie
+369;2;04;06;Werbkowice
+370;2;05;06;Batorz
+371;2;05;06;Chrzanów
+372;2;05;06;Dzwola
+373;2;05;06;Godziszów
+374;3;05;06;Janów Lubelski
+375;3;05;06;Modliborzyce
+376;2;05;06;Potok Wielki
+377;1;06;06;Krasnystaw
+378;2;06;06;Fajsławice
+379;2;06;06;Gorzków
+380;2;06;06;Izbica
+381;2;06;06;Krasnystaw
+382;2;06;06;Kraśniczyn
+383;2;06;06;Łopiennik Górny
+384;2;06;06;Rudnik
+385;2;06;06;Siennica Różana
+386;2;06;06;Żółkiewka
+387;1;07;06;Kraśnik
+388;3;07;06;Annopol
+389;2;07;06;Dzierzkowice
+390;2;07;06;Gościeradów
+391;2;07;06;Kraśnik
+392;2;07;06;Szastarka
+393;2;07;06;Trzydnik Duży
+394;3;07;06;Urzędów
+395;2;07;06;Wilkołaz
+396;2;07;06;Zakrzówek
+397;1;08;06;Lubartów
+398;2;08;06;Abramów
+399;2;08;06;Firlej
+400;2;08;06;Jeziorzany
+401;2;08;06;Kamionka
+402;3;08;06;Kock
+403;2;08;06;Lubartów
+404;2;08;06;Michów
+405;2;08;06;Niedźwiada
+406;3;08;06;Ostrów Lubelski
+407;2;08;06;Ostrówek
+408;2;08;06;Serniki
+409;2;08;06;Uścimów
+410;3;09;06;Bełżyce
+411;2;09;06;Borzechów
+412;3;09;06;Bychawa
+413;2;09;06;Garbów
+414;2;09;06;Głusk
+415;2;09;06;Jabłonna
+416;2;09;06;Jastków
+417;2;09;06;Konopnica
+418;2;09;06;Krzczonów
+419;2;09;06;Niedrzwica Duża
+420;2;09;06;Niemce
+421;2;09;06;Strzyżewice
+422;2;09;06;Wojciechów
+423;2;09;06;Wólka
+424;2;09;06;Wysokie
+425;2;09;06;Zakrzew
+426;2;10;06;Cyców
+427;2;10;06;Ludwin
+428;3;10;06;Łęczna
+429;2;10;06;Milejów
+430;2;10;06;Puchaczów
+431;2;10;06;Spiczyn
+432;1;11;06;Łuków
+433;1;11;06;Stoczek Łukowski
+434;2;11;06;Adamów
+435;2;11;06;Krzywda
+436;2;11;06;Łuków
+437;2;11;06;Serokomla
+438;2;11;06;Stanin
+439;2;11;06;Stoczek Łukowski
+440;2;11;06;Trzebieszów
+441;2;11;06;Wojcieszków
+442;2;11;06;Wola Mysłowska
+443;2;12;06;Chodel
+444;2;12;06;Józefów nad Wisłą
+445;2;12;06;Karczmiska
+446;2;12;06;Łaziska
+447;3;12;06;Opole Lubelskie
+448;3;12;06;Poniatowa
+449;2;12;06;Wilków
+450;2;13;06;Dębowa Kłoda
+451;2;13;06;Jabłoń
+452;2;13;06;Milanów
+453;3;13;06;Parczew
+454;2;13;06;Podedwórze
+455;2;13;06;Siemień
+456;2;13;06;Sosnowica
+457;1;14;06;Puławy
+458;2;14;06;Baranów
+459;2;14;06;Janowiec
+460;3;14;06;Kazimierz Dolny
+461;2;14;06;Końskowola
+462;2;14;06;Kurów
+463;2;14;06;Markuszów
+464;3;14;06;Nałęczów
+465;2;14;06;Puławy
+466;2;14;06;Wąwolnica
+467;2;14;06;Żyrzyn
+468;1;15;06;Radzyń Podlaski
+469;2;15;06;Borki
+470;2;15;06;Czemierniki
+471;2;15;06;Kąkolewnica
+472;2;15;06;Komarówka Podlaska
+473;2;15;06;Radzyń Podlaski
+474;2;15;06;Ulan-Majorat
+475;2;15;06;Wohyń
+476;1;16;06;Dęblin
+477;2;16;06;Kłoczew
+478;2;16;06;Nowodwór
+479;3;16;06;Ryki
+480;2;16;06;Stężyca
+481;2;16;06;Ułęż
+482;1;17;06;Świdnik
+483;2;17;06;Mełgiew
+484;3;17;06;Piaski
+485;2;17;06;Rybczewice
+486;2;17;06;Trawniki
+487;1;18;06;Tomaszów Lubelski
+488;2;18;06;Bełżec
+489;2;18;06;Jarczów
+490;2;18;06;Krynice
+491;3;18;06;Lubycza Królewska
+492;3;18;06;Łaszczów
+493;2;18;06;Rachanie
+494;2;18;06;Susiec
+495;2;18;06;Tarnawatka
+496;2;18;06;Telatyn
+497;2;18;06;Tomaszów Lubelski
+498;3;18;06;Tyszowce
+499;2;18;06;Ulhówek
+500;1;19;06;Włodawa
+501;2;19;06;Hanna
+502;2;19;06;Hańsk
+503;2;19;06;Stary Brus
+504;2;19;06;Urszulin
+505;2;19;06;Włodawa
+506;2;19;06;Wola Uhruska
+507;2;19;06;Wyryki
+508;2;20;06;Adamów
+509;2;20;06;Grabowiec
+510;2;20;06;Komarów-Osada
+511;3;20;06;Krasnobród
+512;2;20;06;Łabunie
+513;2;20;06;Miączyn
+514;2;20;06;Nielisz
+515;2;20;06;Radecznica
+516;2;20;06;Sitno
+517;2;20;06;Skierbieszów
+518;2;20;06;Stary Zamość
+519;2;20;06;Sułów
+520;3;20;06;Szczebrzeszyn
+521;2;20;06;Zamość
+522;3;20;06;Zwierzyniec
+523;1;61;06;Biała Podlaska
+524;1;62;06;Chełm
+525;1;63;06;Lublin
+526;1;64;06;Zamość
+527;1;01;08;Kostrzyn nad Odrą
+528;2;01;08;Bogdaniec
+529;2;01;08;Deszczno
+530;2;01;08;Kłodawa
+531;2;01;08;Lubiszyn
+532;2;01;08;Santok
+533;3;01;08;Witnica
+534;1;02;08;Gubin
+535;2;02;08;Bobrowice
+536;2;02;08;Bytnica
+537;2;02;08;Dąbie
+538;2;02;08;Gubin
+539;3;02;08;Krosno Odrzańskie
+540;2;02;08;Maszewo
+541;2;03;08;Bledzew
+542;3;03;08;Międzyrzecz
+543;2;03;08;Przytoczna
+544;2;03;08;Pszczew
+545;3;03;08;Skwierzyna
+546;3;03;08;Trzciel
+547;1;04;08;Nowa Sól
+548;3;04;08;Bytom Odrzański
+549;2;04;08;Kolsko
+550;3;04;08;Kożuchów
+551;2;04;08;Nowa Sól
+552;3;04;08;Nowe Miasteczko
+553;2;04;08;Otyń
+554;2;04;08;Siedlisko
+555;3;05;08;Cybinka
+556;2;05;08;Górzyca
+557;3;05;08;Ośno Lubuskie
+558;3;05;08;Rzepin
+559;3;05;08;Słubice
+560;3;06;08;Dobiegniew
+561;3;06;08;Drezdenko
+562;2;06;08;Stare Kurowo
+563;3;06;08;Strzelce Krajeńskie
+564;2;06;08;Zwierzyn
+565;2;07;08;Krzeszyce
+566;3;07;08;Lubniewice
+567;2;07;08;Słońsk
+568;3;07;08;Sulęcin
+569;3;07;08;Torzym
+570;2;08;08;Lubrza
+571;2;08;08;Łagów
+572;2;08;08;Skąpe
+573;2;08;08;Szczaniec
+574;3;08;08;Świebodzin
+575;3;08;08;Zbąszynek
+576;3;09;08;Babimost
+577;2;09;08;Bojadła
+578;3;09;08;Czerwieńsk
+579;3;09;08;Kargowa
+580;3;09;08;Nowogród Bobrzański
+581;3;09;08;Sulechów
+582;2;09;08;Świdnica
+583;2;09;08;Trzebiechów
+584;2;09;08;Zabór
+585;1;10;08;Gozdnica
+586;1;10;08;Żagań
+587;2;10;08;Brzeźnica
+588;3;10;08;Iłowa
+589;3;10;08;Małomice
+590;2;10;08;Niegosławice
+591;3;10;08;Szprotawa
+592;2;10;08;Wymiarki
+593;2;10;08;Żagań
+594;1;11;08;Łęknica
+595;1;11;08;Żary
+596;2;11;08;Brody
+597;3;11;08;Jasień
+598;2;11;08;Lipinki Łużyckie
+599;3;11;08;Lubsko
+600;2;11;08;Przewóz
+601;2;11;08;Trzebiel
+602;2;11;08;Tuplice
+603;2;11;08;Żary
+604;3;12;08;Sława
+605;3;12;08;Szlichtyngowa
+606;3;12;08;Wschowa
+607;1;61;08;Gorzów Wielkopolski
+608;1;62;08;Zielona Góra
+609;1;01;10;Bełchatów
+610;2;01;10;Bełchatów
+611;2;01;10;Drużbice
+612;2;01;10;Kleszczów
+613;2;01;10;Kluki
+614;2;01;10;Rusiec
+615;2;01;10;Szczerców
+616;3;01;10;Zelów
+617;1;02;10;Kutno
+618;2;02;10;Bedlno
+619;2;02;10;Dąbrowice
+620;3;02;10;Krośniewice
+621;2;02;10;Krzyżanów
+622;2;02;10;Kutno
+623;2;02;10;Łanięta
+624;2;02;10;Nowe Ostrowy
+625;2;02;10;Oporów
+626;2;02;10;Strzelce
+627;3;02;10;Żychlin
+628;2;03;10;Buczek
+629;3;03;10;Łask
+630;2;03;10;Sędziejowice
+631;2;03;10;Widawa
+632;2;03;10;Wodzierady
+633;1;04;10;Łęczyca
+634;2;04;10;Daszyna
+635;2;04;10;Góra Świętej Małgorzaty
+636;2;04;10;Grabów
+637;2;04;10;Łęczyca
+638;2;04;10;Piątek
+639;2;04;10;Świnice Warckie
+640;2;04;10;Witonia
+641;1;05;10;Łowicz
+642;2;05;10;Bielawy
+643;2;05;10;Chąśno
+644;2;05;10;Domaniewice
+645;2;05;10;Kiernozia
+646;2;05;10;Kocierzew Południowy
+647;2;05;10;Łowicz
+648;2;05;10;Łyszkowice
+649;2;05;10;Nieborów
+650;2;05;10;Zduny
+651;2;06;10;Andrespol
+652;2;06;10;Brójce
+653;3;06;10;Koluszki
+654;2;06;10;Nowosolna
+655;3;06;10;Rzgów
+656;3;06;10;Tuszyn
+657;2;07;10;Białaczów
+658;3;07;10;Drzewica
+659;2;07;10;Mniszków
+660;3;07;10;Opoczno
+661;2;07;10;Paradyż
+662;2;07;10;Poświętne
+663;2;07;10;Sławno
+664;2;07;10;Żarnów
+665;1;08;10;Konstantynów Łódzki
+666;1;08;10;Pabianice
+667;2;08;10;Dłutów
+668;2;08;10;Dobroń
+669;2;08;10;Ksawerów
+670;2;08;10;Lutomiersk
+671;2;08;10;Pabianice
+672;3;09;10;Działoszyn
+673;2;09;10;Kiełczygłów
+674;2;09;10;Nowa Brzeźnica
+675;3;09;10;Pajęczno
+676;2;09;10;Rząśnia
+677;2;09;10;Siemkowice
+678;2;09;10;Strzelce Wielkie
+679;2;09;10;Sulmierzyce
+680;2;10;10;Aleksandrów
+681;2;10;10;Czarnocin
+682;2;10;10;Gorzkowice
+683;2;10;10;Grabica
+684;2;10;10;Łęki Szlacheckie
+685;2;10;10;Moszczenica
+686;2;10;10;Ręczno
+687;2;10;10;Rozprza
+688;3;10;10;Sulejów
+689;2;10;10;Wola Krzysztoporska
+690;3;10;10;Wolbórz
+691;2;11;10;Dalików
+692;2;11;10;Pęczniew
+693;3;11;10;Poddębice
+694;3;11;10;Uniejów
+695;2;11;10;Wartkowice
+696;2;11;10;Zadzim
+697;1;12;10;Radomsko
+698;2;12;10;Dobryszyce
+699;2;12;10;Gidle
+700;2;12;10;Gomunice
+701;3;12;10;Kamieńsk
+702;2;12;10;Kobiele Wielkie
+703;2;12;10;Kodrąb
+704;2;12;10;Lgota Wielka
+705;2;12;10;Ładzice
+706;2;12;10;Masłowice
+707;3;12;10;Przedbórz
+708;2;12;10;Radomsko
+709;2;12;10;Wielgomłyny
+710;2;12;10;Żytno
+711;1;13;10;Rawa Mazowiecka
+712;3;13;10;Biała Rawska
+713;2;13;10;Cielądz
+714;2;13;10;Rawa Mazowiecka
+715;2;13;10;Regnów
+716;2;13;10;Sadkowice
+717;1;14;10;Sieradz
+718;3;14;10;Błaszki
+719;2;14;10;Brąszewice
+720;2;14;10;Brzeźnio
+721;2;14;10;Burzenin
+722;2;14;10;Goszczanów
+723;2;14;10;Klonowa
+724;2;14;10;Sieradz
+725;3;14;10;Warta
+726;2;14;10;Wróblew
+727;3;14;10;Złoczew
+728;2;15;10;Bolimów
+729;2;15;10;Głuchów
+730;2;15;10;Godzianów
+731;2;15;10;Kowiesy
+732;2;15;10;Lipce Reymontowskie
+733;2;15;10;Maków
+734;2;15;10;Nowy Kawęczyn
+735;2;15;10;Skierniewice
+736;2;15;10;Słupia
+737;1;16;10;Tomaszów Mazowiecki
+738;2;16;10;Będków
+739;2;16;10;Budziszewice
+740;2;16;10;Czerniewice
+741;2;16;10;Inowłódz
+742;2;16;10;Lubochnia
+743;2;16;10;Rokiciny
+744;2;16;10;Rzeczyca
+745;2;16;10;Tomaszów Mazowiecki
+746;2;16;10;Ujazd
+747;2;16;10;Żelechlinek
+748;2;17;10;Biała
+749;2;17;10;Czarnożyły
+750;2;17;10;Konopnica
+751;2;17;10;Mokrsko
+752;2;17;10;Osjaków
+753;2;17;10;Ostrówek
+754;2;17;10;Pątnów
+755;2;17;10;Skomlin
+756;3;17;10;Wieluń
+757;2;17;10;Wierzchlas
+758;2;18;10;Bolesławiec
+759;2;18;10;Czastary
+760;2;18;10;Galewice
+761;2;18;10;Lututów
+762;2;18;10;Łubnice
+763;2;18;10;Sokolniki
+764;3;18;10;Wieruszów
+765;1;19;10;Zduńska Wola
+766;3;19;10;Szadek
+767;2;19;10;Zapolice
+768;2;19;10;Zduńska Wola
+769;1;20;10;Głowno
+770;1;20;10;Ozorków
+771;1;20;10;Zgierz
+772;3;20;10;Aleksandrów Łódzki
+773;2;20;10;Głowno
+774;2;20;10;Ozorków
+775;2;20;10;Parzęczew
+776;3;20;10;Stryków
+777;2;20;10;Zgierz
+778;1;21;10;Brzeziny
+779;2;21;10;Brzeziny
+780;2;21;10;Dmosin
+781;2;21;10;Jeżów
+782;2;21;10;Rogów
+783;1;61;10;Łódź
+784;1;62;10;Piotrków Trybunalski
+785;1;63;10;Skierniewice
+786;1;01;12;Bochnia
+787;2;01;12;Bochnia
+788;2;01;12;Drwinia
+789;2;01;12;Lipnica Murowana
+790;2;01;12;Łapanów
+791;3;01;12;Nowy Wiśnicz
+792;2;01;12;Rzezawa
+793;2;01;12;Trzciana
+794;2;01;12;Żegocina
+795;2;02;12;Borzęcin
+796;3;02;12;Brzesko
+797;3;02;12;Czchów
+798;2;02;12;Dębno
+799;2;02;12;Gnojnik
+800;2;02;12;Iwkowa
+801;2;02;12;Szczurowa
+802;3;03;12;Alwernia
+803;2;03;12;Babice
+804;3;03;12;Chrzanów
+805;3;03;12;Libiąż
+806;3;03;12;Trzebinia
+807;2;04;12;Bolesław
+808;3;04;12;Dąbrowa Tarnowska
+809;2;04;12;Gręboszów
+810;2;04;12;Mędrzechów
+811;2;04;12;Olesno
+812;2;04;12;Radgoszcz
+813;3;04;12;Szczucin
+814;1;05;12;Gorlice
+815;3;05;12;Biecz
+816;3;05;12;Bobowa
+817;2;05;12;Gorlice
+818;2;05;12;Lipinki
+819;2;05;12;Łużna
+820;2;05;12;Moszczenica
+821;2;05;12;Ropa
+822;2;05;12;Sękowa
+823;2;05;12;Uście Gorlickie
+824;2;06;12;Czernichów
+825;2;06;12;Igołomia-Wawrzeńczyce
+826;2;06;12;Iwanowice
+827;2;06;12;Jerzmanowice-Przeginia
+828;2;06;12;Kocmyrzów-Luborzyca
+829;3;06;12;Krzeszowice
+830;2;06;12;Liszki
+831;2;06;12;Michałowice
+832;2;06;12;Mogilany
+833;3;06;12;Skała
+834;3;06;12;Skawina
+835;3;06;12;Słomniki
+836;2;06;12;Sułoszowa
+837;3;06;12;Świątniki Górne
+838;2;06;12;Wielka Wieś
+839;2;06;12;Zabierzów
+840;2;06;12;Zielonki
+841;1;07;12;Limanowa
+842;1;07;12;Mszana Dolna
+843;2;07;12;Dobra
+844;2;07;12;Jodłownik
+845;2;07;12;Kamienica
+846;2;07;12;Laskowa
+847;2;07;12;Limanowa
+848;2;07;12;Łukowica
+849;2;07;12;Mszana Dolna
+850;2;07;12;Niedźwiedź
+851;2;07;12;Słopnice
+852;2;07;12;Tymbark
+853;2;08;12;Charsznica
+854;2;08;12;Gołcza
+855;2;08;12;Kozłów
+856;2;08;12;Książ Wielki
+857;3;08;12;Miechów
+858;2;08;12;Racławice
+859;2;08;12;Słaboszów
+860;3;09;12;Dobczyce
+861;2;09;12;Lubień
+862;3;09;12;Myślenice
+863;2;09;12;Pcim
+864;2;09;12;Raciechowice
+865;2;09;12;Siepraw
+866;3;09;12;Sułkowice
+867;2;09;12;Tokarnia
+868;2;09;12;Wiśniowa
+869;1;10;12;Grybów
+870;2;10;12;Chełmiec
+871;2;10;12;Gródek nad Dunajcem
+872;2;10;12;Grybów
+873;2;10;12;Kamionka Wielka
+874;2;10;12;Korzenna
+875;3;10;12;Krynica-Zdrój
+876;2;10;12;Łabowa
+877;2;10;12;Łącko
+878;2;10;12;Łososina Dolna
+879;3;10;12;Muszyna
+880;2;10;12;Nawojowa
+881;3;10;12;Piwniczna-Zdrój
+882;2;10;12;Podegrodzie
+883;2;10;12;Rytro
+884;3;10;12;Stary Sącz
+885;1;11;12;Nowy Targ
+886;3;11;12;Szczawnica
+887;2;11;12;Czarny Dunajec
+888;2;11;12;Czorsztyn
+889;2;11;12;Jabłonka
+890;2;11;12;Krościenko nad Dunajcem
+891;2;11;12;Lipnica Wielka
+892;2;11;12;Łapsze Niżne
+893;2;11;12;Nowy Targ
+894;2;11;12;Ochotnica Dolna
+895;2;11;12;Raba Wyżna
+896;3;11;12;Rabka-Zdrój
+897;2;11;12;Spytkowice
+898;2;11;12;Szaflary
+899;1;12;12;Bukowno
+900;2;12;12;Bolesław
+901;2;12;12;Klucze
+902;3;12;12;Olkusz
+903;2;12;12;Trzyciąż
+904;3;12;12;Wolbrom
+905;1;13;12;Oświęcim
+906;3;13;12;Brzeszcze
+907;3;13;12;Chełmek
+908;3;13;12;Kęty
+909;2;13;12;Osiek
+910;2;13;12;Oświęcim
+911;2;13;12;Polanka Wielka
+912;2;13;12;Przeciszów
+913;3;13;12;Zator
+914;2;14;12;Koniusza
+915;2;14;12;Koszyce
+916;3;14;12;Nowe Brzesko
+917;2;14;12;Pałecznica
+918;3;14;12;Proszowice
+919;2;14;12;Radziemice
+920;1;15;12;Jordanów
+921;1;15;12;Sucha Beskidzka
+922;2;15;12;Budzów
+923;2;15;12;Bystra-Sidzina
+924;2;15;12;Jordanów
+925;3;15;12;Maków Podhalański
+926;2;15;12;Stryszawa
+927;2;15;12;Zawoja
+928;2;15;12;Zembrzyce
+929;3;16;12;Ciężkowice
+930;2;16;12;Gromnik
+931;2;16;12;Lisia Góra
+932;2;16;12;Pleśna
+933;3;16;12;Radłów
+934;3;16;12;Ryglice
+935;2;16;12;Rzepiennik Strzyżewski
+936;2;16;12;Skrzyszów
+937;2;16;12;Tarnów
+938;3;16;12;Tuchów
+939;2;16;12;Wierzchosławice
+940;2;16;12;Wietrzychowice
+941;3;16;12;Wojnicz
+942;3;16;12;Zakliczyn
+943;3;16;12;Żabno
+944;2;16;12;Szerzyny
+945;1;17;12;Zakopane
+946;2;17;12;Biały Dunajec
+947;2;17;12;Bukowina Tatrzańska
+948;2;17;12;Kościelisko
+949;2;17;12;Poronin
+950;3;18;12;Andrychów
+951;2;18;12;Brzeźnica
+952;3;18;12;Kalwaria Zebrzydowska
+953;2;18;12;Lanckorona
+954;2;18;12;Mucharz
+955;2;18;12;Spytkowice
+956;2;18;12;Stryszów
+957;2;18;12;Tomice
+958;3;18;12;Wadowice
+959;2;18;12;Wieprz
+960;2;19;12;Biskupice
+961;2;19;12;Gdów
+962;2;19;12;Kłaj
+963;3;19;12;Niepołomice
+964;3;19;12;Wieliczka
+965;1;61;12;Kraków
+966;1;62;12;Nowy Sącz
+967;1;63;12;Tarnów
+968;3;01;14;Białobrzegi
+969;2;01;14;Promna
+970;2;01;14;Radzanów
+971;2;01;14;Stara Błotnica
+972;2;01;14;Stromiec
+973;3;01;14;Wyśmierzyce
+974;1;02;14;Ciechanów
+975;2;02;14;Ciechanów
+976;3;02;14;Glinojeck
+977;2;02;14;Gołymin-Ośrodek
+978;2;02;14;Grudusk
+979;2;02;14;Ojrzeń
+980;2;02;14;Opinogóra Górna
+981;2;02;14;Regimin
+982;2;02;14;Sońsk
+983;1;03;14;Garwolin
+984;1;03;14;Łaskarzew
+985;2;03;14;Borowie
+986;2;03;14;Garwolin
+987;2;03;14;Górzno
+988;2;03;14;Łaskarzew
+989;2;03;14;Maciejowice
+990;2;03;14;Miastków Kościelny
+991;2;03;14;Parysów
+992;3;03;14;Pilawa
+993;2;03;14;Sobolew
+994;2;03;14;Trojanów
+995;2;03;14;Wilga
+996;3;03;14;Żelechów
+997;1;04;14;Gostynin
+998;2;04;14;Gostynin
+999;2;04;14;Pacyna
+1000;2;04;14;Sanniki
+1001;2;04;14;Szczawin Kościelny
+1002;1;05;14;Milanówek
+1003;1;05;14;Podkowa Leśna
+1004;2;05;14;Baranów
+1005;3;05;14;Grodzisk Mazowiecki
+1006;2;05;14;Jaktorów
+1007;2;05;14;Żabia Wola
+1008;2;06;14;Belsk Duży
+1009;2;06;14;Błędów
+1010;2;06;14;Chynów
+1011;2;06;14;Goszczyn
+1012;3;06;14;Grójec
+1013;2;06;14;Jasieniec
+1014;3;06;14;Mogielnica
+1015;3;06;14;Nowe Miasto nad Pilicą
+1016;2;06;14;Pniewy
+1017;3;06;14;Warka
+1018;2;07;14;Garbatka-Letnisko
+1019;2;07;14;Głowaczów
+1020;2;07;14;Gniewoszów
+1021;2;07;14;Grabów nad Pilicą
+1022;3;07;14;Kozienice
+1023;2;07;14;Magnuszew
+1024;2;07;14;Sieciechów
+1025;1;08;14;Legionowo
+1026;2;08;14;Jabłonna
+1027;2;08;14;Nieporęt
+1028;3;08;14;Serock
+1029;2;08;14;Wieliszew
+1030;2;09;14;Chotcza
+1031;2;09;14;Ciepielów
+1032;3;09;14;Lipsko
+1033;2;09;14;Rzeczniów
+1034;2;09;14;Sienno
+1035;2;09;14;Solec nad Wisłą
+1036;2;10;14;Huszlew
+1037;3;10;14;Łosice
+1038;2;10;14;Olszanka
+1039;2;10;14;Platerów
+1040;2;10;14;Sarnaki
+1041;2;10;14;Stara Kornica
+1042;1;11;14;Maków Mazowiecki
+1043;2;11;14;Czerwonka
+1044;2;11;14;Karniewo
+1045;2;11;14;Krasnosielc
+1046;2;11;14;Młynarze
+1047;2;11;14;Płoniawy-Bramura
+1048;3;11;14;Różan
+1049;2;11;14;Rzewnie
+1050;2;11;14;Sypniewo
+1051;2;11;14;Szelków
+1052;1;12;14;Mińsk Mazowiecki
+1053;2;12;14;Cegłów
+1054;2;12;14;Dębe Wielkie
+1055;2;12;14;Dobre
+1056;3;12;14;Halinów
+1057;2;12;14;Jakubów
+1058;3;12;14;Kałuszyn
+1059;2;12;14;Latowicz
+1060;2;12;14;Mińsk Mazowiecki
+1061;3;12;14;Mrozy
+1062;2;12;14;Siennica
+1063;2;12;14;Stanisławów
+1064;1;12;14;Sulejówek
+1065;1;13;14;Mława
+1066;2;13;14;Dzierzgowo
+1067;2;13;14;Lipowiec Kościelny
+1068;2;13;14;Radzanów
+1069;2;13;14;Strzegowo
+1070;2;13;14;Stupsk
+1071;2;13;14;Szreńsk
+1072;2;13;14;Szydłowo
+1073;2;13;14;Wieczfnia Kościelna
+1074;2;13;14;Wiśniewo
+1075;1;14;14;Nowy Dwór Mazowiecki
+1076;2;14;14;Czosnów
+1077;2;14;14;Leoncin
+1078;3;14;14;Nasielsk
+1079;2;14;14;Pomiechówek
+1080;3;14;14;Zakroczym
+1081;2;15;14;Baranowo
+1082;2;15;14;Czarnia
+1083;2;15;14;Czerwin
+1084;2;15;14;Goworowo
+1085;2;15;14;Kadzidło
+1086;2;15;14;Lelis
+1087;2;15;14;Łyse
+1088;3;15;14;Myszyniec
+1089;2;15;14;Olszewo-Borki
+1090;2;15;14;Rzekuń
+1091;2;15;14;Troszyn
+1092;1;16;14;Ostrów Mazowiecka
+1093;2;16;14;Andrzejewo
+1094;2;16;14;Boguty-Pianki
+1095;3;16;14;Brok
+1096;2;16;14;Małkinia Górna
+1097;2;16;14;Nur
+1098;2;16;14;Ostrów Mazowiecka
+1099;2;16;14;Stary Lubotyń
+1100;2;16;14;Szulborze Wielkie
+1101;2;16;14;Wąsewo
+1102;2;16;14;Zaręby Kościelne
+1103;1;17;14;Józefów
+1104;1;17;14;Otwock
+1105;2;17;14;Celestynów
+1106;3;17;14;Karczew
+1107;2;17;14;Kołbiel
+1108;2;17;14;Osieck
+1109;2;17;14;Sobienie-Jeziory
+1110;2;17;14;Wiązowna
+1111;3;18;14;Góra Kalwaria
+1112;3;18;14;Konstancin-Jeziorna
+1113;2;18;14;Lesznowola
+1114;3;18;14;Piaseczno
+1115;2;18;14;Prażmów
+1116;3;18;14;Tarczyn
+1117;2;19;14;Bielsk
+1118;2;19;14;Bodzanów
+1119;2;19;14;Brudzeń Duży
+1120;2;19;14;Bulkowo
+1121;3;19;14;Drobin
+1122;3;19;14;Gąbin
+1123;2;19;14;Łąck
+1124;2;19;14;Mała Wieś
+1125;2;19;14;Nowy Duninów
+1126;2;19;14;Radzanowo
+1127;2;19;14;Słubice
+1128;2;19;14;Słupno
+1129;2;19;14;Stara Biała
+1130;2;19;14;Staroźreby
+1131;3;19;14;Wyszogród
+1132;1;20;14;Płońsk
+1133;1;20;14;Raciąż
+1134;2;20;14;Baboszewo
+1135;2;20;14;Czerwińsk nad Wisłą
+1136;2;20;14;Dzierzążnia
+1137;2;20;14;Joniec
+1138;2;20;14;Naruszewo
+1139;2;20;14;Nowe Miasto
+1140;2;20;14;Płońsk
+1141;2;20;14;Raciąż
+1142;2;20;14;Sochocin
+1143;2;20;14;Załuski
+1144;1;21;14;Piastów
+1145;1;21;14;Pruszków
+1146;3;21;14;Brwinów
+1147;2;21;14;Michałowice
+1148;2;21;14;Nadarzyn
+1149;2;21;14;Raszyn
+1150;1;22;14;Przasnysz
+1151;3;22;14;Chorzele
+1152;2;22;14;Czernice Borowe
+1153;2;22;14;Jednorożec
+1154;2;22;14;Krasne
+1155;2;22;14;Krzynowłoga Mała
+1156;2;22;14;Przasnysz
+1157;2;23;14;Borkowice
+1158;2;23;14;Gielniów
+1159;2;23;14;Klwów
+1160;2;23;14;Odrzywół
+1161;2;23;14;Potworów
+1162;3;23;14;Przysucha
+1163;2;23;14;Rusinów
+1164;2;23;14;Wieniawa
+1165;2;24;14;Gzy
+1166;2;24;14;Obryte
+1167;2;24;14;Pokrzywnica
+1168;3;24;14;Pułtusk
+1169;2;24;14;Świercze
+1170;2;24;14;Winnica
+1171;2;24;14;Zatory
+1172;1;25;14;Pionki
+1173;2;25;14;Gózd
+1174;3;25;14;Iłża
+1175;2;25;14;Jastrzębia
+1176;2;25;14;Jedlińsk
+1177;2;25;14;Jedlnia-Letnisko
+1178;2;25;14;Kowala
+1179;2;25;14;Pionki
+1180;2;25;14;Przytyk
+1181;3;25;14;Skaryszew
+1182;2;25;14;Wierzbica
+1183;2;25;14;Wolanów
+1184;2;25;14;Zakrzew
+1185;2;26;14;Domanice
+1186;2;26;14;Korczew
+1187;2;26;14;Kotuń
+1188;2;26;14;Mokobody
+1189;3;26;14;Mordy
+1190;2;26;14;Paprotnia
+1191;2;26;14;Przesmyki
+1192;2;26;14;Siedlce
+1193;2;26;14;Skórzec
+1194;2;26;14;Suchożebry
+1195;2;26;14;Wiśniew
+1196;2;26;14;Wodynie
+1197;2;26;14;Zbuczyn
+1198;1;27;14;Sierpc
+1199;2;27;14;Gozdowo
+1200;2;27;14;Mochowo
+1201;2;27;14;Rościszewo
+1202;2;27;14;Sierpc
+1203;2;27;14;Szczutowo
+1204;2;27;14;Zawidz
+1205;1;28;14;Sochaczew
+1206;2;28;14;Brochów
+1207;2;28;14;Iłów
+1208;2;28;14;Młodzieszyn
+1209;2;28;14;Nowa Sucha
+1210;2;28;14;Rybno
+1211;2;28;14;Sochaczew
+1212;2;28;14;Teresin
+1213;1;29;14;Sokołów Podlaski
+1214;2;29;14;Bielany
+1215;2;29;14;Ceranów
+1216;2;29;14;Jabłonna Lacka
+1217;3;29;14;Kosów Lacki
+1218;2;29;14;Repki
+1219;2;29;14;Sabnie
+1220;2;29;14;Sokołów Podlaski
+1221;2;29;14;Sterdyń
+1222;2;30;14;Chlewiska
+1223;2;30;14;Jastrząb
+1224;2;30;14;Mirów
+1225;2;30;14;Orońsko
+1226;3;30;14;Szydłowiec
+1227;3;32;14;Błonie
+1228;2;32;14;Izabelin
+1229;2;32;14;Kampinos
+1230;2;32;14;Leszno
+1231;3;32;14;Łomianki
+1232;3;32;14;Ożarów Mazowiecki
+1233;2;32;14;Stare Babice
+1234;1;33;14;Węgrów
+1235;2;33;14;Grębków
+1236;2;33;14;Korytnica
+1237;2;33;14;Liw
+1238;3;33;14;Łochów
+1239;2;33;14;Miedzna
+1240;2;33;14;Sadowne
+1241;2;33;14;Stoczek
+1242;2;33;14;Wierzbno
+1243;1;34;14;Kobyłka
+1244;1;34;14;Marki
+1245;1;34;14;Ząbki
+1246;1;34;14;Zielonka
+1247;2;34;14;Dąbrówka
+1248;2;34;14;Jadów
+1249;2;34;14;Klembów
+1250;2;34;14;Poświętne
+1251;3;34;14;Radzymin
+1252;2;34;14;Strachówka
+1253;3;34;14;Tłuszcz
+1254;3;34;14;Wołomin
+1255;2;35;14;Brańszczyk
+1256;2;35;14;Długosiodło
+1257;2;35;14;Rząśnik
+1258;2;35;14;Somianka
+1259;3;35;14;Wyszków
+1260;2;35;14;Zabrodzie
+1261;2;36;14;Kazanów
+1262;2;36;14;Policzna
+1263;2;36;14;Przyłęk
+1264;2;36;14;Tczów
+1265;3;36;14;Zwoleń
+1266;3;37;14;Bieżuń
+1267;2;37;14;Kuczbork-Osada
+1268;2;37;14;Lubowidz
+1269;2;37;14;Lutocin
+1270;2;37;14;Siemiątkowo
+1271;3;37;14;Żuromin
+1272;1;38;14;Żyrardów
+1273;3;38;14;Mszczonów
+1274;2;38;14;Puszcza Mariańska
+1275;2;38;14;Radziejowice
+1276;2;38;14;Wiskitki
+1277;1;61;14;Ostrołęka
+1278;1;62;14;Płock
+1279;1;63;14;Radom
+1280;1;64;14;Siedlce
+1281;1;65;14;Warszawa
+1282;1;01;16;Brzeg
+1283;2;01;16;Skarbimierz
+1284;3;01;16;Grodków
+1285;3;01;16;Lewin Brzeski
+1286;2;01;16;Lubsza
+1287;2;01;16;Olszanka
+1288;3;02;16;Baborów
+1289;2;02;16;Branice
+1290;3;02;16;Głubczyce
+1291;3;02;16;Kietrz
+1292;1;03;16;Kędzierzyn-Koźle
+1293;2;03;16;Bierawa
+1294;2;03;16;Cisek
+1295;2;03;16;Pawłowiczki
+1296;2;03;16;Polska Cerekiew
+1297;2;03;16;Reńska Wieś
+1298;3;04;16;Byczyna
+1299;3;04;16;Kluczbork
+1300;2;04;16;Lasowice Wielkie
+1301;3;04;16;Wołczyn
+1302;3;05;16;Gogolin
+1303;3;05;16;Krapkowice
+1304;2;05;16;Strzeleczki
+1305;2;05;16;Walce
+1306;3;05;16;Zdzieszowice
+1307;2;06;16;Domaszowice
+1308;3;06;16;Namysłów
+1309;2;06;16;Pokój
+1310;2;06;16;Świerczów
+1311;2;06;16;Wilków
+1312;3;07;16;Głuchołazy
+1313;2;07;16;Kamiennik
+1314;3;07;16;Korfantów
+1315;2;07;16;Łambinowice
+1316;3;07;16;Nysa
+1317;3;07;16;Otmuchów
+1318;3;07;16;Paczków
+1319;2;07;16;Pakosławice
+1320;2;07;16;Skoroszyce
+1321;3;08;16;Dobrodzień
+1322;3;08;16;Gorzów Śląski
+1323;3;08;16;Olesno
+1324;3;08;16;Praszka
+1325;2;08;16;Radłów
+1326;2;08;16;Rudniki
+1327;2;08;16;Zębowice
+1328;2;09;16;Chrząstowice
+1329;2;09;16;Dąbrowa
+1330;2;09;16;Dobrzeń Wielki
+1331;2;09;16;Komprachcice
+1332;2;09;16;Łubniany
+1333;2;09;16;Murów
+1334;3;09;16;Niemodlin
+1335;3;09;16;Ozimek
+1336;2;09;16;Popielów
+1337;3;09;16;Prószków
+1338;2;09;16;Tarnów Opolski
+1339;2;09;16;Tułowice
+1340;2;09;16;Turawa
+1341;3;10;16;Biała
+1342;3;10;16;Głogówek
+1343;2;10;16;Lubrza
+1344;3;10;16;Prudnik
+1345;2;11;16;Izbicko
+1346;2;11;16;Jemielnica
+1347;3;11;16;Kolonowskie
+1348;3;11;16;Leśnica
+1349;3;11;16;Strzelce Opolskie
+1350;3;11;16;Ujazd
+1351;3;11;16;Zawadzkie
+1352;1;61;16;Opole
+1353;2;01;18;Czarna
+1354;2;01;18;Lutowiska
+1355;3;01;18;Ustrzyki Dolne
+1356;3;02;18;Brzozów
+1357;2;02;18;Domaradz
+1358;2;02;18;Dydnia
+1359;2;02;18;Haczów
+1360;2;02;18;Jasienica Rosielna
+1361;2;02;18;Nozdrzec
+1362;1;03;18;Dębica
+1363;3;03;18;Brzostek
+1364;2;03;18;Czarna
+1365;2;03;18;Dębica
+1366;2;03;18;Jodłowa
+1367;3;03;18;Pilzno
+1368;2;03;18;Żyraków
+1369;1;04;18;Jarosław
+1370;1;04;18;Radymno
+1371;2;04;18;Chłopice
+1372;2;04;18;Jarosław
+1373;2;04;18;Laszki
+1374;2;04;18;Pawłosiów
+1375;3;04;18;Pruchnik
+1376;2;04;18;Radymno
+1377;2;04;18;Rokietnica
+1378;2;04;18;Roźwienica
+1379;2;04;18;Wiązownica
+1380;1;05;18;Jasło
+1381;2;05;18;Brzyska
+1382;2;05;18;Dębowiec
+1383;2;05;18;Jasło
+1384;3;05;18;Kołaczyce
+1385;2;05;18;Krempna
+1386;2;05;18;Nowy Żmigród
+1387;2;05;18;Osiek Jasielski
+1388;2;05;18;Skołyszyn
+1389;2;05;18;Tarnowiec
+1390;2;06;18;Cmolas
+1391;3;06;18;Kolbuszowa
+1392;2;06;18;Majdan Królewski
+1393;2;06;18;Niwiska
+1394;2;06;18;Raniżów
+1395;2;06;18;Dzikowiec
+1396;2;07;18;Chorkówka
+1397;3;07;18;Dukla
+1398;3;07;18;Iwonicz-Zdrój
+1399;3;07;18;Jedlicze
+1400;2;07;18;Korczyna
+1401;2;07;18;Krościenko Wyżne
+1402;2;07;18;Miejsce Piastowe
+1403;3;07;18;Rymanów
+1404;2;07;18;Wojaszówka
+1405;2;07;18;Jaśliska
+1406;1;08;18;Leżajsk
+1407;2;08;18;Grodzisko Dolne
+1408;2;08;18;Kuryłówka
+1409;2;08;18;Leżajsk
+1410;3;08;18;Nowa Sarzyna
+1411;1;09;18;Lubaczów
+1412;3;09;18;Cieszanów
+1413;2;09;18;Horyniec-Zdrój
+1414;2;09;18;Lubaczów
+1415;3;09;18;Narol
+1416;3;09;18;Oleszyce
+1417;2;09;18;Stary Dzików
+1418;2;09;18;Wielkie Oczy
+1419;1;10;18;Łańcut
+1420;2;10;18;Białobrzegi
+1421;2;10;18;Czarna
+1422;2;10;18;Łańcut
+1423;2;10;18;Markowa
+1424;2;10;18;Rakszawa
+1425;2;10;18;Żołynia
+1426;1;11;18;Mielec
+1427;2;11;18;Borowa
+1428;2;11;18;Czermin
+1429;2;11;18;Gawłuszowice
+1430;2;11;18;Mielec
+1431;2;11;18;Padew Narodowa
+1432;3;11;18;Przecław
+1433;3;11;18;Radomyśl Wielki
+1434;2;11;18;Tuszów Narodowy
+1435;2;11;18;Wadowice Górne
+1436;2;12;18;Harasiuki
+1437;2;12;18;Jarocin
+1438;2;12;18;Jeżowe
+1439;2;12;18;Krzeszów
+1440;3;12;18;Nisko
+1441;3;12;18;Rudnik nad Sanem
+1442;3;12;18;Ulanów
+1443;2;13;18;Bircza
+1444;2;13;18;Dubiecko
+1445;2;13;18;Fredropol
+1446;2;13;18;Krasiczyn
+1447;2;13;18;Krzywcza
+1448;2;13;18;Medyka
+1449;2;13;18;Orły
+1450;2;13;18;Przemyśl
+1451;2;13;18;Stubno
+1452;2;13;18;Żurawica
+1453;1;14;18;Przeworsk
+1454;2;14;18;Adamówka
+1455;2;14;18;Gać
+1456;2;14;18;Jawornik Polski
+1457;3;14;18;Kańczuga
+1458;2;14;18;Przeworsk
+1459;3;14;18;Sieniawa
+1460;2;14;18;Tryńcza
+1461;2;14;18;Zarzecze
+1462;2;15;18;Iwierzyce
+1463;2;15;18;Ostrów
+1464;3;15;18;Ropczyce
+1465;3;15;18;Sędziszów Małopolski
+1466;2;15;18;Wielopole Skrzyńskie
+1467;1;16;18;Dynów
+1468;3;16;18;Błażowa
+1469;3;16;18;Boguchwała
+1470;2;16;18;Chmielnik
+1471;2;16;18;Dynów
+1472;3;16;18;Głogów Małopolski
+1473;2;16;18;Hyżne
+1474;2;16;18;Kamień
+1475;2;16;18;Krasne
+1476;2;16;18;Lubenia
+1477;3;16;18;Sokołów Małopolski
+1478;2;16;18;Świlcza
+1479;2;16;18;Trzebownisko
+1480;3;16;18;Tyczyn
+1481;1;17;18;Sanok
+1482;2;17;18;Besko
+1483;2;17;18;Bukowsko
+1484;2;17;18;Komańcza
+1485;2;17;18;Sanok
+1486;2;17;18;Tyrawa Wołoska
+1487;3;17;18;Zagórz
+1488;2;17;18;Zarszyn
+1489;1;18;18;Stalowa Wola
+1490;2;18;18;Bojanów
+1491;2;18;18;Pysznica
+1492;2;18;18;Radomyśl nad Sanem
+1493;3;18;18;Zaklików
+1494;2;18;18;Zaleszany
+1495;2;19;18;Czudec
+1496;2;19;18;Frysztak
+1497;2;19;18;Niebylec
+1498;3;19;18;Strzyżów
+1499;2;19;18;Wiśniowa
+1500;3;20;18;Baranów Sandomierski
+1501;2;20;18;Gorzyce
+1502;2;20;18;Grębów
+1503;3;20;18;Nowa Dęba
+1504;2;21;18;Baligród
+1505;2;21;18;Cisna
+1506;3;21;18;Lesko
+1507;2;21;18;Olszanica
+1508;2;21;18;Solina
+1509;1;61;18;Krosno
+1510;1;62;18;Przemyśl
+1511;1;63;18;Rzeszów
+1512;1;64;18;Tarnobrzeg
+1513;1;01;20;Augustów
+1514;2;01;20;Augustów
+1515;2;01;20;Bargłów Kościelny
+1516;3;01;20;Lipsk
+1517;2;01;20;Nowinka
+1518;2;01;20;Płaska
+1519;2;01;20;Sztabin
+1520;3;02;20;Choroszcz
+1521;3;02;20;Czarna Białostocka
+1522;2;02;20;Dobrzyniewo Duże
+1523;2;02;20;Gródek
+1524;2;02;20;Juchnowiec Kościelny
+1525;3;02;20;Łapy
+1526;3;02;20;Michałowo
+1527;2;02;20;Poświętne
+1528;3;02;20;Supraśl
+1529;3;02;20;Suraż
+1530;2;02;20;Turośń Kościelna
+1531;3;02;20;Tykocin
+1532;3;02;20;Wasilków
+1533;3;02;20;Zabłudów
+1534;2;02;20;Zawady
+1535;1;03;20;Bielsk Podlaski
+1536;1;03;20;Brańsk
+1537;2;03;20;Bielsk Podlaski
+1538;2;03;20;Boćki
+1539;2;03;20;Brańsk
+1540;2;03;20;Orla
+1541;2;03;20;Rudka
+1542;2;03;20;Wyszki
+1543;1;04;20;Grajewo
+1544;2;04;20;Grajewo
+1545;2;04;20;Radziłów
+1546;3;04;20;Rajgród
+1547;3;04;20;Szczuczyn
+1548;2;04;20;Wąsosz
+1549;1;05;20;Hajnówka
+1550;2;05;20;Białowieża
+1551;2;05;20;Czeremcha
+1552;2;05;20;Czyże
+1553;2;05;20;Dubicze Cerkiewne
+1554;2;05;20;Hajnówka
+1555;3;05;20;Kleszczele
+1556;2;05;20;Narew
+1557;2;05;20;Narewka
+1558;1;06;20;Kolno
+1559;2;06;20;Grabowo
+1560;2;06;20;Kolno
+1561;2;06;20;Mały Płock
+1562;3;06;20;Stawiski
+1563;2;06;20;Turośl
+1564;3;07;20;Jedwabne
+1565;2;07;20;Łomża
+1566;2;07;20;Miastkowo
+1567;3;07;20;Nowogród
+1568;2;07;20;Piątnica
+1569;2;07;20;Przytuły
+1570;2;07;20;Śniadowo
+1571;2;07;20;Wizna
+1572;2;07;20;Zbójna
+1573;3;08;20;Goniądz
+1574;2;08;20;Jasionówka
+1575;2;08;20;Jaświły
+1576;3;08;20;Knyszyn
+1577;2;08;20;Krypno
+1578;3;08;20;Mońki
+1579;2;08;20;Trzcianne
+1580;1;09;20;Sejny
+1581;2;09;20;Giby
+1582;2;09;20;Krasnopol
+1583;2;09;20;Puńsk
+1584;2;09;20;Sejny
+1585;1;10;20;Siemiatycze
+1586;3;10;20;Drohiczyn
+1587;2;10;20;Dziadkowice
+1588;2;10;20;Grodzisk
+1589;2;10;20;Mielnik
+1590;2;10;20;Milejczyce
+1591;2;10;20;Nurzec-Stacja
+1592;2;10;20;Perlejewo
+1593;2;10;20;Siemiatycze
+1594;3;11;20;Dąbrowa Białostocka
+1595;2;11;20;Janów
+1596;2;11;20;Korycin
+1597;3;11;20;Krynki
+1598;2;11;20;Kuźnica
+1599;2;11;20;Nowy Dwór
+1600;2;11;20;Sidra
+1601;3;11;20;Sokółka
+1602;3;11;20;Suchowola
+1603;2;11;20;Szudziałowo
+1604;2;12;20;Bakałarzewo
+1605;2;12;20;Filipów
+1606;2;12;20;Jeleniewo
+1607;2;12;20;Przerośl
+1608;2;12;20;Raczki
+1609;2;12;20;Rutka-Tartak
+1610;2;12;20;Suwałki
+1611;2;12;20;Szypliszki
+1612;2;12;20;Wiżajny
+1613;1;13;20;Wysokie Mazowieckie
+1614;3;13;20;Ciechanowiec
+1615;3;13;20;Czyżew
+1616;2;13;20;Klukowo
+1617;2;13;20;Kobylin-Borzymy
+1618;2;13;20;Kulesze Kościelne
+1619;2;13;20;Nowe Piekuty
+1620;2;13;20;Sokoły
+1621;3;13;20;Szepietowo
+1622;2;13;20;Wysokie Mazowieckie
+1623;1;14;20;Zambrów
+1624;2;14;20;Kołaki Kościelne
+1625;2;14;20;Rutki
+1626;2;14;20;Szumowo
+1627;2;14;20;Zambrów
+1628;1;61;20;Białystok
+1629;1;62;20;Łomża
+1630;1;63;20;Suwałki
+1631;2;01;22;Borzytuchom
+1632;3;01;22;Bytów
+1633;2;01;22;Czarna Dąbrówka
+1634;2;01;22;Kołczygłowy
+1635;2;01;22;Lipnica
+1636;3;01;22;Miastko
+1637;2;01;22;Parchowo
+1638;2;01;22;Studzienice
+1639;2;01;22;Trzebielino
+1640;2;01;22;Tuchomie
+1641;1;02;22;Chojnice
+1642;3;02;22;Brusy
+1643;2;02;22;Chojnice
+1644;3;02;22;Czersk
+1645;2;02;22;Konarzyny
+1646;1;03;22;Człuchów
+1647;3;03;22;Czarne
+1648;2;03;22;Człuchów
+1649;3;03;22;Debrzno
+1650;2;03;22;Koczała
+1651;2;03;22;Przechlewo
+1652;2;03;22;Rzeczenica
+1653;1;04;22;Pruszcz Gdański
+1654;2;04;22;Cedry Wielkie
+1655;2;04;22;Kolbudy
+1656;2;04;22;Pruszcz Gdański
+1657;2;04;22;Przywidz
+1658;2;04;22;Pszczółki
+1659;2;04;22;Suchy Dąb
+1660;2;04;22;Trąbki Wielkie
+1661;2;05;22;Chmielno
+1662;3;05;22;Kartuzy
+1663;2;05;22;Przodkowo
+1664;2;05;22;Sierakowice
+1665;2;05;22;Somonino
+1666;2;05;22;Stężyca
+1667;2;05;22;Sulęczyno
+1668;3;05;22;Żukowo
+1669;1;06;22;Kościerzyna
+1670;2;06;22;Dziemiany
+1671;2;06;22;Karsin
+1672;2;06;22;Kościerzyna
+1673;2;06;22;Liniewo
+1674;2;06;22;Lipusz
+1675;2;06;22;Nowa Karczma
+1676;2;06;22;Stara Kiszewa
+1677;1;07;22;Kwidzyn
+1678;2;07;22;Gardeja
+1679;2;07;22;Kwidzyn
+1680;3;07;22;Prabuty
+1681;2;07;22;Ryjewo
+1682;2;07;22;Sadlinki
+1683;1;08;22;Lębork
+1684;1;08;22;Łeba
+1685;2;08;22;Cewice
+1686;2;08;22;Nowa Wieś Lęborska
+1687;2;08;22;Wicko
+1688;1;09;22;Malbork
+1689;2;09;22;Lichnowy
+1690;2;09;22;Malbork
+1691;2;09;22;Miłoradz
+1692;3;09;22;Nowy Staw
+1693;2;09;22;Stare Pole
+1694;1;10;22;Krynica Morska
+1695;3;10;22;Nowy Dwór Gdański
+1696;2;10;22;Ostaszewo
+1697;2;10;22;Stegna
+1698;2;10;22;Sztutowo
+1699;1;11;22;Hel
+1700;3;11;22;Jastarnia
+1701;1;11;22;Puck
+1702;3;11;22;Władysławowo
+1703;2;11;22;Kosakowo
+1704;2;11;22;Krokowa
+1705;2;11;22;Puck
+1706;1;12;22;Ustka
+1707;2;12;22;Damnica
+1708;2;12;22;Dębnica Kaszubska
+1709;2;12;22;Główczyce
+1710;3;12;22;Kępice
+1711;2;12;22;Kobylnica
+1712;2;12;22;Potęgowo
+1713;2;12;22;Słupsk
+1714;2;12;22;Smołdzino
+1715;2;12;22;Ustka
+1716;3;13;22;Czarna Woda
+1717;1;13;22;Skórcz
+1718;1;13;22;Starogard Gdański
+1719;2;13;22;Bobowo
+1720;2;13;22;Kaliska
+1721;2;13;22;Lubichowo
+1722;2;13;22;Osieczna
+1723;2;13;22;Osiek
+1724;3;13;22;Skarszewy
+1725;2;13;22;Skórcz
+1726;2;13;22;Smętowo Graniczne
+1727;2;13;22;Starogard Gdański
+1728;2;13;22;Zblewo
+1729;1;14;22;Tczew
+1730;3;14;22;Gniew
+1731;2;14;22;Morzeszczyn
+1732;3;14;22;Pelplin
+1733;2;14;22;Subkowy
+1734;2;14;22;Tczew
+1735;1;15;22;Reda
+1736;1;15;22;Rumia
+1737;1;15;22;Wejherowo
+1738;2;15;22;Choczewo
+1739;2;15;22;Gniewino
+1740;2;15;22;Linia
+1741;2;15;22;Luzino
+1742;2;15;22;Łęczyce
+1743;2;15;22;Szemud
+1744;2;15;22;Wejherowo
+1745;3;16;22;Dzierzgoń
+1746;2;16;22;Mikołajki Pomorskie
+1747;2;16;22;Stary Dzierzgoń
+1748;2;16;22;Stary Targ
+1749;3;16;22;Sztum
+1750;1;61;22;Gdańsk
+1751;1;62;22;Gdynia
+1752;1;63;22;Słupsk
+1753;1;64;22;Sopot
+1754;1;01;24;Będzin
+1755;1;01;24;Czeladź
+1756;1;01;24;Wojkowice
+1757;2;01;24;Bobrowniki
+1758;2;01;24;Mierzęcice
+1759;2;01;24;Psary
+1760;3;01;24;Siewierz
+1761;1;01;24;Sławków
+1762;1;02;24;Szczyrk
+1763;2;02;24;Bestwina
+1764;2;02;24;Buczkowice
+1765;3;02;24;Czechowice-Dziedzice
+1766;2;02;24;Jasienica
+1767;2;02;24;Jaworze
+1768;2;02;24;Kozy
+1769;2;02;24;Porąbka
+1770;3;02;24;Wilamowice
+1771;2;02;24;Wilkowice
+1772;1;03;24;Cieszyn
+1773;1;03;24;Ustroń
+1774;1;03;24;Wisła
+1775;2;03;24;Brenna
+1776;2;03;24;Chybie
+1777;2;03;24;Dębowiec
+1778;2;03;24;Goleszów
+1779;2;03;24;Hażlach
+1780;2;03;24;Istebna
+1781;3;03;24;Skoczów
+1782;3;03;24;Strumień
+1783;2;03;24;Zebrzydowice
+1784;3;04;24;Blachownia
+1785;2;04;24;Dąbrowa Zielona
+1786;2;04;24;Janów
+1787;2;04;24;Kamienica Polska
+1788;2;04;24;Kłomnice
+1789;3;04;24;Koniecpol
+1790;2;04;24;Konopiska
+1791;2;04;24;Kruszyna
+1792;2;04;24;Lelów
+1793;2;04;24;Mstów
+1794;2;04;24;Mykanów
+1795;2;04;24;Olsztyn
+1796;2;04;24;Poczesna
+1797;2;04;24;Przyrów
+1798;2;04;24;Rędziny
+1799;2;04;24;Starcza
+1800;1;05;24;Knurów
+1801;1;05;24;Pyskowice
+1802;2;05;24;Gierałtowice
+1803;2;05;24;Pilchowice
+1804;2;05;24;Rudziniec
+1805;3;05;24;Sośnicowice
+1806;3;05;24;Toszek
+1807;2;05;24;Wielowieś
+1808;3;06;24;Kłobuck
+1809;3;06;24;Krzepice
+1810;2;06;24;Lipie
+1811;2;06;24;Miedźno
+1812;2;06;24;Opatów
+1813;2;06;24;Panki
+1814;2;06;24;Popów
+1815;2;06;24;Przystajń
+1816;2;06;24;Wręczyca Wielka
+1817;1;07;24;Lubliniec
+1818;2;07;24;Boronów
+1819;2;07;24;Ciasna
+1820;2;07;24;Herby
+1821;2;07;24;Kochanowice
+1822;2;07;24;Koszęcin
+1823;2;07;24;Pawonków
+1824;3;07;24;Woźniki
+1825;1;08;24;Łaziska Górne
+1826;1;08;24;Mikołów
+1827;1;08;24;Orzesze
+1828;2;08;24;Ornontowice
+1829;2;08;24;Wyry
+1830;1;09;24;Myszków
+1831;3;09;24;Koziegłowy
+1832;2;09;24;Niegowa
+1833;2;09;24;Poraj
+1834;3;09;24;Żarki
+1835;2;10;24;Goczałkowice-Zdrój
+1836;2;10;24;Kobiór
+1837;2;10;24;Miedźna
+1838;2;10;24;Pawłowice
+1839;3;10;24;Pszczyna
+1840;2;10;24;Suszec
+1841;1;11;24;Racibórz
+1842;2;11;24;Kornowac
+1843;3;11;24;Krzanowice
+1844;2;11;24;Krzyżanowice
+1845;3;11;24;Kuźnia Raciborska
+1846;2;11;24;Nędza
+1847;2;11;24;Pietrowice Wielkie
+1848;2;11;24;Rudnik
+1849;3;12;24;Czerwionka-Leszczyny
+1850;2;12;24;Gaszowice
+1851;2;12;24;Jejkowice
+1852;2;12;24;Lyski
+1853;2;12;24;Świerklany
+1854;1;13;24;Kalety
+1855;1;13;24;Miasteczko Śląskie
+1856;1;13;24;Radzionków
+1857;1;13;24;Tarnowskie Góry
+1858;2;13;24;Krupski Młyn
+1859;2;13;24;Ożarowice
+1860;2;13;24;Świerklaniec
+1861;2;13;24;Tworóg
+1862;2;13;24;Zbrosławice
+1863;1;14;24;Bieruń
+1864;1;14;24;Imielin
+1865;1;14;24;Lędziny
+1866;2;14;24;Bojszowy
+1867;2;14;24;Chełm Śląski
+1868;1;15;24;Pszów
+1869;1;15;24;Radlin
+1870;1;15;24;Rydułtowy
+1871;1;15;24;Wodzisław Śląski
+1872;2;15;24;Godów
+1873;2;15;24;Gorzyce
+1874;2;15;24;Lubomia
+1875;2;15;24;Marklowice
+1876;2;15;24;Mszana
+1877;1;16;24;Poręba
+1878;1;16;24;Zawiercie
+1879;2;16;24;Irządze
+1880;2;16;24;Kroczyce
+1881;3;16;24;Łazy
+1882;3;16;24;Ogrodzieniec
+1883;3;16;24;Pilica
+1884;3;16;24;Szczekociny
+1885;2;16;24;Włodowice
+1886;2;16;24;Żarnowiec
+1887;1;17;24;Żywiec
+1888;2;17;24;Czernichów
+1889;2;17;24;Gilowice
+1890;2;17;24;Jeleśnia
+1891;2;17;24;Koszarawa
+1892;2;17;24;Lipowa
+1893;2;17;24;Łękawica
+1894;2;17;24;Łodygowice
+1895;2;17;24;Milówka
+1896;2;17;24;Radziechowy-Wieprz
+1897;2;17;24;Rajcza
+1898;2;17;24;Ślemień
+1899;2;17;24;Świnna
+1900;2;17;24;Ujsoły
+1901;2;17;24;Węgierska Górka
+1902;1;61;24;Bielsko-Biała
+1903;1;62;24;Bytom
+1904;1;63;24;Chorzów
+1905;1;64;24;Częstochowa
+1906;1;65;24;Dąbrowa Górnicza
+1907;1;66;24;Gliwice
+1908;1;67;24;Jastrzębie-Zdrój
+1909;1;68;24;Jaworzno
+1910;1;69;24;Katowice
+1911;1;70;24;Mysłowice
+1912;1;71;24;Piekary Śląskie
+1913;1;72;24;Ruda Śląska
+1914;1;73;24;Rybnik
+1915;1;74;24;Siemianowice Śląskie
+1916;1;75;24;Sosnowiec
+1917;1;76;24;Świętochłowice
+1918;1;77;24;Tychy
+1919;1;78;24;Zabrze
+1920;1;79;24;Żory
+1921;3;01;26;Busko-Zdrój
+1922;2;01;26;Gnojno
+1923;2;01;26;Nowy Korczyn
+1924;2;01;26;Pacanów
+1925;2;01;26;Solec-Zdrój
+1926;3;01;26;Stopnica
+1927;2;01;26;Tuczępy
+1928;2;01;26;Wiślica
+1929;2;02;26;Imielno
+1930;3;02;26;Jędrzejów
+1931;3;02;26;Małogoszcz
+1932;2;02;26;Nagłowice
+1933;2;02;26;Oksa
+1934;3;02;26;Sędziszów
+1935;2;02;26;Słupia
+1936;2;02;26;Sobków
+1937;2;02;26;Wodzisław
+1938;2;03;26;Bejsce
+1939;2;03;26;Czarnocin
+1940;3;03;26;Kazimierza Wielka
+1941;2;03;26;Opatowiec
+1942;3;03;26;Skalbmierz
+1943;2;04;26;Bieliny
+1944;3;04;26;Bodzentyn
+1945;3;04;26;Chęciny
+1946;3;04;26;Chmielnik
+1947;3;04;26;Daleszyce
+1948;2;04;26;Górno
+1949;2;04;26;Łagów
+1950;2;04;26;Łopuszno
+1951;2;04;26;Masłów
+1952;2;04;26;Miedziana Góra
+1953;2;04;26;Mniów
+1954;3;04;26;Morawica
+1955;2;04;26;Nowa Słupia
+1956;2;04;26;Piekoszów
+1957;2;04;26;Pierzchnica
+1958;2;04;26;Raków
+1959;2;04;26;Sitkówka-Nowiny
+1960;2;04;26;Strawczyn
+1961;2;04;26;Zagnańsk
+1962;2;05;26;Fałków
+1963;2;05;26;Gowarczów
+1964;3;05;26;Końskie
+1965;2;05;26;Radoszyce
+1966;2;05;26;Ruda Maleniecka
+1967;2;05;26;Słupia (Konecka)
+1968;2;05;26;Smyków
+1969;3;05;26;Stąporków
+1970;2;06;26;Baćkowice
+1971;2;06;26;Iwaniska
+1972;2;06;26;Lipnik
+1973;3;06;26;Opatów
+1974;3;06;26;Ożarów
+1975;2;06;26;Sadowie
+1976;2;06;26;Tarłów
+1977;2;06;26;Wojciechowice
+1978;1;07;26;Ostrowiec Świętokrzyski
+1979;2;07;26;Bałtów
+1980;2;07;26;Bodzechów
+1981;3;07;26;Ćmielów
+1982;3;07;26;Kunów
+1983;2;07;26;Waśniów
+1984;3;08;26;Działoszyce
+1985;2;08;26;Kije
+1986;2;08;26;Michałów
+1987;3;08;26;Pińczów
+1988;2;08;26;Złota
+1989;1;09;26;Sandomierz
+1990;2;09;26;Dwikozy
+1991;2;09;26;Klimontów
+1992;3;09;26;Koprzywnica
+1993;2;09;26;Łoniów
+1994;2;09;26;Obrazów
+1995;2;09;26;Samborzec
+1996;2;09;26;Wilczyce
+1997;3;09;26;Zawichost
+1998;1;10;26;Skarżysko-Kamienna
+1999;2;10;26;Bliżyn
+2000;2;10;26;Łączna
+2001;2;10;26;Skarżysko Kościelne
+2002;3;10;26;Suchedniów
+2003;1;11;26;Starachowice
+2004;2;11;26;Brody
+2005;2;11;26;Mirzec
+2006;2;11;26;Pawłów
+2007;3;11;26;Wąchock
+2008;2;12;26;Bogoria
+2009;2;12;26;Łubnice
+2010;2;12;26;Oleśnica
+2011;3;12;26;Osiek
+2012;3;12;26;Połaniec
+2013;2;12;26;Rytwiany
+2014;3;12;26;Staszów
+2015;2;12;26;Szydłów
+2016;2;13;26;Kluczewsko
+2017;2;13;26;Krasocin
+2018;2;13;26;Moskorzew
+2019;2;13;26;Radków
+2020;2;13;26;Secemin
+2021;3;13;26;Włoszczowa
+2022;1;61;26;Kielce
+2023;1;01;28;Bartoszyce
+2024;1;01;28;Górowo Iławeckie
+2025;2;01;28;Bartoszyce
+2026;3;01;28;Bisztynek
+2027;2;01;28;Górowo Iławeckie
+2028;3;01;28;Sępopol
+2029;1;02;28;Braniewo
+2030;2;02;28;Braniewo
+2031;3;02;28;Frombork
+2032;2;02;28;Lelkowo
+2033;3;02;28;Pieniężno
+2034;2;02;28;Płoskinia
+2035;2;02;28;Wilczęta
+2036;1;03;28;Działdowo
+2037;2;03;28;Działdowo
+2038;2;03;28;Iłowo-Osada
+2039;3;03;28;Lidzbark
+2040;2;03;28;Płośnica
+2041;2;03;28;Rybno
+2042;2;04;28;Elbląg
+2043;2;04;28;Godkowo
+2044;2;04;28;Gronowo Elbląskie
+2045;2;04;28;Markusy
+2046;2;04;28;Milejewo
+2047;3;04;28;Młynary
+2048;3;04;28;Pasłęk
+2049;2;04;28;Rychliki
+2050;3;04;28;Tolkmicko
+2051;1;05;28;Ełk
+2052;2;05;28;Ełk
+2053;2;05;28;Kalinowo
+2054;2;05;28;Prostki
+2055;2;05;28;Stare Juchy
+2056;1;06;28;Giżycko
+2057;2;06;28;Giżycko
+2058;2;06;28;Kruklanki
+2059;2;06;28;Miłki
+2060;3;06;28;Ryn
+2061;2;06;28;Wydminy
+2062;1;07;28;Iława
+2063;1;07;28;Lubawa
+2064;2;07;28;Iława
+2065;3;07;28;Kisielice
+2066;2;07;28;Lubawa
+2067;3;07;28;Susz
+2068;3;07;28;Zalewo
+2069;1;08;28;Kętrzyn
+2070;2;08;28;Barciany
+2071;2;08;28;Kętrzyn
+2072;3;08;28;Korsze
+2073;3;08;28;Reszel
+2074;2;08;28;Srokowo
+2075;1;09;28;Lidzbark Warmiński
+2076;2;09;28;Kiwity
+2077;2;09;28;Lidzbark Warmiński
+2078;2;09;28;Lubomino
+2079;3;09;28;Orneta
+2080;1;10;28;Mrągowo
+2081;3;10;28;Mikołajki
+2082;2;10;28;Mrągowo
+2083;2;10;28;Piecki
+2084;2;10;28;Sorkwity
+2085;2;11;28;Janowiec Kościelny
+2086;2;11;28;Janowo
+2087;2;11;28;Kozłowo
+2088;3;11;28;Nidzica
+2089;1;12;28;Nowe Miasto Lubawskie
+2090;2;12;28;Biskupiec
+2091;2;12;28;Grodziczno
+2092;2;12;28;Kurzętnik
+2093;2;12;28;Nowe Miasto Lubawskie
+2094;2;13;28;Kowale Oleckie
+2095;3;13;28;Olecko
+2096;2;13;28;Świętajno
+2097;2;13;28;Wieliczki
+2098;3;14;28;Barczewo
+2099;3;14;28;Biskupiec
+2100;3;14;28;Dobre Miasto
+2101;2;14;28;Dywity
+2102;2;14;28;Gietrzwałd
+2103;3;14;28;Jeziorany
+2104;2;14;28;Jonkowo
+2105;2;14;28;Kolno
+2106;3;14;28;Olsztynek
+2107;2;14;28;Purda
+2108;2;14;28;Stawiguda
+2109;2;14;28;Świątki
+2110;1;15;28;Ostróda
+2111;2;15;28;Dąbrówno
+2112;2;15;28;Grunwald
+2113;2;15;28;Łukta
+2114;2;15;28;Małdyty
+2115;3;15;28;Miłakowo
+2116;3;15;28;Miłomłyn
+2117;3;15;28;Morąg
+2118;2;15;28;Ostróda
+2119;3;16;28;Biała Piska
+2120;3;16;28;Orzysz
+2121;3;16;28;Pisz
+2122;3;16;28;Ruciane-Nida
+2123;1;17;28;Szczytno
+2124;2;17;28;Dźwierzuty
+2125;2;17;28;Jedwabno
+2126;3;17;28;Pasym
+2127;2;17;28;Rozogi
+2128;2;17;28;Szczytno
+2129;2;17;28;Świętajno
+2130;2;17;28;Wielbark
+2131;2;18;28;Banie Mazurskie
+2132;2;18;28;Dubeninki
+2133;3;18;28;Gołdap
+2134;2;19;28;Budry
+2135;2;19;28;Pozezdrze
+2136;3;19;28;Węgorzewo
+2137;1;61;28;Elbląg
+2138;1;62;28;Olsztyn
+2139;1;01;30;Chodzież
+2140;2;01;30;Budzyń
+2141;2;01;30;Chodzież
+2142;3;01;30;Margonin
+2143;3;01;30;Szamocin
+2144;1;02;30;Czarnków
+2145;2;02;30;Czarnków
+2146;2;02;30;Drawsko
+2147;3;02;30;Krzyż Wielkopolski
+2148;2;02;30;Lubasz
+2149;2;02;30;Połajewo
+2150;3;02;30;Trzcianka
+2151;3;02;30;Wieleń
+2152;1;03;30;Gniezno
+2153;3;03;30;Czerniejewo
+2154;2;03;30;Gniezno
+2155;2;03;30;Kiszkowo
+2156;3;03;30;Kłecko
+2157;2;03;30;Łubowo
+2158;2;03;30;Mieleszyn
+2159;2;03;30;Niechanowo
+2160;3;03;30;Trzemeszno
+2161;3;03;30;Witkowo
+2162;3;04;30;Borek Wielkopolski
+2163;3;04;30;Gostyń
+2164;3;04;30;Krobia
+2165;2;04;30;Pępowo
+2166;2;04;30;Piaski
+2167;3;04;30;Pogorzela
+2168;3;04;30;Poniec
+2169;2;05;30;Granowo
+2170;3;05;30;Grodzisk Wielkopolski
+2171;2;05;30;Kamieniec
+2172;3;05;30;Rakoniewice
+2173;3;05;30;Wielichowo
+2174;3;06;30;Jaraczewo
+2175;3;06;30;Jarocin
+2176;2;06;30;Kotlin
+2177;3;06;30;Żerków
+2178;2;07;30;Blizanów
+2179;2;07;30;Brzeziny
+2180;2;07;30;Ceków-Kolonia
+2181;2;07;30;Godziesze Wielkie
+2182;2;07;30;Koźminek
+2183;2;07;30;Lisków
+2184;2;07;30;Mycielin
+2185;3;07;30;Opatówek
+2186;3;07;30;Stawiszyn
+2187;2;07;30;Szczytniki
+2188;2;07;30;Żelazków
+2189;2;08;30;Baranów
+2190;2;08;30;Bralin
+2191;3;08;30;Kępno
+2192;2;08;30;Łęka Opatowska
+2193;2;08;30;Perzów
+2194;2;08;30;Rychtal
+2195;2;08;30;Trzcinica
+2196;1;09;30;Koło
+2197;2;09;30;Babiak
+2198;2;09;30;Chodów
+2199;3;09;30;Dąbie
+2200;2;09;30;Grzegorzew
+2201;3;09;30;Kłodawa
+2202;2;09;30;Koło
+2203;2;09;30;Kościelec
+2204;2;09;30;Olszówka
+2205;2;09;30;Osiek Mały
+2206;3;09;30;Przedecz
+2207;3;10;30;Golina
+2208;2;10;30;Grodziec
+2209;2;10;30;Kazimierz Biskupi
+2210;3;10;30;Kleczew
+2211;2;10;30;Kramsk
+2212;2;10;30;Krzymów
+2213;3;10;30;Rychwał
+2214;2;10;30;Rzgów
+2215;2;10;30;Skulsk
+2216;3;10;30;Sompolno
+2217;2;10;30;Stare Miasto
+2218;3;10;30;Ślesin
+2219;2;10;30;Wierzbinek
+2220;2;10;30;Wilczyn
+2221;1;11;30;Kościan
+2222;3;11;30;Czempiń
+2223;2;11;30;Kościan
+2224;3;11;30;Krzywiń
+2225;3;11;30;Śmigiel
+2226;1;12;30;Sulmierzyce
+2227;3;12;30;Kobylin
+2228;3;12;30;Koźmin Wielkopolski
+2229;3;12;30;Krotoszyn
+2230;2;12;30;Rozdrażew
+2231;3;12;30;Zduny
+2232;2;13;30;Krzemieniewo
+2233;2;13;30;Lipno
+2234;3;13;30;Osieczna
+2235;3;13;30;Rydzyna
+2236;2;13;30;Święciechowa
+2237;2;13;30;Wijewo
+2238;2;13;30;Włoszakowice
+2239;2;14;30;Chrzypsko Wielkie
+2240;2;14;30;Kwilcz
+2241;3;14;30;Międzychód
+2242;3;14;30;Sieraków
+2243;2;15;30;Kuślin
+2244;3;15;30;Lwówek
+2245;2;15;30;Miedzichowo
+2246;3;15;30;Nowy Tomyśl
+2247;3;15;30;Opalenica
+2248;3;15;30;Zbąszyń
+2249;3;16;30;Oborniki
+2250;3;16;30;Rogoźno
+2251;2;16;30;Ryczywół
+2252;1;17;30;Ostrów Wielkopolski
+2253;3;17;30;Nowe Skalmierzyce
+2254;3;17;30;Odolanów
+2255;2;17;30;Ostrów Wielkopolski
+2256;2;17;30;Przygodzice
+2257;3;17;30;Raszków
+2258;2;17;30;Sieroszewice
+2259;2;17;30;Sośnie
+2260;2;18;30;Czajków
+2261;2;18;30;Doruchów
+2262;3;18;30;Grabów nad Prosną
+2263;2;18;30;Kobyla Góra
+2264;2;18;30;Kraszewice
+2265;3;18;30;Mikstat
+2266;3;18;30;Ostrzeszów
+2267;1;19;30;Piła
+2268;2;19;30;Białośliwie
+2269;2;19;30;Kaczory
+2270;3;19;30;Łobżenica
+2271;2;19;30;Miasteczko Krajeńskie
+2272;2;19;30;Szydłowo
+2273;3;19;30;Ujście
+2274;3;19;30;Wyrzysk
+2275;3;19;30;Wysoka
+2276;3;20;30;Chocz
+2277;2;20;30;Czermin
+2278;3;20;30;Dobrzyca
+2279;2;20;30;Gizałki
+2280;2;20;30;Gołuchów
+2281;3;20;30;Pleszew
+2282;1;21;30;Luboń
+2283;1;21;30;Puszczykowo
+2284;3;21;30;Buk
+2285;2;21;30;Czerwonak
+2286;2;21;30;Dopiewo
+2287;2;21;30;Kleszczewo
+2288;2;21;30;Komorniki
+2289;3;21;30;Kostrzyn
+2290;3;21;30;Kórnik
+2291;3;21;30;Mosina
+2292;3;21;30;Murowana Goślina
+2293;3;21;30;Pobiedziska
+2294;2;21;30;Rokietnica
+2295;3;21;30;Stęszew
+2296;2;21;30;Suchy Las
+2297;3;21;30;Swarzędz
+2298;2;21;30;Tarnowo Podgórne
+2299;3;22;30;Bojanowo
+2300;3;22;30;Jutrosin
+2301;3;22;30;Miejska Górka
+2302;2;22;30;Pakosław
+2303;3;22;30;Rawicz
+2304;1;23;30;Słupca
+2305;2;23;30;Lądek
+2306;2;23;30;Orchowo
+2307;2;23;30;Ostrowite
+2308;2;23;30;Powidz
+2309;2;23;30;Słupca
+2310;2;23;30;Strzałkowo
+2311;3;23;30;Zagórów
+2312;1;24;30;Obrzycko
+2313;2;24;30;Duszniki
+2314;2;24;30;Kaźmierz
+2315;2;24;30;Obrzycko
+2316;3;24;30;Ostroróg
+2317;3;24;30;Pniewy
+2318;3;24;30;Szamotuły
+2319;3;24;30;Wronki
+2320;2;25;30;Dominowo
+2321;2;25;30;Krzykosy
+2322;2;25;30;Nowe Miasto nad Wartą
+2323;3;25;30;Środa Wielkopolska
+2324;2;25;30;Zaniemyśl
+2325;2;26;30;Brodnica
+2326;3;26;30;Dolsk
+2327;3;26;30;Książ Wielkopolski
+2328;3;26;30;Śrem
+2329;1;27;30;Turek
+2330;2;27;30;Brudzew
+2331;3;27;30;Dobra
+2332;2;27;30;Kawęczyn
+2333;2;27;30;Malanów
+2334;2;27;30;Przykona
+2335;3;27;30;Tuliszków
+2336;2;27;30;Turek
+2337;2;27;30;Władysławów
+2338;1;28;30;Wągrowiec
+2339;2;28;30;Damasławek
+2340;3;28;30;Gołańcz
+2341;2;28;30;Mieścisko
+2342;3;28;30;Skoki
+2343;2;28;30;Wapno
+2344;2;28;30;Wągrowiec
+2345;2;29;30;Przemęt
+2346;2;29;30;Siedlec
+2347;3;29;30;Wolsztyn
+2348;2;30;30;Kołaczkowo
+2349;3;30;30;Miłosław
+2350;3;30;30;Nekla
+2351;3;30;30;Pyzdry
+2352;3;30;30;Września
+2353;1;31;30;Złotów
+2354;3;31;30;Jastrowie
+2355;3;31;30;Krajenka
+2356;2;31;30;Lipka
+2357;3;31;30;Okonek
+2358;2;31;30;Tarnówka
+2359;2;31;30;Zakrzewo
+2360;2;31;30;Złotów
+2361;1;61;30;Kalisz
+2362;1;62;30;Konin
+2363;1;63;30;Leszno
+2364;1;64;30;Poznań
+2365;1;01;32;Białogard
+2366;2;01;32;Białogard
+2367;3;01;32;Karlino
+2368;3;01;32;Tychowo
+2369;2;02;32;Bierzwnik
+2370;3;02;32;Choszczno
+2371;3;02;32;Drawno
+2372;2;02;32;Krzęcin
+2373;3;02;32;Pełczyce
+2374;3;02;32;Recz
+2375;3;03;32;Czaplinek
+2376;3;03;32;Drawsko Pomorskie
+2377;3;03;32;Kalisz Pomorski
+2378;2;03;32;Ostrowice
+2379;2;03;32;Wierzchowo
+2380;3;03;32;Złocieniec
+2381;3;04;32;Goleniów
+2382;3;04;32;Maszewo
+2383;3;04;32;Nowogard
+2384;2;04;32;Osina
+2385;2;04;32;Przybiernów
+2386;3;04;32;Stepnica
+2387;2;05;32;Brojce
+2388;3;05;32;Gryfice
+2389;2;05;32;Karnice
+2390;3;05;32;Płoty
+2391;2;05;32;Rewal
+2392;3;05;32;Trzebiatów
+2393;2;06;32;Banie
+2394;3;06;32;Cedynia
+2395;3;06;32;Chojna
+2396;3;06;32;Gryfino
+2397;3;06;32;Mieszkowice
+2398;3;06;32;Moryń
+2399;2;06;32;Stare Czarnowo
+2400;3;06;32;Trzcińsko-Zdrój
+2401;2;06;32;Widuchowa
+2402;3;07;32;Dziwnów
+2403;3;07;32;Golczewo
+2404;3;07;32;Kamień Pomorski
+2405;3;07;32;Międzyzdroje
+2406;2;07;32;Świerzno
+2407;3;07;32;Wolin
+2408;1;08;32;Kołobrzeg
+2409;2;08;32;Dygowo
+2410;3;08;32;Gościno
+2411;2;08;32;Kołobrzeg
+2412;2;08;32;Rymań
+2413;2;08;32;Siemyśl
+2414;2;08;32;Ustronie Morskie
+2415;2;09;32;Będzino
+2416;2;09;32;Biesiekierz
+2417;3;09;32;Bobolice
+2418;2;09;32;Manowo
+2419;3;09;32;Mielno
+2420;3;09;32;Polanów
+2421;3;09;32;Sianów
+2422;2;09;32;Świeszyno
+2423;3;10;32;Barlinek
+2424;2;10;32;Boleszkowice
+2425;3;10;32;Dębno
+2426;3;10;32;Myślibórz
+2427;2;10;32;Nowogródek Pomorski
+2428;2;11;32;Dobra (Szczecińska)
+2429;2;11;32;Kołbaskowo
+2430;3;11;32;Nowe Warpno
+2431;3;11;32;Police
+2432;2;12;32;Bielice
+2433;2;12;32;Kozielice
+2434;3;12;32;Lipiany
+2435;2;12;32;Przelewice
+2436;3;12;32;Pyrzyce
+2437;2;12;32;Warnice
+2438;1;13;32;Darłowo
+2439;1;13;32;Sławno
+2440;2;13;32;Darłowo
+2441;2;13;32;Malechowo
+2442;2;13;32;Postomino
+2443;2;13;32;Sławno
+2444;1;14;32;Stargard
+2445;3;14;32;Chociwel
+2446;3;14;32;Dobrzany
+2447;2;14;32;Dolice
+2448;3;14;32;Ińsko
+2449;2;14;32;Kobylanka
+2450;2;14;32;Marianowo
+2451;2;14;32;Stara Dąbrowa
+2452;2;14;32;Stargard
+2453;3;14;32;Suchań
+2454;1;15;32;Szczecinek
+2455;3;15;32;Barwice
+2456;3;15;32;Biały Bór
+2457;3;15;32;Borne Sulinowo
+2458;2;15;32;Grzmiąca
+2459;2;15;32;Szczecinek
+2460;1;16;32;Świdwin
+2461;2;16;32;Brzeżno
+2462;3;16;32;Połczyn-Zdrój
+2463;2;16;32;Rąbino
+2464;2;16;32;Sławoborze
+2465;2;16;32;Świdwin
+2466;1;17;32;Wałcz
+2467;3;17;32;Człopa
+2468;3;17;32;Mirosławiec
+2469;3;17;32;Tuczno
+2470;2;17;32;Wałcz
+2471;3;18;32;Dobra
+2472;3;18;32;Łobez
+2473;2;18;32;Radowo Małe
+2474;3;18;32;Resko
+2475;3;18;32;Węgorzyno
+2476;1;61;32;Koszalin
+2477;1;62;32;Szczecin
+2478;1;63;32;Świnoujście

@@ -4,6 +4,19 @@
       define('T_PREFIX', "Tytuł strony");
       define('MAX_ZDJEC', 6);
       define('MAX_OSTATNICH_OGLOSZEN', 6);
+if ($_SERVER['SERVER_NAME'] == "lajtowetesty.cba.pl") {
+    define('USERNAME', 'krilek');
+    define('PASSWORD', 'dupadupa12');
+    define('SERVERNAME', 'mysql.cba.pl');
+    define('DBNAME', 'krilek');
+} else {
+    define('USERNAME', 'root');
+    define('PASSWORD', '');
+    define('SERVERNAME', 'localhost');
+    define('DBNAME', 'ogloszenia');
+}
+
+
       //PRZEKIERUJ
 if ($_SERVER['SERVER_NAME'] == "lajtowetesty.cba.pl") {
     define('ROOT', "http://lajtowetesty.cba.pl/");
@@ -45,5 +58,3 @@ if ($_SERVER['SERVER_NAME'] == "lajtowetesty.cba.pl") {
       define('MIEJSCOWOSC', I_BAZOWY_KAT.'miejscowosc.php');
       define('BAZA', I_BAZOWY_KAT.'baza.php');
       define('FPOMOC', I_BAZOWY_KAT.'funkcjePomoc.php');
-
-require_once(I_BAZOWY_KAT."db_settings.php");
